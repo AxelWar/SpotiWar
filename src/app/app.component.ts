@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'spotiapp';
+  constructor() {
+    localStorage.removeItem('auth');
+  }
 }

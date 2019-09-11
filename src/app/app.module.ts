@@ -9,7 +9,8 @@ import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { ArtistaComponent } from './components/artista/artista.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
-
+import { AlbumComponent } from './components/album/album.component';
+import { CancionComponent } from './components/cancion/cancion.component';
 
 // Importar Rutas
 import { ROUTES } from './app.routes';
@@ -21,6 +22,10 @@ import { SpotifyService } from './services/spotify.service';
 import { NoimagePipe } from './pipes/noimage.pipe';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
+import { SearchArtistaComponent } from './components/searchartista/searchartista.component';
+import { SearchAlbumComponent } from './components/searchalbum/searchalbum.component';
+import { SearchCancionComponent } from './components/searchcancion/searchcancion.component';
+
 
 
 
@@ -33,7 +38,12 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
     NavbarComponent,
     NoimagePipe,
     TarjetasComponent,
-    LoadingComponent
+    LoadingComponent,
+    AlbumComponent,
+    CancionComponent,
+    SearchArtistaComponent,
+    SearchAlbumComponent,
+    SearchCancionComponent
   ],
   imports: [
     BrowserModule,

@@ -3,10 +3,10 @@ import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
   selector: 'app-search',
-  templateUrl: './search.component.html',
+  templateUrl: './searchartista.component.html',
 
 })
-export class SearchComponent  {
+export class SearchArtistaComponent  {
 
   artistas: any[] = [];
   loading: boolean;
