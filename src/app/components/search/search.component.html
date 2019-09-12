@@ -2,10 +2,10 @@
 
 <div class="row">
     <div class="col">
-        <input #termino type="text" (keyup)="buscar(termino.value)" class="form-control" placeholder="Buscar Artista">
+        <input #termino type="text" (keyup)="buscar(termino.value)" class="form-control" placeholder="Busqueda General">
     </div>
 
 </div>
 
 
-<app-tarjetas *ngIf="!loading" [items]="artistas"></app-tarjetas>
+<app-tarjetas *ngIf="!loading" [items]="todos"></app-tarjetas>
