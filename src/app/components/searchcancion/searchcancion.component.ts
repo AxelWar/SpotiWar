@@ -8,20 +8,22 @@ import { SpotifyService } from '../../services/spotify.service';
 })
 export class SearchCancionComponent  {
 
-  canciones: any[] = [];
+  tracks: any[] = [];
   loading: boolean;
 
   constructor( private spotify: SpotifyService) {  }
 
 
+  
 buscar( termino: string ) {
   console.log(termino);
 
   this.loading = true;
   this.spotify.getCanciones( termino )
 .subscribe( (data: any) => {
-  this.canciones = data;
+  this.tracks = data;
   this.loading = false;
+  console.log(data);
 });
 }
 

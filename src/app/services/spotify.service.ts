@@ -28,7 +28,7 @@ console.log('Spotify Service Ready');
   refreshToken() {
     const clientId = '476b04f286264f229aed7cd9acc85f7e';
     const clientSecret = '1a7db45b6582437ab4b23a648a4bc903';
-    const url = `https://bootcamp-angular.herokuapp.com/spotify/${clientId}/${clientSecret}`;
+    const url = `https://bootcamp-token-master.herokuapp.com/spotify/${clientId}/${clientSecret}`;
     this.http.get(url).subscribe((data: any) => {
       localStorage.setItem('auth', data.access_token);
     });
@@ -50,71 +50,45 @@ console.log('Spotify Service Ready');
 .pipe( map( (data: any) => data.albums.items));
   }
 
-
-
   getArtistas(termino: string ) {
-    return this.getUrl(`search?q=${ termino }&type=artist`)
+    return this.getUrl(`search?q=${ termino }&type=artist&market=AR`)
     .pipe( map( (data: any) => data.artists.items));
 }
 getArtista(id: string ) {
   return this.getUrl(`artists/${ id }`);
   }
 
-
   getAlbumArtista(id: string ) {
     return this.getUrl(`artists/${ id }/albums`);
     }
 
-
-
 getCancionAlbum(id: string ) {
   return this.getUrl(`albums/${ id }/tracks`);
 }
-getCancionesAlbum(termino: string ) {
-  return this.getUrl(`search?q=${ termino }&type=track`)
-  .pipe( map( (data: any) => data.tracks.items));
-}
-
-
 
 getAlbums(termino: string ) {
-  return this.getUrl(`search?q=${ termino }&type=album`)
+  return this.getUrl(`search?q=${ termino }&type=album&market=AR`)
   .pipe( map( (data: any) => data.albums.items));
 }
-
 getAlbum(id: string ) {
 return this.getUrl(`albums/${ id }`);
 }
 
+getCanciones(termino: string ) {
+  return this.getUrl(`search?q=${ termino }&type=track&market=AR`)
+  .pipe( map( (data: any) => data.tracks.items));
+}
+getCancion(id: string ) {
+return this.getUrl(`tracks/${ id }`);
+}
 
-/*    getToken(){
-    const tokens: TokenInterface[] = [];
-
-  let params = ('grant_type=client_credentials');
-  let client_id = '476b04f286264f229aed7cd9acc85f7e'; // Your client id
-  let client_secret = '1a7db45b6582437ab4b23a648a4bc903'; // Your secret
-  let encoded = btoa(client_id + ':' + client_secret);
-  /* const headers = new HttpHeaders();
-  headers.append( 'Authorization', 'Basic ' + encoded);
-  headers.append('Content-Type' , 'application/x-www-form-urlencoded');
-  let proxy = 'https://cors-anywhere.herokuapp.com/';
-  let uurl = 'https://accounts.spotify.com/api/token';
-
-    return this.http.post(proxy + uurl, params , {headers:{Authorization:`Basic ${encoded}`
-    ,'Content-Type': 'application/x-www-form-urlencoded' }})
-  .pipe( map((res: any) => {
-    console.log(res);
-          let data = res.json();
-           return data;
-      }));
-    }   */
-
-// resulta
-/* access_token: "BQDicb7m3tP19xehFdU_MJgN4sw-X0ZSa_p9vX6tp_xCILKSLOJMkwwZfyBI6IoMuR6luhpQKh9IduQaTeg"
-expires_in: 3600
-scope: ""
-token_type: "Bearer" */
-
+getTodos( termino: string) {
+  return this.getUrl(`search?q=${ termino }&type=track&market=AR&limit=5`)
+  .pipe( map( (data: any) => data.tracks.items));
+}
+getTodo(id: string ) {
+  return this.getUrl(`track/${ id }`);
+  }
 
 
 }

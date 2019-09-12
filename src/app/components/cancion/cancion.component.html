@@ -1,34 +1,32 @@
 <app-loading *ngIf="loading"></app-loading>
 <div class="row animated fadeIn" *ngIf="!loading">
-    <div class="col-2">
+    <div class="col-3 m-3">
         <img [src]="album.images | noimage" class="img-thumbnail img-circle">
     </div>
 
-    <div class="col">
-        <h3>{{album.name}}</h3>
+    <div class="">
+        <h1>{{album.name}}</h1>
+        <h4>{{album.artists[0].name}}</h4>
         <p>
             <a [href]="album.external_urls.spotify" target="_blank">
-        Ir a la página del albumArtista
+        Ir a la página del album.
     </a>
 
 
         </p>
     </div>
     <div class="col-4 text-right">
-        <button routerLink="/search" class="btn btn-outline-danger">Regresar</button>
+        <button routerLink="/searchcancion" class="btn btn-outline-danger">Regresar</button>
     </div>
 </div>
 
-<app-loading *ngIf="loading"></app-loading>
-
 
 <div class="col">
-    <table class="table">
+    <table class="table table-hover table-dark table-responsive">
         <thead>
-            <tr>
+            <tr class="bg-dark">
                 <th>#</th>
                 <th>Nombre</th>
-                <th>Cancion</th>
                 <th>Vista Previa</th>
             </tr>
         </thead>
@@ -37,9 +35,8 @@
             <tr *ngFor="let track of cancionAlbum.items">
                 <td>{{track.track_number}}</td>
                 <td>{{track.name}}</td>
-                <a [href]="track.external_urls.spotify" target="_blank">
-                    Abrir en Spotify
-                </a>
+                <td><iframe [src]="track.uri | domseguro:'https://open.spotify.com/embed?uri=' " width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></td>
+
 
 
             </tr>

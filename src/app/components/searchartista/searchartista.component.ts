@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
-  selector: 'app-search',
+  selector: 'app-searchartista',
   templateUrl: './searchartista.component.html',
 
 })
