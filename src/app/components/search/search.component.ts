@@ -8,7 +8,7 @@ import { SpotifyService } from '../../services/spotify.service';
 })
 export class SearchComponent  {
 
-  todos: any[] = [];
+  todos: any;
   loading: boolean;
 
   constructor( private spotify: SpotifyService) {  }
@@ -22,6 +22,7 @@ buscar( termino: string ) {
 .subscribe( (data: any) => {
   this.todos = data;
   this.loading = false;
+  console.log(data);
 });
 }
 

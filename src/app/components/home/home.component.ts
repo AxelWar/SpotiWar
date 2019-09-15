@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-
+perfil: any;
   nuevasCanciones: any[] = [];
   loading = true;
 error = false;
@@ -17,8 +17,22 @@ mensajeError: string;
   }
 
 ngOnInit() {
-
+  /* this.spotify.refreshToken(); */
   this.login();
+
+
+  this.spotify.getPerfil()
+  .subscribe( (data: any) => {
+this.perfil = data;
+console.log(data);
+this.loading = false;
+  }, ( errorServicio ) => {
+    this.loading = false;
+    this.error = true;
+    console.log(errorServicio);
+    this.mensajeError = errorServicio.error.error.message;
+  });
+
 
   this.spotify.getNewReleases()
   .subscribe( (data: any) => {
@@ -29,6 +43,8 @@ this.loading = false;
     this.error = true;
     console.log(errorServicio);
     this.mensajeError = errorServicio.error.error.message;
+    localStorage.removeItem('auth');
+    window.location.reload();
   });
 }
 
@@ -43,6 +59,7 @@ login() {
       this.spotify.refreshToken();
     }, 3000000);
   } else {
+    
     this.spotify.auth();
   }
 

@@ -82,13 +82,14 @@ getCancion(id: string ) {
 return this.getUrl(`tracks/${ id }`);
 }
 
-getTodos( termino: string) {
-  return this.getUrl(`search?q=${ termino }&type=track&market=AR&limit=5`)
-  .pipe( map( (data: any) => data.tracks.items));
+getPerfil() {
+  return this.getUrl('me')
+.pipe( map( (data: any) => data));
 }
-getTodo(id: string ) {
-  return this.getUrl(`track/${ id }`);
-  }
 
+getTodos( termino: string) {
+  return this.getUrl(`https://api.spotify.com/v1/search?q=${ termino }&type=track%2Cartist%2Calbum&market=AR`)
+  .pipe( map( (data: any) => data.type.items));
+}
 
 }

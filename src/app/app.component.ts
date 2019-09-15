@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, NgModule} from '@angular/core';
 
+import { HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,7 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'spotiapp';
-  constructor() {
-/*  localStorage.removeItem('auth'); */
+  constructor(http: HttpClient) {
+
   }
 }
+export class AppModule { }

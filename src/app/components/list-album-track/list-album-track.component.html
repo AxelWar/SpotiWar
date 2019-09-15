@@ -1,0 +1,24 @@
+<div class="col">
+    <table class="table table-hover table-dark table-responsive">
+        <thead>
+            <tr class="bg-dark">
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Duracion</th>
+                <th>Vista Previa</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{item.track_number}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.duration_ms | date: "mm:ss"}}</td>
+                <td>
+                    <audio [src]="item.preview_url" controls></audio>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,24 @@
+<div class="col">
+    <table class="table table-hover table-dark table-responsive">
+        <thead>
+            <tr class="bg-dark">
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Vista Previa</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let item of items">
+
+                <td>{{item.name}}</td>
+                <td>{{item.album.name}}</td>
+                <td (click)="verArtista( item )" class="puntero">{{item.artists[0].name}}</td>
+                <!--   <td><iframe [src]="track.uri | domseguro:'https://open.spotify.com/embed?uri=' " width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></td>
+ -->
+
+
+            </tr>
+        </tbody>
+    </table>
+</div>
