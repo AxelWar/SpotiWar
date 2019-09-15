@@ -17,7 +17,6 @@ export class CancionComponent  {
               private router: Router) {
     this.loading = true;
     this.route.params.subscribe(params => {
-
       this.getAlbum( params ['id']);
         });
   }

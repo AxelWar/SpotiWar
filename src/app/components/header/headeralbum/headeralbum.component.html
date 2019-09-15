@@ -1,18 +1,18 @@
 <app-loading *ngIf="loading"></app-loading>
 <div class="row animated fadeIn" *ngIf="!loading || items">
     <div class="col-2">
-        <img [src]="items.images | noimage" class="img-thumbnail">
+        <img [src]="items.images | noimage" class="img-thumb">
     </div>
 
     <div class="col">
 
-        <h2>{{items.artists[0].name}}</h2>
+        <h2>{{items.name}}</h2>
         <p>
 
 
         </p>
     </div>
     <div class="col-4 text-right">
-        <button routerLink="/home" class="btn btn-outline-danger">Regresar</button>
+        <button routerLink="/searchalbum" class="btn btn-outline-danger">Regresar</button>
     </div>
 </div>

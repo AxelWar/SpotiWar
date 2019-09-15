@@ -1,0 +1,219 @@
+Looking for git in: git
+Using git 2.17.1 from git
+> git rev-parse --show-toplevel
+> git rev-parse --git-dir
+> git config --get commit.template
+Open repository: /home/tripas/Angular/a04-spotiapp
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git check-ignore -v -z --stdin
+> git show :browserslist
+> git show :angular.json
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show :src/app/app.module.ts
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :angular.json
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git check-ignore -v -z --stdin
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :src/app/app.module.ts
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :angular.json
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :src/app/app.module.ts
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show :angular.json
+> git check-ignore -v -z --stdin
+> git show :src/app/app.module.ts
+> git check-ignore -v -z --stdin
+> git show :src/styles.css
+> git show :src/app/app.routes.ts
+> git show :src/app/app.module.ts
+> git show :src/app/app.routes.ts
+> git show :src/app/app.component.ts
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git check-ignore -v -z --stdin
+> git show :src/styles.css
+> git show :angular.json
+> git check-ignore -v -z --stdin
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :src/index.html
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :src/styles.scss
+> git ls-files --stage -- src/
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :src/app/app.module.ts
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :angular.json
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :src/app/app.module.ts
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :angular.json
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :src/app/app.module.ts
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse correccion-property-null
+> git rev-parse --symbolic-full-name correccion-property-null@{u}
+> git rev-list --left-right correccion-property-null...refs/remotes/origin/correccion-property-null
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :src/styles.scss
+> git ls-files --stage -- src/
+> git show :src/app/app.component.css
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show :src/styles.scss
+> git ls-files --stage -- src/
+> git show :src/app/app.module.ts
+> git show :angular.json
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git add -A -- .

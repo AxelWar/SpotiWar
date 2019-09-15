@@ -1,14 +1,11 @@
 
 import { RouterModule } from '@angular/router';
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { SearchComponent } from './components/search/search.component';
 import { ArtistaComponent } from './components/artista/artista.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { AlbumComponent } from './components/album/album.component';
@@ -27,23 +24,21 @@ import { SpotifyService } from './services/spotify.service';
 
 // Pipes
 import { NoimagePipe } from './pipes/noimage.pipe';
-
 import { DomseguroPipe } from './pipes/domseguro.pipe';
-import { ListComponent } from './components/list/list.component';
 
+import { ListComponent } from './components/list/list.component';
 import { ListAlbumTrackComponent } from './components/list-album-track/list-album-track.component';
 import { HeaderprofileComponent } from './components/header/headerprofile/headerprofile.component';
 import { HeaderalbumComponent } from './components/header/headeralbum/headeralbum.component';
 import { HeaderArtistComponent } from './components/header/header-artist/header-artist.component';
 
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SearchComponent,
     ArtistaComponent,
     NavbarComponent,
     NoimagePipe,
@@ -65,9 +60,10 @@ import { HeaderArtistComponent } from './components/header/header-artist/header-
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpClientJsonpModule,
     FormsModule,
-    RouterModule.forRoot( ROUTES)
+    RouterModule.forRoot( ROUTES),
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     SpotifyService,
@@ -75,3 +71,4 @@ import { HeaderArtistComponent } from './components/header/header-artist/header-
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

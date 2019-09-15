@@ -9,6 +9,8 @@ import { map } from 'rxjs/operators';
 export class SpotifyService {
   token: string = null;
 
+canciones: any[] = [];
+
   constructor( private http: HttpClient ) {
 console.log('Spotify Service Ready');
   }
@@ -75,9 +77,15 @@ return this.getUrl(`albums/${ id }`);
 }
 
 getCanciones(termino: string ) {
+  
   return this.getUrl(`search?q=${ termino }&type=track&market=AR`)
-  .pipe( map( (data: any) => data.tracks.items));
+  .pipe( map( (data: any) => {
+                              this.canciones = data.tracks.items;
+                              return data.tracks.items;
+  
+  }));
 }
+
 getCancion(id: string ) {
 return this.getUrl(`tracks/${ id }`);
 }
