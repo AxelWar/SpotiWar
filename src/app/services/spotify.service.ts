@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { Marcador } from 'src/app/classes/marcador.class';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -8,8 +8,11 @@ import { map } from 'rxjs/operators';
 })
 export class SpotifyService {
   token: string = null;
+termino: string;
+favsSongs: any[] = [];
+favSong: string;
+listFavourites: any[] = [];
 
-canciones: any[] = [];
 
   constructor( private http: HttpClient ) {
 console.log('Spotify Service Ready');
@@ -27,23 +30,21 @@ console.log('Spotify Service Ready');
     }
   }
 
-  refreshToken() {
+/*   refreshToken() {
     const clientId = '476b04f286264f229aed7cd9acc85f7e';
     const clientSecret = '1a7db45b6582437ab4b23a648a4bc903';
     const url = `https://bootcamp-token-master.herokuapp.com/spotify/${clientId}/${clientSecret}`;
     this.http.get(url).subscribe((data: any) => {
       localStorage.setItem('auth', data.access_token);
     });
- }
+ } */
 
   getUrl(query: string) {
     const url = `https://api.spotify.com/v1/${query}`;
     this.token = localStorage.getItem('auth');
-
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`
     });
-
     return this.http.get(url, { headers });
   }
 
@@ -77,17 +78,15 @@ return this.getUrl(`albums/${ id }`);
 }
 
 getCanciones(termino: string ) {
-  
+
   return this.getUrl(`search?q=${ termino }&type=track&market=AR`)
-  .pipe( map( (data: any) => {
-                              this.canciones = data.tracks.items;
-                              return data.tracks.items;
-  
-  }));
+  .pipe( map( (data: any) =>  data.tracks.items));
 }
 
 getCancion(id: string ) {
-return this.getUrl(`tracks/${ id }`);
+return this.getUrl(`tracks/${ id }`)
+.pipe( map( (data: any) => data));
+
 }
 
 getPerfil() {
@@ -99,5 +98,37 @@ getTodos( termino: string) {
   return this.getUrl(`https://api.spotify.com/v1/search?q=${ termino }&type=track%2Cartist%2Calbum&market=AR`)
   .pipe( map( (data: any) => data.type.items));
 }
+getFavourites() {
+  this.listFavourites = JSON.parse(localStorage.getItem('favs'));
+  return console.log(this.listFavourites);
+}
+favouriteSongs( favSong: string ) {
+  this.favsSongs = JSON.parse(localStorage.getItem('favs'));
+  this.favsSongs.push(favSong);
+  const sinRepetidos = this.favsSongs.filter((valor, indiceActual, arreglo) => arreglo.indexOf(valor) === indiceActual);
+  this.favsSongs = sinRepetidos;
+  localStorage.setItem('favs', JSON.stringify(this.favsSongs));
+  console.log(this.favsSongs);
+}
+
+removeFavourite( favSong: string ) {
+this.favsSongs = JSON.parse(localStorage.getItem('favs'));
+for (let i = 0 ; i < this.favsSongs.length; i++) {
+  if ( this.favsSongs[i] === favSong ) {
+    this.favsSongs.splice(i, 1);
+    localStorage.setItem('favs', JSON.stringify(this.favsSongs));
+  }
+}
+}
+/* estadoFav (favSong: string){
+this.favsSongs = JSON.parse(localStorage.getItem('favs'));
+for (let i = 0 ; i < this.favsSongs.length; i++) {
+  if ( this.favsSongs[i] === favSong ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+} */
 
 }

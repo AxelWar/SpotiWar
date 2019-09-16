@@ -4,7 +4,9 @@
             <th>Nombre</th>
             <th>Album</th>
             <th>Artista</th>
-            <th>Vista Previa</th>
+            <th>Duración</th>
+            <th>Preview</th>
+            <th>Fav</th>
         </tr>
     </thead>
 
@@ -13,10 +15,13 @@
 
             <td>{{item.name}}</td>
             <td>{{item.album.name}}</td>
-            <td (click)="verArtista( item )" class="puntero">{{item.artists[0].name}}</td>
+            <td (click)="verArtista( item )" class="puntero a">{{item.artists[0].name}}</td>
+            <td>{{item.duration_ms | date: "mm:ss"}}</td>
             <td>
                 <audio [src]="item.preview_url" controls></audio>
             </td>
+            <td> <button (click)="favorito(item.id)">[fav]</button><button (click)="removeFavourite(item.id)">[x]</button></td>
+
         </tr>
     </tbody>
 </table>

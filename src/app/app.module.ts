@@ -35,6 +35,7 @@ import { HeaderArtistComponent } from './components/header/header-artist/header-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
+
 @NgModule({
   declarations: [
     AppComponent,

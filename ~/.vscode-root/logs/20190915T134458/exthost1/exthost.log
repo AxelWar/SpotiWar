@@ -32,3 +32,48 @@
 [2019-09-15 14:01:50.027] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/css-language-features/client/dist/cssMain
 [2019-09-15 14:06:29.639] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features {"startup":false,"activationEvent":"onLanguage:html"}
 [2019-09-15 14:06:29.639] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/html-language-features/client/dist/htmlMain
+[2019-09-15 15:43:18.961] [exthost] [error] [vscode.typescript-language-features] provider FAILED
+[2019-09-15 15:43:18.977] [exthost] [error] Error: <semantic> TypeScript Server Error (3.6.2)
+Debug Failure. Invalid cast. The supplied value [object Object] did not pass the test 'isStringLiteral'.
+Error: Debug Failure. Invalid cast. The supplied value [object Object] did not pass the test 'isStringLiteral'.
+    at Object.cast (tsserver.js:1457:25)
+    at tryGetImportedPackageName (tsserver.js:119435:33)
+    at Object.getCodeActions (tsserver.js:119403:35)
+    at tsserver.js:115774:121
+    at Object.flatMap (tsserver.js:583:25)
+    at Object.getFixes (tsserver.js:115774:23)
+    at tsserver.js:125788:35
+    at Object.flatMap (tsserver.js:583:25)
+    at Object.getCodeFixesAtPosition (tsserver.js:125786:23)
+    at IOSession.Session.getCodeFixes (tsserver.js:134985:64)
+    at Session.handlers.ts.createMapFromTemplate._a.(anonymous function) (tsserver.js:133772:61)
+    at tsserver.js:135178:88
+    at IOSession.Session.executeWithRequestId (tsserver.js:135169:28)
+    at IOSession.Session.executeCommand (tsserver.js:135178:33)
+    at IOSession.Session.onMessage (tsserver.js:135201:35)
+    at Interface.<anonymous> (tsserver.js:136516:27)
+    at Interface.emit (events.js:182:13)
+    at Interface._onLine (readline.js:290:10)
+    at Interface._normalWrite (readline.js:433:12)
+    at Socket.ondata (readline.js:149:10)
+    at Socket.emit (events.js:182:13)
+    at addChunk (_stream_readable.js:283:12)
+    at readableAddChunk (_stream_readable.js:264:11)
+    at Socket.Readable.push (_stream_readable.js:219:10)
+    at Pipe.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+	at Function.create (/snap/code/14/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension.js:53:63463)
+	at h.dispatchResponse (/snap/code/14/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension.js:53:56618)
+	at h.dispatchMessage (/snap/code/14/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension.js:53:55516)
+	at constructor._reader.onData.e (/snap/code/14/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension.js:53:54992)
+	at u.fire (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:50:207)
+	at t.Reader.onLengthData (/snap/code/14/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension.js:53:61683)
+	at Socket.t.Reader.constructor.e.on.e (/snap/code/14/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension.js:53:61331)
+	at Socket.emit (events.js:182:13)
+	at addChunk (_stream_readable.js:283:12)
+	at readableAddChunk (_stream_readable.js:264:11)
+	at Socket.Readable.push (_stream_readable.js:219:10)
+	at Pipe.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+[2019-09-15 15:48:34.666] [exthost] [error] [vscode.typescript-language-features] provider FAILED
+[2019-09-15 15:48:34.666] [exthost] [error] Error: DisposableStore is missing...
+	at R._convertCompletionItem (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:559:660)
+	at define.resolveCompletionItem.o.asPromise.then.e (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:559:290)

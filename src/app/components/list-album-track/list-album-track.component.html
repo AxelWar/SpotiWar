@@ -5,7 +5,8 @@
                 <th>#</th>
                 <th>Nombre</th>
                 <th>Duracion</th>
-                <th>Vista Previa</th>
+                <th>Preview</th>
+                <th>Fav</th>
             </tr>
         </thead>
 
@@ -17,6 +18,7 @@
                 <td>
                     <audio [src]="item.preview_url" controls></audio>
                 </td>
+                <td> <button (click)="favorito(item.id)">[fav]</button><button (click)="removeFavourite(item.id)">[x]</button></td>
 
             </tr>
         </tbody>

@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 perfil: any;
+listFavourites: any;
+tracks: any[] = [];
   nuevasCanciones: any[] = [];
   loading = true;
 error = false;
@@ -19,6 +21,7 @@ mensajeError: string;
 ngOnInit() {
   /* this.spotify.refreshToken(); */
   this.login();
+  this.getFavoritos();
 
 
   this.spotify.getPerfil()
@@ -43,8 +46,6 @@ this.loading = false;
     this.error = true;
     console.log(errorServicio);
     this.mensajeError = errorServicio.error.error.message;
-    localStorage.removeItem('auth');
-    window.location.reload();
   });
 }
 
@@ -56,15 +57,36 @@ login() {
   if ( token ) {
     localStorage.setItem('auth', token);
     setInterval(() => {
-      this.spotify.refreshToken();
+      /* this.spotify.refreshToken(); */
+      localStorage.removeItem('auth');
+      window.location.reload();
+      this.spotify.auth();
     }, 3000000);
   } else {
-    
     this.spotify.auth();
   }
 
 }
+loginRefresh(){
+  localStorage.removeItem('auth');
+  this.login();
+}
+getFavoritos() {
 
+  this.listFavourites = JSON.parse(localStorage.getItem('favs'));
+  console.log(this.listFavourites.length);
+  console.log(this.listFavourites);
+  // tslint:disable-next-line: prefer-for-of
+  for (let i = 0; i < this.listFavourites.length; i++ ) {
+    this.spotify.getCancion(this.listFavourites[i])
+    .subscribe( (data: any) => {
+      this.tracks.push(data);
+      console.log(this.tracks);
+    });
+
+}
+
+}
 }
 
 

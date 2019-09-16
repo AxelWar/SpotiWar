@@ -824,8 +824,7 @@
                     },
                     {
                         "id": "workbench.action.terminal.split",
-                        "label": "&&Split Terminal",
-                        "enabled": false
+                        "label": "&&Split Terminal"
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -1373,5 +1372,19 @@
     },
     "theme": "vs-dark",
     "themeBackground": "#1e1e1e",
-    "pickerWorkingDir": "/home/tripas/Angular"
+    "pickerWorkingDir": "/home/tripas/Angular",
+    "windowsState": {
+        "lastActiveWindow": {
+            "folder": "file:///home/tripas/Angular/a04-spotiapp",
+            "backupPath": "/home/tripas/Angular/a04-spotiapp/~/.vscode-root/Backups/6eb246bd50c9d540e2b71ba0037a268d",
+            "uiState": {
+                "mode": 0,
+                "x": 101,
+                "y": 129,
+                "width": 1024,
+                "height": 768
+            }
+        },
+        "openedWindows": []
+    }
 }

@@ -1,8 +1,13 @@
 <app-loading *ngIf="loading"></app-loading>
 <div *ngIf="error" class="alert alert-danger animated fadeIn">
     <p>{{mensajeError}}</p>
+    <a (click)="loginRefresh()">Logueate nuevamente</a>
 </div>
-
+<label><h2>Mi perfil:</h2></label>
 <app-headerprofile [items]="perfil"></app-headerprofile>
 
+<label><h2>Favoritos:</h2></label>
+<app-list [items]="tracks"></app-list>
+
+<label><h2>Nuevos Lanzamientos:</h2></label>
 <app-tarjetas [items]="nuevasCanciones"></app-tarjetas>
