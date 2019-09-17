@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Marcador } from 'src/app/classes/marcador.class';
 import { map } from 'rxjs/operators';
+import { ClassTrack } from '../components/classes/track';
+
 
 @Injectable({
   providedIn: 'root'
@@ -85,9 +86,18 @@ getCanciones(termino: string ) {
 
 getCancion(id: string ) {
 return this.getUrl(`tracks/${ id }`)
-.pipe( map( (data: any) => data));
+.pipe( map( (data: ClassTrack) => data));
 
 }
+estadoFav(favSong: string) {
+  this.favsSongs = JSON.parse(localStorage.getItem('favs'));
+  for (let i = 0 ; i < this.favsSongs.length; i++) {
+    if ( this.favsSongs[i] === favSong ) {
+      return true;
+    }
+  }
+  }
+
 
 getPerfil() {
   return this.getUrl('me')
@@ -108,7 +118,7 @@ favouriteSongs( favSong: string ) {
   const sinRepetidos = this.favsSongs.filter((valor, indiceActual, arreglo) => arreglo.indexOf(valor) === indiceActual);
   this.favsSongs = sinRepetidos;
   localStorage.setItem('favs', JSON.stringify(this.favsSongs));
-  console.log(this.favsSongs);
+
 }
 
 removeFavourite( favSong: string ) {
@@ -120,15 +130,6 @@ for (let i = 0 ; i < this.favsSongs.length; i++) {
   }
 }
 }
-/* estadoFav (favSong: string){
-this.favsSongs = JSON.parse(localStorage.getItem('favs'));
-for (let i = 0 ; i < this.favsSongs.length; i++) {
-  if ( this.favsSongs[i] === favSong ) {
-    return true;
-  } else {
-    return false;
-  }
-}
-} */
+
 
 }

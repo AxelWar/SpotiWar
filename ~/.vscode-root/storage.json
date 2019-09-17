@@ -55,7 +55,7 @@
                                         "scheme": "file"
                                     },
                                     "enabled": true,
-                                    "label": "/home/tripas/Angular/a04-spotiapp"
+                                    "label": "~/Angular/a04-spotiapp"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -824,7 +824,8 @@
                     },
                     {
                         "id": "workbench.action.terminal.split",
-                        "label": "&&Split Terminal"
+                        "label": "&&Split Terminal",
+                        "enabled": false
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -1024,8 +1025,8 @@
                 "userSettingsLabel": "ctrl+k f"
             },
             "workbench.action.closeWindow": {
-                "label": "Ctrl+W",
-                "userSettingsLabel": "ctrl+w"
+                "label": "Ctrl+Shift+W",
+                "userSettingsLabel": "ctrl+shift+w"
             },
             "workbench.action.quit": {
                 "label": "Ctrl+Q",
@@ -1175,8 +1176,9 @@
                 "userSettingsLabel": "ctrl+shift+f"
             },
             "workbench.view.scm": {
-                "label": "Ctrl+Shift+G",
-                "userSettingsLabel": "ctrl+shift+g"
+                "label": "Ctrl+Shift+G G",
+                "isNative": false,
+                "userSettingsLabel": "ctrl+shift+g g"
             },
             "workbench.view.debug": {
                 "label": "Ctrl+Shift+D",
@@ -1295,10 +1297,6 @@
                 "isNative": false,
                 "userSettingsLabel": "ctrl+[Backquote]"
             },
-            "editor.action.marker.nextInFiles": {
-                "label": "F8",
-                "userSettingsLabel": "f8"
-            },
             "editor.action.marker.prevInFiles": {
                 "label": "Shift+F8",
                 "userSettingsLabel": "shift+f8"
@@ -1342,10 +1340,6 @@
             "workbench.action.debug.continue": {
                 "label": "F5",
                 "userSettingsLabel": "f5"
-            },
-            "editor.debug.action.toggleBreakpoint": {
-                "label": "F9",
-                "userSettingsLabel": "f9"
             },
             "editor.debug.action.toggleInlineBreakpoint": {
                 "label": "Shift+F9",

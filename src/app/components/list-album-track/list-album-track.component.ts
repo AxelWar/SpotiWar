@@ -17,15 +17,24 @@ export class ListAlbumTrackComponent {
                private spotify: SpotifyService ) {
 
   }
-favorito( favSong: string ) {
-  if ( favSong === '') {
-    return;
-  }
-  this.spotify.favouriteSongs( favSong );
 
-}
-removeFavourite( favSong: string ) {
-  this.spotify.removeFavourite( favSong );
-  window.location.reload();
-                }
+    checkFav( favSong: string ) {
+      if ( this.spotify.estadoFav( favSong ) === true) {
+        return true;
+      } else {
+        return false;
+      }
+      }
+
+    checkIfFavourite( favSong: string ) {
+      if ( this.spotify.estadoFav( favSong ) === true ) {
+        this.spotify.removeFavourite( favSong );
+        window.location.reload();
+        console.log(`Se elimino de favoritos ${favSong}`);
+      } else {
+        this.spotify.favouriteSongs( favSong );
+        console.log(`Se agregó a favoritos ${favSong}`);
+      }
+      }
+
 }

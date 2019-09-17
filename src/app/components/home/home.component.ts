@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
+import { ClassPerfil } from '../classes/perfil';
+import { ClassTrack } from '../classes/track';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-perfil: any;
+perfil: ClassPerfil [] = [];
 listFavourites: any;
-tracks: any[] = [];
+tracks: ClassTrack [] = [];
   nuevasCanciones: any[] = [];
   loading = true;
 error = false;
@@ -27,7 +29,6 @@ ngOnInit() {
   this.spotify.getPerfil()
   .subscribe( (data: any) => {
 this.perfil = data;
-console.log(data);
 this.loading = false;
   }, ( errorServicio ) => {
     this.loading = false;
@@ -67,21 +68,22 @@ login() {
   }
 
 }
-loginRefresh(){
+loginRefresh() {
   localStorage.removeItem('auth');
   this.login();
 }
-getFavoritos() {
 
+
+
+
+getFavoritos() {
   this.listFavourites = JSON.parse(localStorage.getItem('favs'));
-  console.log(this.listFavourites.length);
-  console.log(this.listFavourites);
   // tslint:disable-next-line: prefer-for-of
   for (let i = 0; i < this.listFavourites.length; i++ ) {
     this.spotify.getCancion(this.listFavourites[i])
-    .subscribe( (data: any) => {
+    .subscribe( (data: ClassTrack) => {
+      /* this.spotify.estadoFav(this.listFavourites[i]); */
       this.tracks.push(data);
-      console.log(this.tracks);
     });
 
 }

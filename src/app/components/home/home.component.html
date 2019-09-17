@@ -1,13 +1,14 @@
 <app-loading *ngIf="loading"></app-loading>
 <div *ngIf="error" class="alert alert-danger animated fadeIn">
     <p>{{mensajeError}}</p>
-    <a (click)="loginRefresh()">Logueate nuevamente</a>
+    <p>Verifique si posee conexión a internet. En caso de poseer</p>
+    <a (click)="loginRefresh()">El token de Spotify dura 1 hora, haz click aqui para renovarlo.</a>
 </div>
-<label><h2>Mi perfil:</h2></label>
+<label><h1>Dashboard</h1></label>
 <app-headerprofile [items]="perfil"></app-headerprofile>
 
-<label><h2>Favoritos:</h2></label>
+<label><h1>Favoritos</h1></label>
 <app-list [items]="tracks"></app-list>
 
-<label><h2>Nuevos Lanzamientos:</h2></label>
+<label><h1>Nuevos Lanzamientos</h1></label>
 <app-tarjetas [items]="nuevasCanciones"></app-tarjetas>

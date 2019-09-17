@@ -1,8 +1,7 @@
-<table class="table table-hover table-dark table-responsive">
+<table>
     <thead>
-        <tr class="bg-dark">
+        <tr>
             <th>Nombre</th>
-            <th>Album</th>
             <th>Artista</th>
             <th>Duración</th>
             <th>Preview</th>
@@ -14,14 +13,13 @@
         <tr *ngFor="let item of items">
 
             <td>{{item.name}}</td>
-            <td>{{item.album.name}}</td>
-            <td (click)="verArtista( item )" class="puntero a">{{item.artists[0].name}}</td>
+            <td (click)="verArtista( item )" class="puntero">{{item.artists[0].name}}</td>
             <td>{{item.duration_ms | date: "mm:ss"}}</td>
             <td>
                 <audio [src]="item.preview_url" controls></audio>
             </td>
-            <td> <button (click)="favorito(item.id)">[fav]</button><button (click)="removeFavourite(item.id)">[x]</button></td>
-
+            <td> <button (click)="checkIfFavourite(item.id)"><i class="material-icons" [ngClass]="{'star': checkFav(item.id), 'star_border': !checkFav(item.id)}">star</i></button></td>
+            <!-- <td> <button (click)="checkIfFavourite(item.id)"><i class="material-icons" [ngClass]="checkFav(item.id) ? 'star_border' : 'star'"></i></button></td> -->
         </tr>
     </tbody>
 </table>

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
-import { Marcador } from 'src/app/classes/marcador.class';
+import { ClassTrack } from '../classes/track';
+
 
 @Component({
   selector: 'app-cancion',
@@ -11,7 +12,7 @@ import { Marcador } from 'src/app/classes/marcador.class';
 export class CancionComponent  {
   loading: boolean;
   album: any = {};
-marcadores: Marcador[] = [];
+marcadores: ClassTrack[] = [];
 
   constructor(private route: ActivatedRoute,
               private spotify: SpotifyService,
@@ -20,9 +21,6 @@ marcadores: Marcador[] = [];
     this.route.params.subscribe(params => {
       this.getAlbum( params ['id']);
         });
-
-        const nuevoMarcador = new Marcador( 'One', 'X Wembley', 'Ed Sheeran' ,252760, 'https://p.scdn.co/mp3-preview/32028b3d85964481a53e42865121ff2e38ab4acf?cid=476b04f286264f229aed7cd9acc85f7e' );
-  this.marcadores.push( nuevoMarcador );
       }
 
   getAlbum( id: string ) {

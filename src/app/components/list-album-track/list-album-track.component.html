@@ -1,7 +1,7 @@
 <div class="col">
-    <table class="table table-hover table-dark table-responsive">
+    <table>
         <thead>
-            <tr class="bg-dark">
+            <tr>
                 <th>#</th>
                 <th>Nombre</th>
                 <th>Duracion</th>
@@ -18,8 +18,7 @@
                 <td>
                     <audio [src]="item.preview_url" controls></audio>
                 </td>
-                <td> <button (click)="favorito(item.id)">[fav]</button><button (click)="removeFavourite(item.id)">[x]</button></td>
-
+                <td> <button (click)="checkIfFavourite(item.id)"><i class="material-icons" [ngClass]="{'star': checkFav(item.id), 'star_border': !checkFav(item.id)}">star</i></button></td>
             </tr>
         </tbody>
     </table>
