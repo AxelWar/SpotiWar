@@ -5,9 +5,10 @@ Es un proyecto realizado en Angular 8 que consume la API de Spotify.
 Clonar el proyecto posicionandose en la carpeta en la cual se desea tener el proyecto. Ejecutar la consola en la carpeta con permisos de administrador y seguir los pasos:
 
 `git init`
+para inicializar Git
 `git clone https://github.com/AxelWar/SpotiApp.git`
-ó 
-git clone git@github.com:AxelWar/SpotiApp.git
+para descargar el proyecto, o bien: 
+`git clone git@github.com:AxelWar/SpotiApp.git`
 si es que utilizas SSH
 
 Recuerda que luego de descargar o clonar el proyecto debes pararte en tu proyecto en la terminal y ejecutar:
