@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { SearchComponent } from './components/search/search.component';
 import { SearchArtistaComponent } from './components/searchartista/searchartista.component';
 import { SearchAlbumComponent } from './components/searchalbum/searchalbum.component';
 import { SearchCancionComponent } from './components/searchcancion/searchcancion.component';
@@ -11,10 +10,10 @@ import { AlbumComponent } from './components/album/album.component';
 export const ROUTES: Routes = [
     {path: '', pathMatch: 'full', redirectTo: '/home'},
     {path: 'home', component: HomeComponent },
-    {path: 'search', component: SearchComponent },
+    {path: 'searchcancion', component: SearchCancionComponent },
+    {path: 'searchcancion/:termino', component: SearchCancionComponent },
     {path: 'searchartista', component: SearchArtistaComponent },
     {path: 'searchalbum', component: SearchAlbumComponent },
-    {path: 'searchcancion', component: SearchCancionComponent },
     {path: 'artist/:id', component: ArtistaComponent },
     {path: 'album/:id', component: AlbumComponent },
     {path: 'track/:id', component: CancionComponent },

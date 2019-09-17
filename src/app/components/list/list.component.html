@@ -1,0 +1,25 @@
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Artista</th>
+            <th>Duración</th>
+            <th>Preview</th>
+            <th>Fav</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let item of items">
+
+            <td>{{item.name}}</td>
+            <td (click)="verArtista( item )" class="puntero">{{item.artists[0].name}}</td>
+            <td>{{item.duration_ms | date: "mm:ss"}}</td>
+            <td>
+                <audio [src]="item.preview_url" controls></audio>
+            </td>
+            <td> <button (click)="checkIfFavourite(item.id)"><i class="material-icons" [ngClass]="{'star': checkFav(item.id), 'star_border': !checkFav(item.id)}">star</i></button></td>
+            <!-- <td> <button (click)="checkIfFavourite(item.id)"><i class="material-icons" [ngClass]="checkFav(item.id) ? 'star_border' : 'star'"></i></button></td> -->
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+<div class="col">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Duracion</th>
+                <th>Preview</th>
+                <th>Fav</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{item.track_number}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.duration_ms | date: "mm:ss"}}</td>
+                <td>
+                    <audio [src]="item.preview_url" controls></audio>
+                </td>
+                <td> <button (click)="checkIfFavourite(item.id)"><i class="material-icons" [ngClass]="{'star': checkFav(item.id), 'star_border': !checkFav(item.id)}">star</i></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

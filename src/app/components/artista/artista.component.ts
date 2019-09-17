@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
@@ -36,8 +36,8 @@ export class ArtistaComponent  {
     
     this.spotify.getAlbumArtista ( id )
     .subscribe( albumArtista => {
-      console.log( albumArtista );
       this.albumArtista = albumArtista;
+      this.loading = false;
     });
 }
 

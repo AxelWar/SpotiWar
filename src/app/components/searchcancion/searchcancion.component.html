@@ -1,22 +1,11 @@
 <app-loading class="m-5" *ngIf="loading"></app-loading>
 
-<div class="row m-5">
-    <div class="col">
-        <input #termino type="text" (keyup)="buscar(termino.value)" class="form-control" placeholder="Buscar Track">
+<div class="search">
+    <div class="col m-2">
+        <input #termino type="text" (keyup)="buscar(termino.value)" class="form-control" placeholder="Buscar">
     </div>
 
 </div>
 
 
-
-<div *ngIf="!loading" class="col">
-    <table class="table table-hover table-dark table-responsive">
-        <tbody>
-            <tr *ngFor="let track of tracks">
-                <td>{{track.artists[0].name}}</td>
-                <td>{{track.name}}</td>
-                <td><iframe [src]="track.uri | domseguro:'https://open.spotify.com/embed?uri=' " width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<app-list *ngIf="!loading" [items]="tracks"></app-list>
