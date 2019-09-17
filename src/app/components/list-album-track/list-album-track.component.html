@@ -18,8 +18,14 @@
                 <td>
                     <audio [src]="item.preview_url" controls></audio>
                 </td>
-                <td> <button (click)="checkIfFavourite(item.id)"><i class="material-icons">star</i></button></td>
-                <!-- [ngClass]="{'star': checkFav(item.id), 'star_border': !checkFav(item.id)}" -->
+
+                <td> <button (click)="checkIfFavourite(item.id)">
+                     
+                                <i *ngIf="checkFav(item.id)" class="material-icons star" >star</i>
+                                <i *ngIf="!checkFav(item.id)" class="material-icons star_border" >star_border</i>
+            </button>
+                </td>
+
             </tr>
         </tbody>
     </table>

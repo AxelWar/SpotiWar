@@ -92,11 +92,14 @@ return this.getUrl(`tracks/${ id }`)
 estadoFav(favSong: string) {
   this.favsSongs = JSON.parse(localStorage.getItem('favs'));
   // tslint:disable-next-line: prefer-for-of
-  for (let i = 0 ; i < this.favsSongs.length; i++) {
+  
+  return !!this.favsSongs.find( song => song === favSong);
+  
+/*   for (let i = 0 ; i < this.favsSongs.length; i++) {
     if ( this.favsSongs[i] === favSong ) {
       return true;
     }
-  }
+  } */
   }
 
 

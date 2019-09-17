@@ -13,20 +13,20 @@ export class SearchCancionComponent implements OnInit {
   termino: string;
 
   constructor( private spotify: SpotifyService,
-               public route:ActivatedRoute) { 
-  
+               public route: ActivatedRoute) {
+
                 this.route.params.subscribe( params => {
-                  if(params['termino']){
+                  if ( params['termino']){
                     this.termino = params['termino'];
                     this.buscar(this.termino);
                   }
-                })
+                });
                 }
 
 
-  
+
 buscar( termino: string ) {
-  if( termino.length == 0){
+  if ( termino.length == 0) {
     return;
   }
   this.loading = true;
