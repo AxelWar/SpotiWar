@@ -11,6 +11,7 @@ import { ClassTrack } from '../classes/track';
 export class HomeComponent implements OnInit {
 perfil: ClassPerfil [] = [];
 listFavourites: any;
+favsSongs: string[] = [];
 tracks: ClassTrack [] = [];
   nuevasCanciones: any[] = [];
   loading = true;
@@ -23,6 +24,12 @@ mensajeError: string;
 ngOnInit() {
   /* this.spotify.refreshToken(); */
   this.login();
+/* this.favsSongs.push('6rVNnvyNeibts1uOqdSNIw');
+  localStorage.setItem('favs', JSON.stringify(this.favsSongs));  */
+  if ( localStorage.getItem('favs' ) == null) {
+    this.favsSongs.push('6rVNnvyNeibts1uOqdSNIw');
+    localStorage.setItem('favs', JSON.stringify(this.favsSongs));
+  }
   this.getFavoritos();
 
 

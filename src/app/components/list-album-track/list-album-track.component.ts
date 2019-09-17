@@ -26,15 +26,17 @@ export class ListAlbumTrackComponent {
       }
       }
 
-    checkIfFavourite( favSong: string ) {
-      if ( this.spotify.estadoFav( favSong ) === true ) {
-        this.spotify.removeFavourite( favSong );
-        window.location.reload();
-        console.log(`Se elimino de favoritos ${favSong}`);
-      } else {
-        this.spotify.favouriteSongs( favSong );
-        console.log(`Se agregó a favoritos ${favSong}`);
-      }
-      }
+      checkIfFavourite( favSong: string ) {
+        if (this.spotify.estadoFav( favSong ) === true) {
+          this.spotify.removeFavourite( favSong );
+          window.location.reload();
+          console.log(`Se elimino de favoritos ${favSong}`);
+          alert(`Se eliminó la canción de favoritos`);
+        } else {
+          this.spotify.favouriteSongs( favSong );
+          console.log(`Se agregó a favoritos ${favSong}`);
+          alert(`Se agrego la canción a favoritos`);
+        }
+        }
 
 }
