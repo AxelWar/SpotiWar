@@ -81,9 +81,23 @@ return this.getUrl(`albums/${ id }`);
 getCanciones(termino: string ) {
 
   return this.getUrl(`search?q=${ termino }&type=track&market=AR`)
-  .pipe( map( (data: any) =>  data.tracks.items));
+  .pipe( map( (data: any) =>  {
+    const result = [];
+    const albums = data.albums;
+    result.push(this.getAlbum1(albums));
+    const tracks = data.tracks;
+    const artists = data.artists;
+    return result;
+  }));
 }
-
+getAlbum1( items: any ) {
+return items.map(item => {
+  return {
+    name: item.name,
+    img: item.images[0].url
+  };
+});
+}
 getCancion(id: string ) {
 return this.getUrl(`tracks/${ id }`)
 .pipe( map( (data: ClassTrack) => data));
