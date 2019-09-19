@@ -1,0 +1,244 @@
+[2019-09-18 22:16:21.131] [exthost] [info] extension host started
+[2019-09-18 22:16:21.256] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:16:21.257] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/debug-auto-launch/dist/extension
+[2019-09-18 22:16:21.263] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:16:21.263] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/emmet/dist/extension
+[2019-09-18 22:16:21.348] [exthost] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:16:21.348] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/git/dist/main
+[2019-09-18 22:16:21.527] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:16:21.527] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/merge-conflict/dist/extension
+[2019-09-18 22:16:21.537] [exthost] [info] ExtensionService#_doActivateExtension dbaeumer.vscode-eslint {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:16:21.537] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/dbaeumer.vscode-eslint-1.9.1/client/out/extension
+[2019-09-18 22:16:21.595] [exthost] [info] ExtensionService#_doActivateExtension eamodio.gitlens {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:16:21.595] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/eamodio.gitlens-9.9.3/dist/extension
+[2019-09-18 22:16:21.838] [exthost] [info] ExtensionService#_doActivateExtension esbenp.prettier-vscode {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:16:21.839] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/esbenp.prettier-vscode-2.2.2/out/extension
+[2019-09-18 22:16:22.393] [exthost] [info] ExtensionService#_doActivateExtension formulahendry.terminal {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:16:22.393] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/formulahendry.terminal-0.0.10/out/src/extension
+[2019-09-18 22:16:22.441] [exthost] [info] ExtensionService#_doActivateExtension jakethashi.vscode-angular2-emmet {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:16:22.441] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/jakethashi.vscode-angular2-emmet-2.0.3/out/src/extension
+[2019-09-18 22:16:22.629] [exthost] [info] ExtensionService#_doActivateExtension PKief.material-icon-theme {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:16:22.629] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/pkief.material-icon-theme-3.9.0/dist/extension
+[2019-09-18 22:16:22.655] [exthost] [info] ExtensionService#_doActivateExtension ritwickdey.LiveServer {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:16:22.655] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/ritwickdey.liveserver-5.6.1/out/src/extension
+[2019-09-18 22:16:23.487] [exthost] [info] ExtensionService#_doActivateExtension vscode.npm {"startup":true,"activationEvent":"workspaceContains:package.json"}
+[2019-09-18 22:16:23.487] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/npm/dist/main
+[2019-09-18 22:16:23.583] [exthost] [info] eager extensions activated
+[2019-09-18 22:16:50.673] [exthost] [info] ExtensionService#_doActivateExtension vscode.extension-editing {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:16:50.674] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/extension-editing/dist/extension
+[2019-09-18 22:16:50.749] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:16:50.749] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension
+[2019-09-18 22:16:50.857] [exthost] [info] ExtensionService#_doActivateExtension Angular.ng-template {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:16:50.857] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/angular.ng-template-0.802.3/client/extension
+[2019-09-18 22:16:51.242] [exthost] [info] ExtensionService#_doActivateExtension ecmel.vscode-html-css {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:16:51.243] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/ecmel.vscode-html-css-0.2.3/dist/extension
+[2019-09-18 22:16:51.494] [exthost] [info] ExtensionService#_doActivateExtension ms-vscode.vscode-typescript-tslint-plugin {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:16:51.494] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/ms-vscode.vscode-typescript-tslint-plugin-1.2.2/out/index.js
+[2019-09-18 22:16:51.506] [exthost] [info] ExtensionService#_doActivateExtension natewallace.angular2-inline {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:16:51.506] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/natewallace.angular2-inline-0.0.17/src/main
+[2019-09-18 22:16:51.530] [exthost] [info] ExtensionService#_doActivateExtension pmneo.tsimporter {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:16:51.530] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/pmneo.tsimporter-2.0.1/out/TypeScriptImporter
+[2019-09-18 22:16:51.546] [exthost] [info] ExtensionService#_doActivateExtension rbbit.typescript-hero {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:16:51.546] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/rbbit.typescript-hero-3.0.0/out/src/extension
+[2019-09-18 22:16:57.046] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:16:57.054] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/html-language-features/client/dist/htmlMain
+[2019-09-18 22:16:57.247] [exthost] [info] ExtensionService#_doActivateExtension dbaeumer.jshint {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:16:57.247] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/dbaeumer.jshint-0.10.21/jshint/out/extension
+[2019-09-18 22:16:57.440] [exthost] [info] ExtensionService#_doActivateExtension lonefy.vscode-JS-CSS-HTML-formatter {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:16:57.440] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/lonefy.vscode-js-css-html-formatter-0.2.3/out/src/extension
+[2019-09-18 22:17:04.285] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing {"startup":false,"activationEvent":"onLanguage:jsonc"}
+[2019-09-18 22:17:04.285] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/configuration-editing/dist/extension
+[2019-09-18 22:17:04.322] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features {"startup":false,"activationEvent":"onLanguage:jsonc"}
+[2019-09-18 22:17:04.322] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/json-language-features/client/dist/jsonMain
+[2019-09-18 22:18:14.314] [exthost] [info] extension host started
+[2019-09-18 22:18:14.324] [exthost] [info] ExtensionService#_doActivateExtension vscode.extension-editing {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:14.324] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/extension-editing/dist/extension
+[2019-09-18 22:18:14.362] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:14.362] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension
+[2019-09-18 22:18:14.436] [exthost] [info] ExtensionService#_doActivateExtension Angular.ng-template {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:14.436] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/angular.ng-template-0.802.3/client/extension
+[2019-09-18 22:18:14.484] [exthost] [info] ExtensionService#_doActivateExtension ecmel.vscode-html-css {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:14.484] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/ecmel.vscode-html-css-0.2.3/dist/extension
+[2019-09-18 22:18:14.652] [exthost] [info] ExtensionService#_doActivateExtension ms-vscode.vscode-typescript-tslint-plugin {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:14.652] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/ms-vscode.vscode-typescript-tslint-plugin-1.2.2/out/index.js
+[2019-09-18 22:18:14.660] [exthost] [info] ExtensionService#_doActivateExtension natewallace.angular2-inline {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:14.660] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/natewallace.angular2-inline-0.0.17/src/main
+[2019-09-18 22:18:14.672] [exthost] [info] ExtensionService#_doActivateExtension pmneo.tsimporter {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:14.672] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/pmneo.tsimporter-2.0.1/out/TypeScriptImporter
+[2019-09-18 22:18:14.677] [exthost] [info] ExtensionService#_doActivateExtension rbbit.typescript-hero {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:14.677] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/rbbit.typescript-hero-3.0.0/out/src/extension
+[2019-09-18 22:18:15.378] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:18:15.379] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/emmet/dist/extension
+[2019-09-18 22:18:15.421] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:18:15.421] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/html-language-features/client/dist/htmlMain
+[2019-09-18 22:18:15.473] [exthost] [info] ExtensionService#_doActivateExtension dbaeumer.jshint {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:18:15.473] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/dbaeumer.jshint-0.10.21/jshint/out/extension
+[2019-09-18 22:18:15.517] [exthost] [info] ExtensionService#_doActivateExtension lonefy.vscode-JS-CSS-HTML-formatter {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:18:15.517] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/lonefy.vscode-js-css-html-formatter-0.2.3/out/src/extension
+[2019-09-18 22:18:15.528] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing {"startup":false,"activationEvent":"onLanguage:jsonc"}
+[2019-09-18 22:18:15.528] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/configuration-editing/dist/extension
+[2019-09-18 22:18:15.534] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features {"startup":false,"activationEvent":"onLanguage:jsonc"}
+[2019-09-18 22:18:15.534] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/json-language-features/client/dist/jsonMain
+[2019-09-18 22:18:15.598] [exthost] [info] ExtensionService#_doActivateExtension vscode.npm {"startup":false,"activationEvent":"onLanguage:json"}
+[2019-09-18 22:18:15.598] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/npm/dist/main
+[2019-09-18 22:18:15.613] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:15.613] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/debug-auto-launch/dist/extension
+[2019-09-18 22:18:15.616] [exthost] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:15.616] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/git/dist/main
+[2019-09-18 22:18:15.704] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:15.704] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/merge-conflict/dist/extension
+[2019-09-18 22:18:15.709] [exthost] [info] ExtensionService#_doActivateExtension dbaeumer.vscode-eslint {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:15.710] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/dbaeumer.vscode-eslint-1.9.1/client/out/extension
+[2019-09-18 22:18:15.751] [exthost] [info] ExtensionService#_doActivateExtension eamodio.gitlens {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:15.751] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/eamodio.gitlens-9.9.3/dist/extension
+[2019-09-18 22:18:15.901] [exthost] [info] ExtensionService#_doActivateExtension esbenp.prettier-vscode {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:15.901] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/esbenp.prettier-vscode-2.2.2/out/extension
+[2019-09-18 22:18:16.082] [exthost] [info] ExtensionService#_doActivateExtension formulahendry.terminal {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:16.082] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/formulahendry.terminal-0.0.10/out/src/extension
+[2019-09-18 22:18:16.097] [exthost] [info] ExtensionService#_doActivateExtension jakethashi.vscode-angular2-emmet {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:16.097] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/jakethashi.vscode-angular2-emmet-2.0.3/out/src/extension
+[2019-09-18 22:18:16.170] [exthost] [info] ExtensionService#_doActivateExtension PKief.material-icon-theme {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:16.170] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/pkief.material-icon-theme-3.9.0/dist/extension
+[2019-09-18 22:18:16.185] [exthost] [info] ExtensionService#_doActivateExtension ritwickdey.LiveServer {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:16.185] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/ritwickdey.liveserver-5.6.1/out/src/extension
+[2019-09-18 22:18:16.422] [exthost] [info] eager extensions activated
+[2019-09-18 22:18:25.781] [exthost] [info] extension host started
+[2019-09-18 22:18:25.790] [exthost] [info] ExtensionService#_doActivateExtension vscode.extension-editing {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:25.790] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/extension-editing/dist/extension
+[2019-09-18 22:18:25.828] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:25.828] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension
+[2019-09-18 22:18:25.902] [exthost] [info] ExtensionService#_doActivateExtension Angular.ng-template {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:25.902] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/angular.ng-template-0.802.3/client/extension
+[2019-09-18 22:18:25.952] [exthost] [info] ExtensionService#_doActivateExtension ecmel.vscode-html-css {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:25.952] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/ecmel.vscode-html-css-0.2.3/dist/extension
+[2019-09-18 22:18:26.094] [exthost] [info] ExtensionService#_doActivateExtension ms-vscode.vscode-typescript-tslint-plugin {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:26.094] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/ms-vscode.vscode-typescript-tslint-plugin-1.2.2/out/index.js
+[2019-09-18 22:18:26.100] [exthost] [info] ExtensionService#_doActivateExtension natewallace.angular2-inline {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:26.100] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/natewallace.angular2-inline-0.0.17/src/main
+[2019-09-18 22:18:26.111] [exthost] [info] ExtensionService#_doActivateExtension pmneo.tsimporter {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:26.111] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/pmneo.tsimporter-2.0.1/out/TypeScriptImporter
+[2019-09-18 22:18:26.116] [exthost] [info] ExtensionService#_doActivateExtension rbbit.typescript-hero {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:18:26.116] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/rbbit.typescript-hero-3.0.0/out/src/extension
+[2019-09-18 22:18:26.721] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:18:26.721] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/emmet/dist/extension
+[2019-09-18 22:18:26.767] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:18:26.767] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/html-language-features/client/dist/htmlMain
+[2019-09-18 22:18:26.820] [exthost] [info] ExtensionService#_doActivateExtension dbaeumer.jshint {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:18:26.820] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/dbaeumer.jshint-0.10.21/jshint/out/extension
+[2019-09-18 22:18:26.862] [exthost] [info] ExtensionService#_doActivateExtension lonefy.vscode-JS-CSS-HTML-formatter {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:18:26.863] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/lonefy.vscode-js-css-html-formatter-0.2.3/out/src/extension
+[2019-09-18 22:18:26.874] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing {"startup":false,"activationEvent":"onLanguage:jsonc"}
+[2019-09-18 22:18:26.874] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/configuration-editing/dist/extension
+[2019-09-18 22:18:26.880] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features {"startup":false,"activationEvent":"onLanguage:jsonc"}
+[2019-09-18 22:18:26.880] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/json-language-features/client/dist/jsonMain
+[2019-09-18 22:18:26.946] [exthost] [info] ExtensionService#_doActivateExtension vscode.npm {"startup":false,"activationEvent":"onLanguage:json"}
+[2019-09-18 22:18:26.946] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/npm/dist/main
+[2019-09-18 22:18:26.961] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:26.962] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/debug-auto-launch/dist/extension
+[2019-09-18 22:18:26.964] [exthost] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:26.964] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/git/dist/main
+[2019-09-18 22:18:27.050] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:27.050] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/merge-conflict/dist/extension
+[2019-09-18 22:18:27.055] [exthost] [info] ExtensionService#_doActivateExtension dbaeumer.vscode-eslint {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:27.056] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/dbaeumer.vscode-eslint-1.9.1/client/out/extension
+[2019-09-18 22:18:27.097] [exthost] [info] ExtensionService#_doActivateExtension eamodio.gitlens {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:27.097] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/eamodio.gitlens-9.9.3/dist/extension
+[2019-09-18 22:18:27.250] [exthost] [info] ExtensionService#_doActivateExtension esbenp.prettier-vscode {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:27.250] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/esbenp.prettier-vscode-2.2.2/out/extension
+[2019-09-18 22:18:27.433] [exthost] [info] ExtensionService#_doActivateExtension formulahendry.terminal {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:27.433] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/formulahendry.terminal-0.0.10/out/src/extension
+[2019-09-18 22:18:27.447] [exthost] [info] ExtensionService#_doActivateExtension jakethashi.vscode-angular2-emmet {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:27.447] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/jakethashi.vscode-angular2-emmet-2.0.3/out/src/extension
+[2019-09-18 22:18:27.521] [exthost] [info] ExtensionService#_doActivateExtension PKief.material-icon-theme {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:27.521] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/pkief.material-icon-theme-3.9.0/dist/extension
+[2019-09-18 22:18:27.537] [exthost] [info] ExtensionService#_doActivateExtension ritwickdey.LiveServer {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:18:27.537] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/ritwickdey.liveserver-5.6.1/out/src/extension
+[2019-09-18 22:18:27.922] [exthost] [info] eager extensions activated
+[2019-09-18 22:19:13.653] [exthost] [info] extension host started
+[2019-09-18 22:19:13.664] [exthost] [info] ExtensionService#_doActivateExtension vscode.extension-editing {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:19:13.664] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/extension-editing/dist/extension
+[2019-09-18 22:19:13.704] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:19:13.704] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension
+[2019-09-18 22:19:13.783] [exthost] [info] ExtensionService#_doActivateExtension Angular.ng-template {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:19:13.783] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/angular.ng-template-0.802.3/client/extension
+[2019-09-18 22:19:13.835] [exthost] [info] ExtensionService#_doActivateExtension ecmel.vscode-html-css {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:19:13.836] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/ecmel.vscode-html-css-0.2.3/dist/extension
+[2019-09-18 22:19:13.990] [exthost] [info] ExtensionService#_doActivateExtension ms-vscode.vscode-typescript-tslint-plugin {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:19:13.990] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/ms-vscode.vscode-typescript-tslint-plugin-1.2.2/out/index.js
+[2019-09-18 22:19:13.997] [exthost] [info] ExtensionService#_doActivateExtension natewallace.angular2-inline {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:19:13.997] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/natewallace.angular2-inline-0.0.17/src/main
+[2019-09-18 22:19:14.009] [exthost] [info] ExtensionService#_doActivateExtension pmneo.tsimporter {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:19:14.009] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/pmneo.tsimporter-2.0.1/out/TypeScriptImporter
+[2019-09-18 22:19:14.013] [exthost] [info] ExtensionService#_doActivateExtension rbbit.typescript-hero {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-18 22:19:14.014] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/rbbit.typescript-hero-3.0.0/out/src/extension
+[2019-09-18 22:19:14.672] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:19:14.672] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/emmet/dist/extension
+[2019-09-18 22:19:14.718] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:19:14.718] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/html-language-features/client/dist/htmlMain
+[2019-09-18 22:19:14.773] [exthost] [info] ExtensionService#_doActivateExtension dbaeumer.jshint {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:19:14.773] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/dbaeumer.jshint-0.10.21/jshint/out/extension
+[2019-09-18 22:19:14.816] [exthost] [info] ExtensionService#_doActivateExtension lonefy.vscode-JS-CSS-HTML-formatter {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-18 22:19:14.816] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/lonefy.vscode-js-css-html-formatter-0.2.3/out/src/extension
+[2019-09-18 22:19:14.828] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing {"startup":false,"activationEvent":"onLanguage:jsonc"}
+[2019-09-18 22:19:14.828] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/configuration-editing/dist/extension
+[2019-09-18 22:19:14.834] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features {"startup":false,"activationEvent":"onLanguage:jsonc"}
+[2019-09-18 22:19:14.834] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/json-language-features/client/dist/jsonMain
+[2019-09-18 22:19:14.898] [exthost] [info] ExtensionService#_doActivateExtension vscode.npm {"startup":false,"activationEvent":"onLanguage:json"}
+[2019-09-18 22:19:14.898] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/npm/dist/main
+[2019-09-18 22:19:14.914] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:19:14.914] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/debug-auto-launch/dist/extension
+[2019-09-18 22:19:14.917] [exthost] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:19:14.917] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/git/dist/main
+[2019-09-18 22:19:15.006] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:19:15.006] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/merge-conflict/dist/extension
+[2019-09-18 22:19:15.011] [exthost] [info] ExtensionService#_doActivateExtension dbaeumer.vscode-eslint {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:19:15.011] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/dbaeumer.vscode-eslint-1.9.1/client/out/extension
+[2019-09-18 22:19:15.045] [exthost] [info] ExtensionService#_doActivateExtension eamodio.gitlens {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:19:15.045] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/eamodio.gitlens-9.9.3/dist/extension
+[2019-09-18 22:19:15.197] [exthost] [info] ExtensionService#_doActivateExtension esbenp.prettier-vscode {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:19:15.197] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/esbenp.prettier-vscode-2.2.2/out/extension
+[2019-09-18 22:19:15.374] [exthost] [info] ExtensionService#_doActivateExtension formulahendry.terminal {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:19:15.374] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/formulahendry.terminal-0.0.10/out/src/extension
+[2019-09-18 22:19:15.389] [exthost] [info] ExtensionService#_doActivateExtension jakethashi.vscode-angular2-emmet {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:19:15.389] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/jakethashi.vscode-angular2-emmet-2.0.3/out/src/extension
+[2019-09-18 22:19:15.462] [exthost] [info] ExtensionService#_doActivateExtension PKief.material-icon-theme {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:19:15.462] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/pkief.material-icon-theme-3.9.0/dist/extension
+[2019-09-18 22:19:15.477] [exthost] [info] ExtensionService#_doActivateExtension ritwickdey.LiveServer {"startup":true,"activationEvent":"*"}
+[2019-09-18 22:19:15.477] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/ritwickdey.liveserver-5.6.1/out/src/extension
+[2019-09-18 22:19:15.919] [exthost] [info] eager extensions activated
+[2019-09-18 22:32:44.494] [exthost] [info] ExtensionService#_doActivateExtension vscode.css-language-features {"startup":false,"activationEvent":"onLanguage:scss"}
+[2019-09-18 22:32:44.494] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/14/usr/share/code/resources/app/extensions/css-language-features/client/dist/cssMain
+[2019-09-18 22:32:44.558] [exthost] [info] ExtensionService#_doActivateExtension glen-84.sass-lint {"startup":false,"activationEvent":"onLanguage:scss"}
+[2019-09-18 22:32:44.558] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/tripas/.vscode/extensions/glen-84.sass-lint-1.0.6/out/extension
+[2019-09-18 23:53:30.872] [exthost] [error] [pmneo.tsimporter] provider FAILED
+[2019-09-18 23:53:30.878] [exthost] [error] TypeError: Cannot read property 'name' of undefined
+	at TypeScriptImporter.provideCodeActions (/home/tripas/.vscode/extensions/pmneo.tsimporter-2.0.1/out/TypeScriptImporter.js:366:116)
+	at define.provideCodeActions.o.asPromise (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:553:835)
+	at t.asPromise.Promise (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:55:720)
+	at new Promise (<anonymous>)
+	at Object.t.asPromise (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:55:692)
+	at S.provideCodeActions (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:553:806)
+	at define.$provideCodeActions._withAdapter.e (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:569:972)
+	at W._withAdapter (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:565:723)
+	at W.$provideCodeActions (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:569:950)
+	at d._doInvokeHandler (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:623:396)
+	at d._invokeHandler (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:623:88)
+	at d._receiveRequest (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:621:730)
+	at d._receiveOneMessage (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:620:605)
+	at define.constructor._protocol.onMessage.e (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:618:791)
+	at u.fire (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:50:207)
+	at v.fire (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:186:579)
+	at i.constructor.e.onMessage.e (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:783:484)
+	at u.fire (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:50:207)
+	at v.fire (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:186:579)
+	at x._receiveMessage (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:191:17)
+	at define.constructor._socketDisposables.push._socketReader.onMessage.e (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:188:116)
+	at u.fire (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:50:207)
+	at f.acceptChunk (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:184:17)
+	at define.constructor._register._socket.onData.e (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:183:372)
+	at Socket.t (/snap/code/14/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:192:491)
+	at Socket.emit (events.js:182:13)
+	at addChunk (_stream_readable.js:283:12)
+	at readableAddChunk (_stream_readable.js:264:11)
+	at Socket.Readable.push (_stream_readable.js:219:10)
+	at Pipe.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)

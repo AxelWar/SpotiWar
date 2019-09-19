@@ -49,7 +49,6 @@
                                     "id": "openRecentFolder",
                                     "uri": {
                                         "$mid": 1,
-                                        "fsPath": "/home/tripas/Angular/a04-spotiapp",
                                         "external": "file:///home/tripas/Angular/a04-spotiapp",
                                         "path": "/home/tripas/Angular/a04-spotiapp",
                                         "scheme": "file"
@@ -169,7 +168,7 @@
                     },
                     {
                         "id": "workbench.action.closeFolder",
-                        "label": "Close &&Folder"
+                        "label": "Close &&Workspace"
                     },
                     {
                         "id": "workbench.action.closeWindow",
@@ -1369,12 +1368,15 @@
     "pickerWorkingDir": "/home/tripas/Angular",
     "windowsState": {
         "lastActiveWindow": {
-            "folder": "file:///home/tripas/Angular/a04-spotiapp",
-            "backupPath": "/home/tripas/Angular/a04-spotiapp/~/.vscode-root/Backups/6eb246bd50c9d540e2b71ba0037a268d",
+            "workspaceIdentifier": {
+                "id": "b9b1bc97e9be71ee41e1d578d1ce96b4",
+                "configURIPath": "file:///home/tripas/Angular/SpotiWar/~/.vscode-root/Workspaces/1568855893572/workspace.json"
+            },
+            "backupPath": "/home/tripas/Angular/SpotiWar/~/.vscode-root/Backups/b9b1bc97e9be71ee41e1d578d1ce96b4",
             "uiState": {
                 "mode": 0,
-                "x": 101,
-                "y": 129,
+                "x": 1313,
+                "y": 37,
                 "width": 1024,
                 "height": 768
             }

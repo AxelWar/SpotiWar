@@ -1,0 +1,23 @@
+Looking for git in: git
+Using git 2.17.1 from git
+> git rev-parse --show-toplevel
+> git rev-parse --git-dir
+> git config --get commit.template
+Open repository: /home/tripas/Angular/a04-spotiapp
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse pulir
+> git rev-parse --symbolic-full-name pulir@{u}
+> git rev-list --left-right pulir...refs/remotes/origin/pulir
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git check-ignore -v -z --stdin
+> git show :src/app/components/cancion/cancion.component.ts
+> git show :src/app/components/cancion/cancion.component.html
+> git check-ignore -v -z --stdin
+> git show :src/app/components/list-album-track/list-album-track.component.ts
+> git show :src/app/components/list-album-track/list-album-track.component.html
+> git show :src/app/components/list-album-track/list-album-track.component.ts
+> git check-ignore -v -z --stdin
+> git show :src/app/components/list-album-track/list-album-track.component.html
+> git check-ignore -v -z --stdin
