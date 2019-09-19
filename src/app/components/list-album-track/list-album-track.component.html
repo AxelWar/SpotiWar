@@ -2,30 +2,27 @@
     <table>
         <thead>
             <tr>
-                <th>#</th>
+                <th (click)="sortn()" class="puntero">#</th>
                 <th>Nombre</th>
-                <th>Duracion</th>
+                <th (click)=" sort() " class="puntero ">Duración</th>
                 <th>Preview</th>
                 <th>Fav</th>
             </tr>
         </thead>
 
         <tbody>
-            <tr *ngFor="let item of items">
+            <tr *ngFor="let item of items ">
                 <td>{{item.track_number}}</td>
                 <td>{{item.name}}</td>
-                <td>{{item.duration_ms | date: "mm:ss"}}</td>
+                <td>{{item.duration_ms | date: "mm:ss "}}</td>
                 <td>
-                    <audio [src]="item.preview_url" controls></audio>
+                    <audio [src]="item.preview_url " controls></audio>
                 </td>
-
-                <td> <button (click)="checkIfFavourite(item.id)">
-                     
-                                <i *ngIf="checkFav(item.id)" class="material-icons star" >star</i>
-                                <i *ngIf="!checkFav(item.id)" class="material-icons star_border" >star_border</i>
+                <td> <button (click)="checkIfFavourite(item.id) ">
+                    <i *ngIf="checkFav(item.id) " class="material-icons star " >star</i>
+                    <i *ngIf="!checkFav(item.id) " class="material-icons star_border " >star_border</i>
             </button>
                 </td>
-
             </tr>
         </tbody>
     </table>

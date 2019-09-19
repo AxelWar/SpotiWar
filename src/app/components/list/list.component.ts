@@ -38,6 +38,19 @@ export class ListComponent {
 
       }
       }
-
+      sort() {
+        if (this.items[0].duration_ms > this.items[1].duration_ms) {
+          this.items.sort((a, b)  => a.duration_ms - b.duration_ms);
+        } else {
+          this.items.sort((a, b)  => b.duration_ms - a.duration_ms);
+        }
+      }
+      sortn() {
+        if (this.items[0].track_number > this.items[1].track_number) {
+          this.items.sort((a, b)  => a.track_number - b.track_number);
+        } else {
+          this.items.sort((a, b)  => b.track_number - a.track_number);
+        }
+      }
 
 }
