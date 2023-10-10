@@ -53,16 +53,16 @@ export class SpotifyService {
     );
   }
 
-  getArtistas(termino: string) {
+  getArtists(termino: string) {
     return this.getUrl(`search?q=${termino}&type=artist&market=AR`).pipe(
       map((data: any) => data.artists.items)
     );
   }
-  getArtista(id: string) {
+  getArtist(id: string) {
     return this.getUrl(`artists/${id}`);
   }
 
-  getAlbumArtista(id: string) {
+  getAlbumArtist(id: string) {
     return this.getUrl(`artists/${id}/albums`);
   }
 

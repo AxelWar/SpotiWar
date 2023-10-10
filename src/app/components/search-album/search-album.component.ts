@@ -2,8 +2,8 @@ import { Component} from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
-  selector: 'app-searchalbum',
-  templateUrl: './searchalbum.component.html',
+  selector: 'app-search-album',
+  templateUrl: './search-album.component.html',
 
 })
 export class SearchAlbumComponent  {

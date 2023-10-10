@@ -3,10 +3,10 @@ import { SpotifyService } from '../../services/spotify.service';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-search',
-  templateUrl: './searchcancion.component.html',
+  templateUrl: './search-song.component.html',
 
 })
-export class SearchCancionComponent implements OnInit {
+export class SearchSongComponent implements OnInit {
 
   tracks: any[] = [];
   loading: boolean = false;

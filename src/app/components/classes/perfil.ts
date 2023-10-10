@@ -1,4 +1,4 @@
 export class ClassPerfil {
-    images!: string [];
-    name!: string;
+  images!: string[];
+  name!: string;
 }

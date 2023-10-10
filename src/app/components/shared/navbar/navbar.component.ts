@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
       return;
     }
 
-    this.router.navigate(['searchcancion', termino]);
+    this.router.navigate(['search-song', termino]);
 
   }
 

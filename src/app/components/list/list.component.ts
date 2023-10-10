@@ -16,14 +16,14 @@ export class ListComponent {
   constructor( private router: Router,
                private spotify: SpotifyService ) {
                }
-      verArtista( item: any ) {
-      let artistaId;
+      seeArtist( item: any ) {
+      let artistId;
       if ( item.type === 'artist' ) {
-        artistaId = item.id;
+        artistId = item.id;
       } else {
-        artistaId = item.artists[0].id;
+        artistId = item.artists[0].id;
       }
-      this.router.navigate([ '/artist', artistaId ]);
+      this.router.navigate([ '/artist', artistId ]);
     }
 
     checkFav( favSong: string ) {

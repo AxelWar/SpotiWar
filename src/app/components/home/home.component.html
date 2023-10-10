@@ -5,10 +5,10 @@
     <a (click)="loginRefresh()">El token de Spotify dura 1 hora, haz click aqui para renovarlo.</a>
 </div>
 <label><h1>Dashboard</h1></label>
-<app-headerprofile [items]="perfil"></app-headerprofile>
+<app-header-profile [items]="perfil"></app-header-profile>
 
 <label><h1>Favoritos</h1></label>
 <app-list [items]="tracks"></app-list>
 
 <label><h1>Nuevos Lanzamientos</h1></label>
-<app-tarjetas [items]="nuevasCanciones"></app-tarjetas>
+<app-cards [items]="nuevasCanciones"></app-cards>
