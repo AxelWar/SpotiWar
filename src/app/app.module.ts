@@ -33,7 +33,6 @@ import { HeaderalbumComponent } from './components/header/headeralbum/headeralbu
 import { HeaderArtistComponent } from './components/header/header-artist/header-artist.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 @NgModule({
@@ -63,7 +62,6 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot( ROUTES),
-    MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule
   ],
   providers: [

@@ -9,7 +9,7 @@ import { SpotifyService } from '../../services/spotify.service';
 export class SearchArtistaComponent  {
 
   artistas: any[] = [];
-  loading: boolean;
+  loading: boolean = false;
 
   constructor( private spotify: SpotifyService) {  }
 

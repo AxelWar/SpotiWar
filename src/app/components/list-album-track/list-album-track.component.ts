@@ -9,9 +9,9 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class ListAlbumTrackComponent {
   @Input() items: any[] = [];
-  favSong: string;
+  favSong!: string;
 
-  loading: boolean;
+  loading: boolean = false;
 
   constructor( private router: Router,
                private spotify: SpotifyService ) {

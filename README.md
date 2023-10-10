@@ -1,7 +1,7 @@
 # SpotiWar
 
 Este proyecto fue realizado por Axel Warneke con fines educativos en un BootCamp organizado por la empresa de software Globant.
-Es un proyecto realizado en Angular 8 que consume la API de Spotify.
+El proyecto fue realizado en Angular 8 y actualizado recientemente a Angular 16. Para su uso se utiliza la API de Spotify.
 
 Se requiere tener instalado Git, Node.js, npm y Angular-CLI.
 Sitio de Node.js
@@ -36,12 +36,10 @@ para descargar todas las dependencias del proyecto. Y luego:
 
 `ng serve` 
 
-Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 8.3.1.
 
 ## Development server
 
-Dirigete en tu navegador a `http://localhost:4200/`. La app debería ejecutarse correctamente.
+Dirigete en tu navegador a `http://localhost:4200/`. 
+La app debería ejecutarse correctamente.
 Te solicitará acceto a Spotify para consumir la API.
 
-## Para más ayuda dirígete a
-(https://github.com/angular/angular-cli/blob/master/README.md).

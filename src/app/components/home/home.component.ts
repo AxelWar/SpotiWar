@@ -10,13 +10,13 @@ import { ClassTrack } from '../classes/track';
 })
 export class HomeComponent implements OnInit {
 perfil: ClassPerfil [] = [];
-listFavourites: any;
+  listFavourites!: string;
 favsSongs: string[] = [];
 tracks: ClassTrack [] = [];
   nuevasCanciones: any[] = [];
   loading = true;
 error = false;
-mensajeError: string;
+  mensajeError!: string;
   constructor( private router: Router,
                private spotify: SpotifyService ) {
   }
@@ -61,7 +61,7 @@ this.loading = false;
 login() {
 
   const currentUrl = this.router.url.split('access_token=')[1];
-  const token: string = currentUrl ? currentUrl.split('&')[0] : null;
+  const token: string = currentUrl ? currentUrl.split('&')[0] : '';
   if ( token ) {
     localStorage.setItem('auth', token);
     setInterval(() => {
@@ -84,7 +84,7 @@ loginRefresh() {
 
 
 getFavoritos() {
-  this.listFavourites = JSON.parse(localStorage.getItem('favs'));
+  this.listFavourites = JSON.parse(localStorage.getItem('favs') as string);
   // tslint:disable-next-line: prefer-for-of
   for (let i = 0; i < this.listFavourites.length; i++ ) {
     this.spotify.getCancion(this.listFavourites[i])

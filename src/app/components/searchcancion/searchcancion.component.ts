@@ -9,8 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 export class SearchCancionComponent implements OnInit {
 
   tracks: any[] = [];
-  loading: boolean;
-  termino: string;
+  loading: boolean = false;
+  termino!: string;
 
   constructor( private spotify: SpotifyService,
                public route: ActivatedRoute) {

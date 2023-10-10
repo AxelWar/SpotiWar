@@ -3,24 +3,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { ClassTrack } from '../components/classes/track';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SpotifyService {
-  token: string = null;
-termino: string;
-favsSongs: any[] = [];
-favSong: string;
-listFavourites: any[] = [];
+  token: string = '';
+  termino: string = '';
+  favsSongs: any[] = [];
+  favSong: string = '';
+  listFavourites: any[] = [];
 
-
-  constructor( private http: HttpClient ) {
-console.log('Spotify Service Ready');
+  constructor(private http: HttpClient) {
+    console.log('Spotify Service Ready');
   }
 
-   auth() {
-    this.token = localStorage.getItem('auth');
+  auth() {
+    this.token = localStorage.getItem('auth') as string;
     const urlBase = 'https://accounts.spotify.com/authorize';
     const clientId = '476b04f286264f229aed7cd9acc85f7e';
     const scopes = encodeURIComponent('user-read-private user-read-email');
@@ -31,7 +29,7 @@ console.log('Spotify Service Ready');
     }
   }
 
-/*   refreshToken() {
+  /*   refreshToken() {
     const clientId = '476b04f286264f229aed7cd9acc85f7e';
     const clientSecret = '1a7db45b6582437ab4b23a648a4bc903';
     const url = `https://bootcamp-token-master.herokuapp.com/spotify/${clientId}/${clientSecret}`;
@@ -42,98 +40,97 @@ console.log('Spotify Service Ready');
 
   getUrl(query: string) {
     const url = `https://api.spotify.com/v1/${query}`;
-    this.token = localStorage.getItem('auth');
+    this.token = localStorage.getItem('auth') as string;
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.token}`
+      Authorization: `Bearer ${this.token}`,
     });
     return this.http.get(url, { headers });
   }
 
   getNewReleases() {
-    return this.getUrl('browse/new-releases')
-.pipe( map( (data: any) => data.albums.items));
+    return this.getUrl('browse/new-releases').pipe(
+      map((data: any) => data.albums.items)
+    );
   }
 
-  getArtistas(termino: string ) {
-    return this.getUrl(`search?q=${ termino }&type=artist&market=AR`)
-    .pipe( map( (data: any) => data.artists.items));
-}
-getArtista(id: string ) {
-  return this.getUrl(`artists/${ id }`);
+  getArtistas(termino: string) {
+    return this.getUrl(`search?q=${termino}&type=artist&market=AR`).pipe(
+      map((data: any) => data.artists.items)
+    );
+  }
+  getArtista(id: string) {
+    return this.getUrl(`artists/${id}`);
   }
 
-  getAlbumArtista(id: string ) {
-    return this.getUrl(`artists/${ id }/albums`);
-    }
+  getAlbumArtista(id: string) {
+    return this.getUrl(`artists/${id}/albums`);
+  }
 
-getCancionAlbum(id: string ) {
-  return this.getUrl(`albums/${ id }/tracks`);
-}
+  getCancionAlbum(id: string) {
+    return this.getUrl(`albums/${id}/tracks`);
+  }
 
-getAlbums(termino: string ) {
-  return this.getUrl(`search?q=${ termino }&type=album&market=AR`)
-  .pipe( map( (data: any) => data.albums.items));
-}
-getAlbum(id: string ) {
-return this.getUrl(`albums/${ id }`);
-}
+  getAlbums(termino: string) {
+    return this.getUrl(`search?q=${termino}&type=album&market=AR`).pipe(
+      map((data: any) => data.albums.items)
+    );
+  }
+  getAlbum(id: string) {
+    return this.getUrl(`albums/${id}`);
+  }
 
-getCanciones(termino: string ) {
+  getCanciones(termino: string) {
+    return this.getUrl(`search?q=${termino}&type=track&market=AR`).pipe(
+      map((data: any) => data.tracks.items)
+    );
+  }
 
-  return this.getUrl(`search?q=${ termino }&type=track&market=AR`)
-  .pipe( map( (data: any) =>  data.tracks.items));
-}
+  getCancion(id: string) {
+    return this.getUrl(`tracks/${id}`).pipe(map((data: ClassTrack) => data));
+  }
+  estadoFav(favSong: string) {
+    this.favsSongs = JSON.parse(localStorage.getItem('favs') as string);
+    // tslint:disable-next-line: prefer-for-of
 
-getCancion(id: string ) {
-return this.getUrl(`tracks/${ id }`)
-.pipe( map( (data: ClassTrack) => data));
+    return !!this.favsSongs.find((song) => song === favSong);
 
-}
-estadoFav(favSong: string) {
-  this.favsSongs = JSON.parse(localStorage.getItem('favs'));
-  // tslint:disable-next-line: prefer-for-of
-  
-  return !!this.favsSongs.find( song => song === favSong);
-  
-/*   for (let i = 0 ; i < this.favsSongs.length; i++) {
+    /*   for (let i = 0 ; i < this.favsSongs.length; i++) {
     if ( this.favsSongs[i] === favSong ) {
       return true;
     }
   } */
   }
 
+  getPerfil() {
+    return this.getUrl('me').pipe(map((data: any) => data));
+  }
 
-getPerfil() {
-  return this.getUrl('me')
-.pipe( map( (data: any) => data));
-}
-
-getTodos( termino: string) {
-  return this.getUrl(`https://api.spotify.com/v1/search?q=${ termino }&type=track%2Cartist%2Calbum&market=AR`)
-  .pipe( map( (data: any) => data.type.items));
-}
-getFavourites() {
-  this.listFavourites = JSON.parse(localStorage.getItem('favs'));
-  return console.log(this.listFavourites);
-}
-favouriteSongs( favSong: string ) {
-  this.favsSongs = JSON.parse(localStorage.getItem('favs'));
-  this.favsSongs.push(favSong);
-  const sinRepetidos = this.favsSongs.filter((valor, indiceActual, arreglo) => arreglo.indexOf(valor) === indiceActual);
-  this.favsSongs = sinRepetidos;
-  localStorage.setItem('favs', JSON.stringify(this.favsSongs));
-
-}
-
-removeFavourite( favSong: string ) {
-this.favsSongs = JSON.parse(localStorage.getItem('favs'));
-for (let i = 0 ; i < this.favsSongs.length; i++) {
-  if ( this.favsSongs[i] === favSong ) {
-    this.favsSongs.splice(i, 1);
+  getTodos(termino: string) {
+    return this.getUrl(
+      `https://api.spotify.com/v1/search?q=${termino}&type=track%2Cartist%2Calbum&market=AR`
+    ).pipe(map((data: any) => data.type.items));
+  }
+  getFavourites() {
+    this.listFavourites = JSON.parse(localStorage.getItem('favs') as string);
+    return console.log(this.listFavourites);
+  }
+  favouriteSongs(favSong: string) {
+    this.favsSongs = JSON.parse(localStorage.getItem('favs') as string);
+    this.favsSongs.push(favSong);
+    const sinRepetidos = this.favsSongs.filter(
+      (valor, indiceActual, arreglo) => arreglo.indexOf(valor) === indiceActual
+    );
+    this.favsSongs = sinRepetidos;
     localStorage.setItem('favs', JSON.stringify(this.favsSongs));
   }
-}
-}
 
-
+  removeFavourite(favSong: string) {
+    this.favsSongs = JSON.parse(localStorage.getItem('favs') as string);
+    for (let i = 0; i < this.favsSongs.length; i++) {
+      if (this.favsSongs[i] === favSong) {
+        this.favsSongs.splice(i, 1);
+        localStorage.setItem('favs', JSON.stringify(this.favsSongs));
+      }
+    }
+  }
 }
