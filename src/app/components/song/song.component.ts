@@ -19,13 +19,13 @@ export class SongComponent {
     private router: Router
   ) {
     this.loading = true;
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe(params => {
       this.getAlbum(params['id']);
     });
   }
 
   getAlbum(id: string) {
-    this.spotify.getAlbum(id).subscribe((album) => {
+    this.spotify.getAlbum(id).subscribe(album => {
       this.album = album;
       this.loading = false;
     });

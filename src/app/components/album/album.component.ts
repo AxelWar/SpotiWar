@@ -9,15 +9,18 @@ export class AlbumComponent {
   loading: boolean;
   album: any = {};
 
-  constructor(private router: ActivatedRoute, private spotify: SpotifyService) {
+  constructor(
+    private router: ActivatedRoute,
+    private spotify: SpotifyService
+  ) {
     this.loading = true;
-    this.router.params.subscribe((params) => {
+    this.router.params.subscribe(params => {
       this.getAlbum(params['id']);
     });
   }
 
   getAlbum(id: string) {
-    this.spotify.getAlbum(id).subscribe((album) => {
+    this.spotify.getAlbum(id).subscribe(album => {
       console.log(album);
       this.album = album;
       this.loading = false;

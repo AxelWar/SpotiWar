@@ -62,7 +62,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule.forRoot(ROUTES),
     BrowserAnimationsModule,
   ],
-  providers: [SpotifyService],
+  providers: [SpotifyService, NoImagePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

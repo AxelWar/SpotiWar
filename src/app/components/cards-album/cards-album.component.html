@@ -2,8 +2,7 @@
   <div
     (click)="seeSongsAlbum(item)"
     *ngFor="let item of items"
-    class="card-pointer"
-  >
+    class="card-pointer">
     <img [src]="item.images | noImage" class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">
@@ -12,8 +11,7 @@
       <p class="card-text">
         <span
           *ngFor="let artist of item.artists"
-          class="badge badge-pill badge-dark"
-        >
+          class="badge badge-pill badge-dark">
           {{ artist.name }}
         </span>
       </p>

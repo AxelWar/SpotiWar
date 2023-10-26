@@ -7,10 +7,10 @@ import { ClassTrack } from '../components/classes/track';
   providedIn: 'root',
 })
 export class SpotifyService {
-  token: string = '';
-  searchTerm: string = '';
+  token = '';
+  searchTerm = '';
   favoriteSongs: any[] = [];
-  favSong: string = '';
+  favSong = '';
   listFavorites: any[] = [];
 
   constructor(private http: HttpClient) {
@@ -92,7 +92,7 @@ export class SpotifyService {
     this.favoriteSongs = JSON.parse(localStorage.getItem('favs') as string);
     // tslint:disable-next-line: prefer-for-of
 
-    return !!this.favoriteSongs.find((song) => song === favSong);
+    return !!this.favoriteSongs.find(song => song === favSong);
 
     /*   for (let i = 0 ; i < this.favoriteSongs.length; i++) {
     if ( this.favoriteSongs[i] === favSong ) {
