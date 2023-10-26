@@ -6,7 +6,7 @@
   <div
     (click)="seeSongsAlbum(album)"
     *ngFor="let album of albumArtist.items"
-    class="card puntero"
+    class="card-pointer"
   >
     <img [src]="album.images | noImage" class="card-img-top" alt="..." />
     <div class="card-body">

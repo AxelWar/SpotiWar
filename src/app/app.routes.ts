@@ -11,7 +11,7 @@ export const ROUTES: Routes = [
     {path: '', pathMatch: 'full', redirectTo: '/home'},
     {path: 'home', component: HomeComponent },
     {path: 'search-song', component: SearchSongComponent },
-    {path: 'search-song/:termino', component: SearchSongComponent },
+    {path: 'search-song/:searchTerm', component: SearchSongComponent },
     {path: 'searchartist', component: SearchArtistComponent },
     {path: 'searchalbum', component: SearchAlbumComponent },
     {path: 'artist/:id', component: ArtistComponent },

@@ -4,17 +4,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header-artist',
   templateUrl: './header-artist.component.html',
-
 })
 export class HeaderArtistComponent {
   @Input() items: any;
   loading: boolean = false;
 
-
-  constructor( private router: Router ) {
-               }
-
-
-
-
+  constructor(private router: Router) {}
 }

@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
-import { ClassPerfil } from '../classes/perfil';
 import { ClassTrack } from '../classes/track';
+import { ClassProfile } from '../classes/profile';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-perfil: ClassPerfil [] = [];
-  listFavourites!: string;
-favsSongs: string[] = [];
+profile: ClassProfile [] = [];
+  listFavorites!: string;
+favoriteSongs: string[] = [];
 tracks: ClassTrack [] = [];
-  nuevasCanciones: any[] = [];
+  newSongs: any[] = [];
   loading = true;
 error = false;
-  mensajeError!: string;
+  errorMessage!: string;
   constructor( private router: Router,
                private spotify: SpotifyService ) {
   }
@@ -24,36 +24,34 @@ error = false;
 ngOnInit() {
   /* this.spotify.refreshToken(); */
   this.login();
-/* this.favsSongs.push('6rVNnvyNeibts1uOqdSNIw');
-  localStorage.setItem('favs', JSON.stringify(this.favsSongs));  */
+/* this.favoriteSongs.push('6rVNnvyNeibts1uOqdSNIw');
+  localStorage.setItem('favs', JSON.stringify(this.favoriteSongs));  */
   if ( localStorage.getItem('favs' ) == null) {
-    this.favsSongs.push('6rVNnvyNeibts1uOqdSNIw');
-    localStorage.setItem('favs', JSON.stringify(this.favsSongs));
+    this.favoriteSongs.push('6rVNnvyNeibts1uOqdSNIw');
+    localStorage.setItem('favs', JSON.stringify(this.favoriteSongs));
   }
-  this.getFavoritos();
+  this.getFavorites();
 
 
-  this.spotify.getPerfil()
+  this.spotify.getProfile()
   .subscribe( (data: any) => {
-this.perfil = data;
+this.profile = data;
 this.loading = false;
-  }, ( errorServicio ) => {
+  }, ( errorService ) => {
     this.loading = false;
     this.error = true;
-    console.log(errorServicio);
-    this.mensajeError = errorServicio.error.error.message;
+    this.errorMessage = errorService.error.error.message;
   });
 
 
   this.spotify.getNewReleases()
   .subscribe( (data: any) => {
-this.nuevasCanciones = data;
+this.newSongs = data;
 this.loading = false;
-  }, ( errorServicio ) => {
+  }, ( errorService ) => {
     this.loading = false;
     this.error = true;
-    console.log(errorServicio);
-    this.mensajeError = errorServicio.error.error.message;
+    this.errorMessage = errorService.error.error.message;
   });
 }
 
@@ -83,13 +81,13 @@ loginRefresh() {
 
 
 
-getFavoritos() {
-  this.listFavourites = JSON.parse(localStorage.getItem('favs') as string);
+getFavorites() {
+  this.listFavorites = JSON.parse(localStorage.getItem('favs') as string);
   // tslint:disable-next-line: prefer-for-of
-  for (let i = 0; i < this.listFavourites.length; i++ ) {
-    this.spotify.getCancion(this.listFavourites[i])
+  for (let i = 0; i < this.listFavorites.length; i++ ) {
+    this.spotify.getSong(this.listFavorites[i])
     .subscribe( (data: ClassTrack) => {
-      /* this.spotify.estadoFav(this.listFavourites[i]); */
+      /* this.spotify.setFavorite(this.listFavorites[i]); */
       this.tracks.push(data);
     });
 

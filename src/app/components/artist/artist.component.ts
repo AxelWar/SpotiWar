@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SpotifyService } from '../../services/spotify.service';
-import { Router } from '@angular/router';
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
@@ -25,7 +24,6 @@ export class ArtistComponent {
 
   getArtist(id: string) {
     this.spotify.getArtist(id).subscribe((artist) => {
-      console.log(artist);
       this.artist = artist;
       this.loading = false;
     });

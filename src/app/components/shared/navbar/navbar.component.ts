@@ -12,12 +12,12 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  buscar ( termino:string ){
-    if( termino.length == 0){
+  buscar ( searchTerm:string ){
+    if( searchTerm.length == 0){
       return;
     }
 
-    this.router.navigate(['search-song', termino]);
+    this.router.navigate(['search-song', searchTerm]);
 
   }
 

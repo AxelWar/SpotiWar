@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
-import { SpotifyService } from '../../services/spotify.service';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-cards-album',
   templateUrl: './cards-album.component.html',
@@ -14,7 +12,6 @@ export class CardsAlbumComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private spotify: SpotifyService,
     private router: Router
   ) {
     this.loading = true;

@@ -1,9 +1,9 @@
 <table>
     <thead>
         <tr>
-            <th>Nombre</th>
+            <th>Name</th>
             <th>Artist</th>
-            <th (click)="sort()" class="puntero ">Duración</th>
+            <th (click)="sort()" class="puntero ">Duration</th>
             <th>Preview</th>
             <th>Fav</th>
         </tr>
@@ -18,7 +18,7 @@
             <td>
                 <audio [src]="item.preview_url" controls></audio>
             </td>
-            <td> <button (click)="checkIfFavourite(item.id)">
+            <td> <button (click)="checkIfFavorite(item.id)">
                     <i *ngIf="checkFav(item.id)" class="material-icons star" >star</i>
                     <i *ngIf="!checkFav(item.id)" class="material-icons star_border" >star_border</i>
                 </button>

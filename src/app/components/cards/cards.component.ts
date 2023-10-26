@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
-import { SpotifyService } from '../../services/spotify.service';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',

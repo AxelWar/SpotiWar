@@ -24,8 +24,8 @@
 
 
         </ul>
-        <form class="form-inline my-2 my-lg-0" (ngSubmit)="buscar(termino.value)">
-            <input #termino type="text" (keyup)="buscar(termino.value)" class="form-control mr-sm-2" placeholder="Buscar">
+        <form class="form-inline my-2 my-lg-0" (ngSubmit)="buscar(searchTerm.value)">
+            <input #searchTerm type="text" (keyup)="buscar(searchTerm.value)" class="form-control mr-sm-2" placeholder="Buscar">
             <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Buscar</button>
         </form>
     </div>

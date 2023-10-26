@@ -14,11 +14,11 @@ export class SearchAlbumComponent  {
   constructor( private spotify: SpotifyService) {  }
 
 
-buscar( termino: string ) {
-  console.log(termino);
+buscar( searchTerm: string ) {
+  console.log(searchTerm);
 
   this.loading = true;
-  this.spotify.getAlbums( termino )
+  this.spotify.getAlbums( searchTerm )
 .subscribe( (data: any) => {
   this.albums = data;
   this.loading = false;
