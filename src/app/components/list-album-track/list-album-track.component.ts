@@ -34,14 +34,14 @@ export class ListAlbumTrackComponent {
   }
 
 checkFav( favSong: string ) {
-  return this.spotify.estadoFav( favSong );
+  return this.spotify.setFavorite( favSong );
   }
 
-  checkIfFavourite( favSong: string ) {
-    if (this.spotify.estadoFav( favSong ) === true) {
-      this.spotify.removeFavourite( favSong );
+  checkIfFavorite( favSong: string ) {
+    if (this.spotify.setFavorite( favSong ) === true) {
+      this.spotify.removeFavorite( favSong );
     } else {
-      this.spotify.favouriteSongs( favSong );
+      this.spotify.setFavoriteSongs( favSong );
 
     }
     }

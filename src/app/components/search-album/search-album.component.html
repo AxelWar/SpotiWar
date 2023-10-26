@@ -1,0 +1,11 @@
+<app-loading class="m-5" *ngIf="loading"></app-loading>
+
+<div class="search">
+    <div class="col">
+        <input #searchTerm type="text" (keyup)="buscar(searchTerm.value)" class="form-control" placeholder="Buscar Album">
+    </div>
+
+</div>
+
+
+<app-cards-album *ngIf="!loading" [items]="albums"></app-cards-album>

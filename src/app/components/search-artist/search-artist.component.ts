@@ -2,25 +2,25 @@ import { Component} from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
-  selector: 'app-searchalbum',
-  templateUrl: './searchalbum.component.html',
+  selector: 'app-search-artist',
+  templateUrl: './search-artist.component.html',
 
 })
-export class SearchAlbumComponent  {
+export class SearchArtistComponent  {
 
-  albums: any[] = [];
+  artists: any[] = [];
   loading: boolean = false;
 
   constructor( private spotify: SpotifyService) {  }
 
 
-buscar( termino: string ) {
-  console.log(termino);
+buscar( searchTerm: string ) {
+  console.log(searchTerm);
 
   this.loading = true;
-  this.spotify.getAlbums( termino )
+  this.spotify.getArtists( searchTerm )
 .subscribe( (data: any) => {
-  this.albums = data;
+  this.artists = data;
   this.loading = false;
 });
 }

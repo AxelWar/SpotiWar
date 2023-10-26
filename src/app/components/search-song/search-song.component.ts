@@ -3,34 +3,34 @@ import { SpotifyService } from '../../services/spotify.service';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-search',
-  templateUrl: './searchcancion.component.html',
+  templateUrl: './search-song.component.html',
 
 })
-export class SearchCancionComponent implements OnInit {
+export class SearchSongComponent implements OnInit {
 
   tracks: any[] = [];
   loading: boolean = false;
-  termino!: string;
+  searchTerm!: string;
 
   constructor( private spotify: SpotifyService,
                public route: ActivatedRoute) {
 
                 this.route.params.subscribe( params => {
-                  if ( params['termino']){
-                    this.termino = params['termino'];
-                    this.buscar(this.termino);
+                  if ( params['searchTerm']){
+                    this.searchTerm = params['searchTerm'];
+                    this.buscar(this.searchTerm);
                   }
                 });
                 }
 
 
 
-buscar( termino: string ) {
-  if ( termino.length == 0) {
+buscar( searchTerm: string ) {
+  if ( searchTerm.length == 0) {
     return;
   }
   this.loading = true;
-  this.spotify.getCanciones( termino )
+  this.spotify.getSongs( searchTerm )
 .subscribe( (data: any) => {
   this.tracks = data;
   this.loading = false;

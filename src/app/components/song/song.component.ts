@@ -1,24 +1,31 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../../services/spotify.service';
+import { Router } from '@angular/router';
+import { ClassTrack } from '../classes/track';
+
 @Component({
-  selector: 'app-album',
-  templateUrl: './album.component.html',
+  selector: 'app-song',
+  templateUrl: './song.component.html',
 })
-export class AlbumComponent {
+export class SongComponent {
   loading: boolean;
   album: any = {};
+  marcadores: ClassTrack[] = [];
 
-  constructor(private router: ActivatedRoute, private spotify: SpotifyService) {
+  constructor(
+    private route: ActivatedRoute,
+    private spotify: SpotifyService,
+    private router: Router
+  ) {
     this.loading = true;
-    this.router.params.subscribe((params) => {
+    this.route.params.subscribe((params) => {
       this.getAlbum(params['id']);
     });
   }
 
   getAlbum(id: string) {
     this.spotify.getAlbum(id).subscribe((album) => {
-      console.log(album);
       this.album = album;
       this.loading = false;
     });
