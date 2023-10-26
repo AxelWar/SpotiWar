@@ -8,15 +8,14 @@ import { SongComponent } from './components/song/song.component';
 import { AlbumComponent } from './components/album/album.component';
 
 export const ROUTES: Routes = [
-    {path: '', pathMatch: 'full', redirectTo: '/home'},
-    {path: 'home', component: HomeComponent },
-    {path: 'search-song', component: SearchSongComponent },
-    {path: 'search-song/:searchTerm', component: SearchSongComponent },
-    {path: 'searchartist', component: SearchArtistComponent },
-    {path: 'searchalbum', component: SearchAlbumComponent },
-    {path: 'artist/:id', component: ArtistComponent },
-    {path: 'album/:id', component: AlbumComponent },
-    {path: 'track/:id', component: SongComponent },
-    {path: '**', pathMatch: 'full', redirectTo: 'home'},
+  { path: '', pathMatch: 'full', redirectTo: '/home' },
+  { path: 'home', component: HomeComponent },
+  { path: 'search-song', component: SearchSongComponent },
+  { path: 'search-song/:searchTerm', component: SearchSongComponent },
+  { path: 'searchartist', component: SearchArtistComponent },
+  { path: 'searchalbum', component: SearchAlbumComponent },
+  { path: 'artist/:id', component: ArtistComponent },
+  { path: 'album/:id', component: AlbumComponent },
+  { path: 'track/:id', component: SongComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
-

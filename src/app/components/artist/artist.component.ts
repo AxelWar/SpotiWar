@@ -16,21 +16,21 @@ export class ArtistComponent {
     private router: Router
   ) {
     this.loading = true;
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe(params => {
       this.getArtist(params['id']);
       this.getAlbumArtist(params['id']);
     });
   }
 
   getArtist(id: string) {
-    this.spotify.getArtist(id).subscribe((artist) => {
+    this.spotify.getArtist(id).subscribe(artist => {
       this.artist = artist;
       this.loading = false;
     });
   }
 
   getAlbumArtist(id: string) {
-    this.spotify.getAlbumArtist(id).subscribe((albumArtist) => {
+    this.spotify.getAlbumArtist(id).subscribe(albumArtist => {
       this.albumArtist = albumArtist;
       this.loading = false;
     });

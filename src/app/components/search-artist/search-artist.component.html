@@ -1,11 +1,14 @@
 <app-loading class="m-5" *ngIf="loading"></app-loading>
 
 <div class="search">
-    <div class="col">
-        <input #searchTerm type="text" (keyup)="buscar(searchTerm.value)" class="form-control" placeholder="Buscar Artist">
-    </div>
-
+  <div class="col">
+    <input
+      #searchTerm
+      type="text"
+      (keyup)="search(searchTerm.value)"
+      class="form-control"
+      placeholder="Search Artist" />
+  </div>
 </div>
-
 
 <app-cards *ngIf="!loading" [items]="artists"></app-cards>

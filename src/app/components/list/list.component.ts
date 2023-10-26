@@ -9,9 +9,12 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 export class ListComponent {
   @Input() items: any[] = [];
   favSong!: string;
-  loading: boolean = false;
+  loading = false;
 
-  constructor(private router: Router, private spotify: SpotifyService) {}
+  constructor(
+    private router: Router,
+    private spotify: SpotifyService
+  ) {}
   seeArtist(item: any) {
     let artistId;
     if (item.type === 'artist') {

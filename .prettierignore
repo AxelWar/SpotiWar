@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+#Angular
+build
+coverage
+e2e
+node_modules

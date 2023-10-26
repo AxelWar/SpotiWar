@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderAlbumComponent {
   @Input() items: any;
-  loading: boolean = false;
+  loading = false;
 
   constructor(private router: Router) {}
 }

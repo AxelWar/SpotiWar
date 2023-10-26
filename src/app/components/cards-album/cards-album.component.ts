@@ -15,7 +15,7 @@ export class CardsAlbumComponent {
     private router: Router
   ) {
     this.loading = true;
-    this.route.params.subscribe((params) => {});
+    this.route.params.subscribe(params => {});
   }
 
   seeAlbum(item: any) {

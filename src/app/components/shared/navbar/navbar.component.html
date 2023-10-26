@@ -1,32 +1,47 @@
 <nav class="nav navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-        <img src="/assets/img/spoti-ico.png" width="50" height="50" alt=""> SpotiWar
-    </a>
+  <a class="navbar-brand" href="#">
+    <img src="/assets/img/spoti-ico.png" width="50" height="50" alt="" />
+    SpotiWar
+  </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="home">Home</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="search-song">Search</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="searchartist">Artists</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="searchalbum">Albums</a>
-            </li>
-
-
-        </ul>
-        <form class="form-inline my-2 my-lg-0" (ngSubmit)="buscar(searchTerm.value)">
-            <input #searchTerm type="text" (keyup)="buscar(searchTerm.value)" class="form-control mr-sm-2" placeholder="Buscar">
-            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="home">Home</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="search-song">Search</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="searchartist">Artists</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="searchalbum">Albums</a>
+      </li>
+    </ul>
+    <form
+      class="form-inline my-2 my-lg-0"
+      (ngSubmit)="search(searchTerm.value)">
+      <input
+        #searchTerm
+        type="text"
+        (keyup)="search(searchTerm.value)"
+        class="form-control mr-sm-2"
+        placeholder="Search" />
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+  </div>
 </nav>
