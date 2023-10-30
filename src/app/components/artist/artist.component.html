@@ -1,8 +1,6 @@
 <app-header-artist [items]="artist"></app-header-artist>
 
-<!-- <app-list [items]="albumArtist.item"></app-list> -->
-
-<div class="card-container m-5">
+<div class="card-container">
   <div
     (click)="seeSongsAlbum(album)"
     *ngFor="let album of albumArtist.items"
@@ -13,7 +11,7 @@
         {{ album.name }}
       </span>
       <p class="card-text">
-        <span class="badge badge-pill badge-dark">
+        <span class="badge badge-pill badge-dark badge-text">
           {{ album.release_date }}
         </span>
       </p>

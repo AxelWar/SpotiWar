@@ -1,4 +1,4 @@
-<div class="card-container m-2 animated fadeIn">
+<div class="card-container">
   <div
     (click)="seeSongsAlbum(item)"
     *ngFor="let item of items"
@@ -11,7 +11,7 @@
       <p class="card-text">
         <span
           *ngFor="let artist of item.artists"
-          class="badge badge-pill badge-dark">
+          class="badge badge-pill badge-dark badge-text">
           {{ artist.name }}
         </span>
       </p>
