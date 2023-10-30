@@ -1,13 +1,13 @@
-<div class="card-columns m-2 animated fadeIn">
+<div class="card-container m-2 animated fadeIn">
   <div
     (click)="seeSongsAlbum(item)"
     *ngFor="let item of items"
     class="card-pointer">
     <img [src]="item.images | noImage" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">
+    <div class="card-content">
+      <span class="card-title">
         {{ item.name }}
-      </h5>
+      </span>
       <p class="card-text">
         <span
           *ngFor="let artist of item.artists"
