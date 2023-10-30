@@ -1,20 +1,11 @@
 <app-header-artist [items]="artist"></app-header-artist>
-
+Albums
 <div class="card-container">
-  <div
-    (click)="seeSongsAlbum(album)"
-    *ngFor="let album of albumArtist.items"
-    class="card-pointer">
-    <img [src]="album.images | noImage" class="card-img-top" />
-    <div class="card-content">
-      <span class="card-title">
-        {{ album.name }}
-      </span>
-      <p class="card-text">
-        <span class="badge badge-pill badge-dark badge-text">
-          {{ album.release_date }}
-        </span>
-      </p>
-    </div>
-  </div>
+  <app-card
+    class="card-pointer"
+    *ngFor="let item of albumArtist.items"
+    [item]="item"
+    [type]="'artist'"
+    (cardClick)="seeSongsAlbum(item)">
+  </app-card>
 </div>

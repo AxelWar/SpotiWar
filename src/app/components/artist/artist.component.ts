@@ -6,7 +6,7 @@ import { SpotifyService } from '../../services/spotify.service';
   templateUrl: './artist.component.html',
 })
 export class ArtistComponent {
-  loading: boolean;
+  loading = false;
   artist: any = {};
   albumArtist: any = {};
 
@@ -15,7 +15,6 @@ export class ArtistComponent {
     private spotify: SpotifyService,
     private router: Router
   ) {
-    this.loading = true;
     this.route.params.subscribe(params => {
       this.getArtist(params['id']);
       this.getAlbumArtist(params['id']);
@@ -23,6 +22,7 @@ export class ArtistComponent {
   }
 
   getArtist(id: string) {
+    this.loading = true;
     this.spotify.getArtist(id).subscribe(artist => {
       this.artist = artist;
       this.loading = false;
@@ -30,6 +30,7 @@ export class ArtistComponent {
   }
 
   getAlbumArtist(id: string) {
+    this.loading = true;
     this.spotify.getAlbumArtist(id).subscribe(albumArtist => {
       this.albumArtist = albumArtist;
       this.loading = false;
@@ -37,6 +38,7 @@ export class ArtistComponent {
   }
 
   seeSongsAlbum(album: any) {
+    this.loading = true;
     let albumId;
 
     if (album.type === 'album') {

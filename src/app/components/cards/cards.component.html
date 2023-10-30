@@ -1,20 +1,9 @@
 <div class="card-container">
-  <div
-    (click)="seeArtist(item)"
+  <app-card
+    class="card-pointer"
     *ngFor="let item of items"
-    class="card-pointer">
-    <img [src]="item.images | noImage" class="card-img-top" />
-    <div class="card-content">
-      <span class="card-title">
-        {{ item.name }}
-      </span>
-      <p class="card-text">
-        <span
-          *ngFor="let artist of item.artists"
-          class="badge badge-pill badge-dark badge-text">
-          {{ artist.name }}
-        </span>
-      </p>
-    </div>
-  </div>
+    [item]="item"
+    [type]="'song'"
+    (cardClick)="seeArtist(item)">
+  </app-card>
 </div>
