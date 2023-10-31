@@ -1,19 +1,39 @@
 import { Artist } from './artist.interface';
-import { ExternalUrls } from './external-urls.interface';
-import { Image } from './image.interface';
+import { ExternalIds, ExternalUrls } from './external-data.interface';
+import { Images } from './images.interface';
+import { Tracks } from './tracks.interface';
 
 export interface Album {
   album_type: string;
-  artists: Artist[];
+  total_tracks: number;
   available_markets: string[];
   external_urls: ExternalUrls;
   href: string;
   id: string;
-  images: Image[];
+  images: Images[];
   name: string;
   release_date: string;
   release_date_precision: string;
-  total_tracks: number;
+  restrictions: Restrictions;
   type: string;
   uri: string;
+  artists: Artist[];
+  tracks: Tracks;
+  copyrights: Copyright[];
+  external_ids: ExternalIds;
+  genres: string[];
+  label: string;
+}
+
+export interface AlbumResponse {
+  album: Album;
+}
+
+interface Restrictions {
+  reason: string;
+}
+
+interface Copyright {
+  text: string;
+  type: string;
 }

@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Album } from '../interfaces/album.interface';
-import { EMPTY_ALBUM } from '../mocks/album.mock';
 
 @Component({
   selector: 'app-card',

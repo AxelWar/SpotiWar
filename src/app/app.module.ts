@@ -14,9 +14,6 @@ import { AlbumComponent } from './components/album/album.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { CardsAlbumComponent } from './components/cards-album/cards-album.component';
 import { CardsComponent } from './components/cards/cards.component';
-import { HeaderAlbumComponent } from './components/header/header-album/header-album.component';
-import { HeaderArtistComponent } from './components/header/header-artist/header-artist.component';
-import { HeaderProfileComponent } from './components/header/header-profile/header-profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListAlbumTrackComponent } from './components/list-album-track/list-album-track.component';
 import { ListComponent } from './components/list/list.component';
@@ -38,9 +35,6 @@ import { SongComponent } from './components/song/song.component';
     SearchSongComponent,
     ListComponent,
     ListAlbumTrackComponent,
-    HeaderProfileComponent,
-    HeaderAlbumComponent,
-    HeaderArtistComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
+import { SpotifyService } from '../../services/spotify.service';
 import { Track } from '../shared/interfaces/track.interface';
-import { Profile } from '../shared/interfaces/profile.interface';
+import { emptyUser } from '../shared/mocks/user.mock';
+import { User } from '../shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  profile: Profile[] = [];
+  profile: User = emptyUser;
   listFavorites!: string;
   favoriteSongs: string[] = [];
   tracks: Track[] = [];
-  newSongs: any[] = [];
-  loading = true;
+  newSongs: Track[] = [];
+  loading = false;
   error = false;
   errorMessage!: string;
   constructor(
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
     this.getFavorites();
 
     this.spotify.getProfile().subscribe(
-      (data: any) => {
+      (data: User) => {
         this.profile = data;
         this.loading = false;
       },
@@ -72,6 +73,21 @@ export class HomeComponent implements OnInit {
   loginRefresh() {
     localStorage.removeItem('auth');
     this.login();
+  }
+
+  getReleases() {
+    this.loading = true;
+    this.spotify.getNewReleases().subscribe(
+      (data: any) => {
+        this.loading = false;
+        this.newSongs = data;
+      },
+      errorService => {
+        this.loading = false;
+        this.error = true;
+        this.errorMessage = errorService.error.error.message;
+      }
+    );
   }
 
   getFavorites() {

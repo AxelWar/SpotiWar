@@ -1,46 +1,54 @@
 import { Track } from '../interfaces/track.interface';
-import { EMPTY_ALBUM, MOCK_ALBUM } from './album.mock';
-import { EMPTY_ARTIST, MOCK_ARTIST } from './artist.mock';
-import { EMPTY_EXTERNAL_IDS, MOCK_EXTERNAL_IDS } from './external-ids.mock';
-import { EMPTY_EXTERNAL_URLS, MOCK_EXTERNAL_URLS } from './external-urls.mock';
+import { filledArtist } from './artist.interface';
 
-export const EMPTY_TRACK: Track = {
-  album: EMPTY_ALBUM,
-  artists: [EMPTY_ARTIST],
+// Empty Mock
+export const emptyTrack: Track = {
+  artists: [],
+  available_markets: [],
   disc_number: 0,
   duration_ms: 0,
   explicit: false,
-  external_ids: EMPTY_EXTERNAL_IDS,
-  external_urls: EMPTY_EXTERNAL_URLS,
+  external_urls: { spotify: '' },
   href: '',
   id: '',
-  is_local: false,
   is_playable: false,
+  linked_from: {
+    external_urls: { spotify: '' },
+    href: '',
+    id: '',
+    type: '',
+    uri: '',
+  },
   name: '',
-  popularity: 0,
   preview_url: '',
   track_number: 0,
   type: '',
   uri: '',
+  is_local: false,
 };
 
-export const MOCK_TRACK: Track = {
-  album: MOCK_ALBUM,
-  artists: [MOCK_ARTIST],
+// Filled Mock
+export const filledTrack: Track = {
+  artists: [filledArtist],
+  available_markets: ['US', 'CA'],
   disc_number: 1,
   duration_ms: 200000,
   explicit: false,
-  external_ids: MOCK_EXTERNAL_IDS,
-  external_urls: MOCK_EXTERNAL_URLS,
-  href: 'https://api.spotify.com/v1/tracks/123456',
-  id: '123456',
-  is_local: false,
+  external_urls: { spotify: 'https://open.spotify.com/track/1234567890' },
+  href: 'https://api.spotify.com/v1/tracks/1234567890',
+  id: '1234567890',
   is_playable: true,
-  name: 'Track Name',
-  popularity: 50,
-  preview_url:
-    'https://p.scdn.co/mp3-preview/abcdef1234567890abcdef1234567890abcdef12',
+  linked_from: {
+    external_urls: { spotify: 'https://open.spotify.com/track/0987654321' },
+    href: 'https://api.spotify.com/v1/tracks/0987654321',
+    id: '0987654321',
+    type: 'track',
+    uri: 'spotify:track:0987654321',
+  },
+  name: 'Test Track',
+  preview_url: 'https://p.scdn.co/mp3-preview/testtrack',
   track_number: 1,
   type: 'track',
-  uri: 'spotify:track:123456',
+  uri: 'spotify:track:1234567890',
+  is_local: false,
 };

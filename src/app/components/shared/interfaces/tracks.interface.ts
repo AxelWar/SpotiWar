@@ -6,7 +6,7 @@ export interface Tracks {
   limit: number;
   next: string;
   offset: number;
-  previous?: any;
+  previous: string;
   total: number;
 }
 

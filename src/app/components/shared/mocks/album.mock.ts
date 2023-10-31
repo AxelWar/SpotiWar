@@ -1,36 +1,123 @@
 import { Album } from '../interfaces/album.interface';
-import { EMPTY_ARTIST, MOCK_ARTIST } from './artist.mock';
-import { EMPTY_EXTERNAL_URLS, MOCK_EXTERNAL_URLS } from './external-urls.mock';
-import { EMPTY_IMAGE, MOCK_IMAGE } from './image.mock';
 
-export const EMPTY_ALBUM: Album = {
+// Empty Mock
+export const emptyAlbum: Album = {
   album_type: '',
-  artists: [EMPTY_ARTIST],
+  total_tracks: 0,
   available_markets: [],
-  external_urls: EMPTY_EXTERNAL_URLS,
+  external_urls: { spotify: '' },
   href: '',
   id: '',
-  images: [EMPTY_IMAGE],
+  images: [],
   name: '',
   release_date: '',
   release_date_precision: '',
-  total_tracks: 0,
+  restrictions: { reason: '' },
   type: '',
   uri: '',
+  artists: [],
+  tracks: {
+    href: '',
+    items: [],
+    limit: 0,
+    next: '',
+    offset: 0,
+    previous: '',
+    total: 0,
+  },
+  copyrights: [],
+  external_ids: { isrc: '' },
+  genres: [],
+  label: '',
 };
 
-export const MOCK_ALBUM: Album = {
+// Filled Mock
+export const filledAlbum: Album = {
   album_type: 'album',
-  artists: [MOCK_ARTIST],
+  total_tracks: 10,
   available_markets: ['US', 'CA'],
-  external_urls: MOCK_EXTERNAL_URLS,
-  href: 'https://api.spotify.com/v1/albums/4bEcoz1OcfMgUbp2ft8ieQ',
-  id: '4bEcoz1OcfMgUbp2ft8ieQ',
-  images: [MOCK_IMAGE],
-  name: 'A Night at the Opera',
-  release_date: '1975-11-21',
+  external_urls: { spotify: 'https://open.spotify.com/album/1234567890' },
+  href: 'https://api.spotify.com/v1/albums/1234567890',
+  id: '1234567890',
+  images: [{ height: 640, url: 'http://example.com/image.jpg', width: 640 }],
+  name: 'Test Album',
+  release_date: '2023-10-31',
   release_date_precision: 'day',
-  total_tracks: 12,
+  restrictions: { reason: 'market' },
   type: 'album',
-  uri: 'spotify:album:4bEcoz1OcfMgUbp2ft8ieQ',
+  uri: 'spotify:album:1234567890',
+  artists: [
+    {
+      external_urls: { spotify: 'https://open.spotify.com/artist/0987654321' },
+      followers: { href: '', total: 1000 },
+      genres: ['pop'],
+      href: 'https://api.spotify.com/v1/artists/0987654321',
+      id: '0987654321',
+      images: [
+        { height: 640, url: 'http://example.com/artist.jpg', width: 640 },
+      ],
+      name: 'Test Artist',
+      popularity: 50,
+      type: 'artist',
+      uri: 'spotify:artist:0987654321',
+    },
+  ],
+  tracks: {
+    href: 'https://api.spotify.com/v1/albums/1234567890/tracks',
+    items: [
+      {
+        artists: [
+          {
+            external_urls: {
+              spotify: 'https://open.spotify.com/artist/0987654321',
+            },
+            followers: { href: '', total: 1000 },
+            genres: ['pop'],
+            href: 'https://api.spotify.com/v1/artists/0987654321',
+            id: '0987654321',
+            images: [
+              { height: 640, url: 'http://example.com/artist.jpg', width: 640 },
+            ],
+            name: 'Test Artist',
+            popularity: 50,
+            type: 'artist',
+            uri: 'spotify:artist:0987654321',
+          },
+        ],
+        available_markets: ['US', 'CA'],
+        disc_number: 1,
+        duration_ms: 200000,
+        explicit: false,
+        external_urls: { spotify: 'https://open.spotify.com/track/1122334455' },
+        href: 'https://api.spotify.com/v1/tracks/1122334455',
+        id: '1122334455',
+        is_playable: true,
+        linked_from: {
+          external_urls: {
+            spotify: 'https://open.spotify.com/track/1122334455',
+          },
+          href: 'https://api.spotify.com/v1/tracks/1122334455',
+          id: '1122334455',
+          type: 'track',
+          uri: 'spotify:track:1122334455',
+        },
+        name: 'Test Track',
+        preview_url: 'http://example.com/preview.mp3',
+        track_number: 1,
+        type: 'track',
+        uri: 'spotify:track:1122334455',
+        is_local: false,
+      },
+    ],
+    limit: 10,
+    next: 'https://api.spotify.com/v1/albums/1234567890/tracks?offset=10',
+    offset: 0,
+    previous: 'https://api.spotify.com/v1/albums/1234567890/tracks?offset=0',
+
+    total: 1,
+  },
+  copyrights: [{ text: '© 2023 Test', type: 'C' }],
+  external_ids: { isrc: 'US1234567890' },
+  genres: ['pop'],
+  label: 'Test Label',
 };

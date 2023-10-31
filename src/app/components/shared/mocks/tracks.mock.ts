@@ -1,22 +1,24 @@
 import { Tracks } from '../interfaces/tracks.interface';
-import { EMPTY_TRACK, MOCK_TRACK } from './track.mock';
+import { filledTrack } from './track.mock';
 
-export const EMPTY_TRACKS: Tracks = {
+// Empty Mock
+export const emptyTracks: Tracks = {
   href: '',
-  items: [EMPTY_TRACK],
+  items: [],
   limit: 0,
   next: '',
   offset: 0,
-  previous: null,
+  previous: '',
   total: 0,
 };
 
-export const MOCK_TRACKS: Tracks = {
+// Filled Mock
+export const filledTracks: Tracks = {
   href: 'https://api.spotify.com/v1/albums/12345/tracks',
-  items: [MOCK_TRACK],
+  items: [filledTrack],
   limit: 10,
   next: 'https://api.spotify.com/v1/albums/12345/tracks?offset=10',
   offset: 0,
-  previous: null,
-  total: 10,
+  previous: '',
+  total: 12,
 };

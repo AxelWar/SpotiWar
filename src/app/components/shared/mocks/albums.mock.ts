@@ -1,22 +1,24 @@
 import { Albums } from '../interfaces/albums.interface';
-import { EMPTY_ALBUM, MOCK_ALBUM } from './album.mock';
+import { filledAlbum } from './album.mock';
 
-export const EMPTY_ALBUMS: Albums = {
+// Empty Mock
+export const emptyAlbums: Albums = {
   href: '',
-  items: [EMPTY_ALBUM],
+  items: [],
   limit: 0,
   next: '',
   offset: 0,
-  previous: null,
+  previous: '',
   total: 0,
 };
 
-export const MOCK_ALBUMS: Albums = {
-  href: 'https://api.spotify.com/v1/browse/new-releases',
-  items: [MOCK_ALBUM],
-  limit: 20,
-  next: 'https://api.spotify.com/v1/browse/new-releases?offset=20',
+// Filled Mock
+export const filledAlbums: Albums = {
+  href: 'https://api.spotify.com/v1/albums',
+  items: [filledAlbum],
+  limit: 10,
+  next: 'https://api.spotify.com/v1/albums?offset=10',
   offset: 0,
-  previous: null,
-  total: 500,
+  previous: '',
+  total: 20,
 };
