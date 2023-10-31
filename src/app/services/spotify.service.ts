@@ -1,7 +1,12 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
-import { ClassTrack } from '../components/classes/track';
+import { Albums } from '../components/shared/interfaces/albums.interface';
+import { Artist } from '../components/shared/interfaces/artist.interface';
+import { Album } from '../components/shared/interfaces/album.interface';
+import { Tracks } from '../components/shared/interfaces/tracks.interface';
+import { Track } from '../components/shared/interfaces/track.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +18,7 @@ export class SpotifyService {
   favSong = '';
   listFavorites: any[] = [];
 
-  constructor(private http: HttpClient) {
-    console.log('Spotify Service Ready');
-  }
+  constructor(private http: HttpClient) {}
 
   auth() {
     this.token = localStorage.getItem('auth') as string;
@@ -29,16 +32,7 @@ export class SpotifyService {
     }
   }
 
-  /*   refreshToken() {
-    const clientId = '476b04f286264f229aed7cd9acc85f7e';
-    const clientSecret = '1a7db45b6582437ab4b23a648a4bc903';
-    const url = `https://bootcamp-token-master.herokuapp.com/spotify/${clientId}/${clientSecret}`;
-    this.http.get(url).subscribe((data: any) => {
-      localStorage.setItem('auth', data.access_token);
-    });
- } */
-
-  getUrl(query: string) {
+  getUrl(query: string): Observable<any> {
     const url = `https://api.spotify.com/v1/${query}`;
     this.token = localStorage.getItem('auth') as string;
     const headers = new HttpHeaders({
@@ -47,35 +41,37 @@ export class SpotifyService {
     return this.http.get(url, { headers });
   }
 
-  getNewReleases() {
+  getNewReleases(): Observable<Album[]> {
     return this.getUrl('browse/new-releases').pipe(
       map((data: any) => data.albums.items)
     );
   }
 
-  getArtists(searchTerm: string) {
+  getArtists(searchTerm: string): Observable<Artist[]> {
     return this.getUrl(`search?q=${searchTerm}&type=artist&market=AR`).pipe(
       map((data: any) => data.artists.items)
     );
   }
-  getArtist(id: string) {
+
+  getArtist(id: string): Observable<Artist> {
     return this.getUrl(`artists/${id}`);
   }
 
-  getAlbumArtist(id: string) {
+  getAlbumArtist(id: string): Observable<Albums> {
     return this.getUrl(`artists/${id}/albums`);
   }
 
-  getSongAlbum(id: string) {
+  /*   getSongAlbum(id: string) {
     return this.getUrl(`albums/${id}/tracks`);
-  }
+  } */
 
-  getAlbums(searchTerm: string) {
+  getAlbums(searchTerm: string): Observable<Albums[]> {
     return this.getUrl(`search?q=${searchTerm}&type=album&market=AR`).pipe(
       map((data: any) => data.albums.items)
     );
   }
-  getAlbum(id: string) {
+
+  getAlbum(id: string): Observable<Albums> {
     return this.getUrl(`albums/${id}`);
   }
 
@@ -85,20 +81,13 @@ export class SpotifyService {
     );
   }
 
-  getSong(id: string) {
-    return this.getUrl(`tracks/${id}`).pipe(map((data: ClassTrack) => data));
+  getSong(id: string): Observable<Track> {
+    return this.getUrl(`tracks/${id}`).pipe(map((data: Track) => data));
   }
+
   setFavorite(favSong: string) {
     this.favoriteSongs = JSON.parse(localStorage.getItem('favs') as string);
-    // tslint:disable-next-line: prefer-for-of
-
     return !!this.favoriteSongs.find(song => song === favSong);
-
-    /*   for (let i = 0 ; i < this.favoriteSongs.length; i++) {
-    if ( this.favoriteSongs[i] === favSong ) {
-      return true;
-    }
-  } */
   }
 
   getProfile() {
@@ -110,10 +99,12 @@ export class SpotifyService {
       `https://api.spotify.com/v1/search?q=${searchTerm}&type=track%2Cartist%2Calbum&market=AR`
     ).pipe(map((data: any) => data.type.items));
   }
+
   getFavorites() {
     this.listFavorites = JSON.parse(localStorage.getItem('favs') as string);
     return console.log(this.listFavorites);
   }
+
   setFavoriteSongs(favSong: string) {
     this.favoriteSongs = JSON.parse(localStorage.getItem('favs') as string);
     this.favoriteSongs.push(favSong);

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Item } from '../interfaces/item.interface';
-import { EMPTY_ITEM } from '../mocks/item.mock';
+import { Album } from '../interfaces/album.interface';
+import { EMPTY_ALBUM } from '../mocks/album.mock';
 
 @Component({
   selector: 'app-card',
@@ -9,7 +9,7 @@ import { EMPTY_ITEM } from '../mocks/item.mock';
 })
 export class CardComponent {
   @Input()
-  item: Item = EMPTY_ITEM;
+  item: Album = EMPTY_ALBUM;
   @Input()
   type!: 'album' | 'artist' | 'song';
   @Output() cardClick = new EventEmitter<any>();

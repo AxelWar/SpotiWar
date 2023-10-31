@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
-import { ClassTrack } from '../classes/track';
+import { Track } from '../shared/interfaces/track.interface';
 
 @Component({
   selector: 'app-song',
@@ -11,7 +11,7 @@ import { ClassTrack } from '../classes/track';
 export class SongComponent {
   loading: boolean;
   album: any = {};
-  marcadores: ClassTrack[] = [];
+  marcadores: Track[] = [];
 
   constructor(
     private route: ActivatedRoute,

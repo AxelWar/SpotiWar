@@ -1,8 +1,8 @@
-import { Album } from './album.interface';
+import { Track } from './track.interface';
 
-export interface Albums {
+export interface Tracks {
   href: string;
-  items: Album[];
+  items: Track[];
   limit: number;
   next: string;
   offset: number;

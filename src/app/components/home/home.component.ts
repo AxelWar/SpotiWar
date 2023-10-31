@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
-import { ClassTrack } from '../classes/track';
-import { ClassProfile } from '../classes/profile';
+import { Track } from '../shared/interfaces/track.interface';
+import { ClassProfile } from '../shared/interfaces/profile.interface';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   profile: ClassProfile[] = [];
   listFavorites!: string;
   favoriteSongs: string[] = [];
-  tracks: ClassTrack[] = [];
+  tracks: Track[] = [];
   newSongs: any[] = [];
   loading = true;
   error = false;
@@ -23,10 +23,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    /* this.spotify.refreshToken(); */
     this.login();
-    /* this.favoriteSongs.push('6rVNnvyNeibts1uOqdSNIw');
-  localStorage.setItem('favs', JSON.stringify(this.favoriteSongs));  */
     if (localStorage.getItem('favs') == null) {
       this.favoriteSongs.push('6rVNnvyNeibts1uOqdSNIw');
       localStorage.setItem('favs', JSON.stringify(this.favoriteSongs));
@@ -64,7 +61,6 @@ export class HomeComponent implements OnInit {
     if (token) {
       localStorage.setItem('auth', token);
       setInterval(() => {
-        /* this.spotify.refreshToken(); */
         localStorage.removeItem('auth');
         window.location.reload();
         this.spotify.auth();
@@ -80,14 +76,10 @@ export class HomeComponent implements OnInit {
 
   getFavorites() {
     this.listFavorites = JSON.parse(localStorage.getItem('favs') as string);
-    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.listFavorites.length; i++) {
-      this.spotify
-        .getSong(this.listFavorites[i])
-        .subscribe((data: ClassTrack) => {
-          /* this.spotify.setFavorite(this.listFavorites[i]); */
-          this.tracks.push(data);
-        });
+      this.spotify.getSong(this.listFavorites[i]).subscribe((data: Track) => {
+        this.tracks.push(data);
+      });
     }
   }
 }

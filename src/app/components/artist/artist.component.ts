@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SpotifyService } from '../../services/spotify.service';
+import { Albums } from '../shared/interfaces/albums.interface';
+import { Artist } from '../shared/interfaces/artist.interface';
+import { EMPTY_ALBUMS } from '../shared/mocks/albums.mock';
+import { EMPTY_ARTIST } from '../shared/mocks/artist.mock';
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
 })
 export class ArtistComponent {
   loading = false;
-  artist: any = {};
-  albumArtist: any = {};
+  artist: Artist = EMPTY_ARTIST;
+  albumArtist: Albums = EMPTY_ALBUMS;
 
   constructor(
     private route: ActivatedRoute,
