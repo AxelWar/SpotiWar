@@ -9,3 +9,7 @@ export interface Albums {
   previous?: any;
   total: number;
 }
+
+export interface AlbumsResponse {
+  albums: Albums;
+}

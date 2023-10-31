@@ -2,21 +2,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
-import { Albums } from '../components/shared/interfaces/albums.interface';
-import { Artist } from '../components/shared/interfaces/artist.interface';
 import { Album } from '../components/shared/interfaces/album.interface';
-import { Tracks } from '../components/shared/interfaces/tracks.interface';
+import {
+  Albums,
+  AlbumsResponse,
+} from '../components/shared/interfaces/albums.interface';
+import { Artist } from '../components/shared/interfaces/artist.interface';
+import { Profile } from '../components/shared/interfaces/profile.interface';
 import { Track } from '../components/shared/interfaces/track.interface';
+import { TracksResponse } from '../components/shared/interfaces/tracks.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SpotifyService {
   token = '';
-  searchTerm = '';
   favoriteSongs: any[] = [];
-  favSong = '';
-  listFavorites: any[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -43,13 +44,7 @@ export class SpotifyService {
 
   getNewReleases(): Observable<Album[]> {
     return this.getUrl('browse/new-releases').pipe(
-      map((data: any) => data.albums.items)
-    );
-  }
-
-  getArtists(searchTerm: string): Observable<Artist[]> {
-    return this.getUrl(`search?q=${searchTerm}&type=artist&market=AR`).pipe(
-      map((data: any) => data.artists.items)
+      map((data: AlbumsResponse) => data.albums.items)
     );
   }
 
@@ -61,10 +56,6 @@ export class SpotifyService {
     return this.getUrl(`artists/${id}/albums`);
   }
 
-  /*   getSongAlbum(id: string) {
-    return this.getUrl(`albums/${id}/tracks`);
-  } */
-
   getAlbums(searchTerm: string): Observable<Albums[]> {
     return this.getUrl(`search?q=${searchTerm}&type=album&market=AR`).pipe(
       map((data: any) => data.albums.items)
@@ -75,9 +66,9 @@ export class SpotifyService {
     return this.getUrl(`albums/${id}`);
   }
 
-  getSongs(searchTerm: string) {
+  getSongs(searchTerm: string): Observable<Track[]> {
     return this.getUrl(`search?q=${searchTerm}&type=track&market=AR`).pipe(
-      map((data: any) => data.tracks.items)
+      map((data: TracksResponse) => data.tracks.items)
     );
   }
 
@@ -90,19 +81,8 @@ export class SpotifyService {
     return !!this.favoriteSongs.find(song => song === favSong);
   }
 
-  getProfile() {
-    return this.getUrl('me').pipe(map((data: any) => data));
-  }
-
-  getAll(searchTerm: string) {
-    return this.getUrl(
-      `https://api.spotify.com/v1/search?q=${searchTerm}&type=track%2Cartist%2Calbum&market=AR`
-    ).pipe(map((data: any) => data.type.items));
-  }
-
-  getFavorites() {
-    this.listFavorites = JSON.parse(localStorage.getItem('favs') as string);
-    return console.log(this.listFavorites);
+  getProfile(): Observable<Profile> {
+    return this.getUrl('me').pipe(map((data: Profile) => data));
   }
 
   setFavoriteSongs(favSong: string) {

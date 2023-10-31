@@ -9,7 +9,7 @@ import { EMPTY_ALBUM } from '../mocks/album.mock';
 })
 export class CardComponent {
   @Input()
-  item: Album = EMPTY_ALBUM;
+  item: any = {};
   @Input()
   type!: 'album' | 'artist' | 'song';
   @Output() cardClick = new EventEmitter<any>();

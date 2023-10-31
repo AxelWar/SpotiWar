@@ -5,6 +5,7 @@ import { Albums } from '../shared/interfaces/albums.interface';
 import { Artist } from '../shared/interfaces/artist.interface';
 import { EMPTY_ALBUMS } from '../shared/mocks/albums.mock';
 import { EMPTY_ARTIST } from '../shared/mocks/artist.mock';
+import { Album } from '../shared/interfaces/album.interface';
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
@@ -41,16 +42,12 @@ export class ArtistComponent {
     });
   }
 
-  seeSongsAlbum(album: any) {
+  seeSongsAlbum(album: Album) {
     this.loading = true;
     let albumId;
-
     if (album.type === 'album') {
       albumId = album.id;
-    } else {
-      albumId = album.album[0].id;
     }
-
     this.router.navigate(['/track', albumId]);
   }
 }

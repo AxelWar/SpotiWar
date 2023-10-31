@@ -1,4 +1,4 @@
-export class ClassProfile {
-  images!: string[];
-  name!: string;
+export interface Profile {
+  images: string[];
+  name: string;
 }

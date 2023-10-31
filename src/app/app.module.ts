@@ -21,7 +21,6 @@ import { HomeComponent } from './components/home/home.component';
 import { ListAlbumTrackComponent } from './components/list-album-track/list-album-track.component';
 import { ListComponent } from './components/list/list.component';
 import { SearchAlbumComponent } from './components/search-album/search-album.component';
-import { SearchArtistComponent } from './components/search-artist/search-artist.component';
 import { SearchSongComponent } from './components/search-song/search-song.component';
 import { SharedModule } from './components/shared/shared.module';
 import { SongComponent } from './components/song/song.component';
@@ -35,7 +34,6 @@ import { SongComponent } from './components/song/song.component';
     CardsAlbumComponent,
     AlbumComponent,
     SongComponent,
-    SearchArtistComponent,
     SearchAlbumComponent,
     SearchSongComponent,
     ListComponent,

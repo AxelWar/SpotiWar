@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
 import { Track } from '../shared/interfaces/track.interface';
-import { ClassProfile } from '../shared/interfaces/profile.interface';
+import { Profile } from '../shared/interfaces/profile.interface';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  profile: ClassProfile[] = [];
+  profile: Profile[] = [];
   listFavorites!: string;
   favoriteSongs: string[] = [];
   tracks: Track[] = [];

@@ -1,6 +1,6 @@
 import { Artist } from './artist.interface';
-import { Image } from './image.interface';
 import { ExternalUrls } from './external-urls.interface';
+import { Image } from './image.interface';
 
 export interface Album {
   album_type: string;

@@ -9,5 +9,5 @@ export class HeaderArtistComponent {
   @Input() items: any;
   loading = false;
 
-  constructor(private router: Router) {}
+  constructor() {}
 }
