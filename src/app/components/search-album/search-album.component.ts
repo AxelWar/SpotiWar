@@ -12,8 +12,6 @@ export class SearchAlbumComponent {
   constructor(private spotify: SpotifyService) {}
 
   search(searchTerm: string) {
-    console.log(searchTerm);
-
     this.loading = true;
     this.spotify.getAlbums(searchTerm).subscribe((data: any) => {
       this.albums = data;

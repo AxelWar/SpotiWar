@@ -6,7 +6,7 @@
   >
 </div>
 <label><h1>Dashboard</h1></label>
-<app-header-profile [items]="profile"></app-header-profile>
+<app-header-item [item]="profile" [loading]="loading"></app-header-item>
 
 <label><h1>Favorites</h1></label>
 <app-list [items]="tracks"></app-list>

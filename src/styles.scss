@@ -1,31 +1,4 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@import '@angular/material/theming';
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
-// Plus imports for other components in your app.
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core();
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$spotiapp-primary: mat-palette($mat-indigo);
-$spotiapp-accent: mat-palette($mat-pink, A200, A100, A400);
-// The warn palette is optional (defaults to red).
-$spotiapp-warn: mat-palette($mat-red);
-// Create the theme object (a Sass map containing all of the palettes).
-$spotiapp-theme: mat-light-theme(
-  $spotiapp-primary,
-  $spotiapp-accent,
-  $spotiapp-warn
-);
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($spotiapp-theme);
-
-/* You can add global styles to this file, and also import other style files */
 
 .puntero {
   cursor: pointer;
@@ -35,57 +8,15 @@ $spotiapp-theme: mat-light-theme(
   color: rgb(0, 151, 58);
 }
 
-.card-title,
-.card-text {
-  color: black;
-}
-
-.badge {
-  margin-left: 5px;
-}
-
 .btn-outline-success {
   margin-left: 5px;
 }
 
 .img-thumb {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   margin: 10px;
   padding: 10px;
-}
-
-/* Animaciones */
-
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-.fast {
-  -webkit-animation-duration: 0.4s;
-  animation-duration: 0.4s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.fadeIn {
-  animation-name: fadeIn;
-}
-
-a {
-  color: rgb(196, 196, 196);
 }
 
 .nav {
@@ -119,53 +50,65 @@ td {
   padding: 15px;
   text-align: left;
   border: 1px solid rgb(100, 100, 100);
-  /*  font-size: 1vw; */
 }
 
 tr:hover {
   background-color: #242424;
 }
 
-audio:hover,
-audio:focus,
-audio:active {
-  -webkit-box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
-  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
-  -webkit-transform: scale(1.05);
-  -moz-transform: scale(1.05);
-  transform: scale(1.05);
-}
-
-h1 {
-  padding: 15px 10px 0px 10px;
-  margin: 15px 10px 0px 10px;
-  font-size: 40px;
-  display: block;
-  margin-block-start: 0.67em;
-  margin-block-end: 0.67em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-
-h2 {
-  padding: 15px 10px 0px 10px;
-  margin: 15px 10px 0px 10px;
-  display: block;
-  width: 100%;
-}
-
 .search {
   padding: 15px;
 }
-html,
-body {
-  height: 100%;
+
+.card-title {
+  color: white;
 }
-body {
-  margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+
+.search-nav-button {
+  background-color: grey;
+  color: white;
+}
+
+.artist-name {
+  color: white;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card-pointer {
+  width: calc(
+    25% - 10px
+  ); /* 4 cards in a row with a 10px margin between them */
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  min-width: 220px;
+}
+
+@media (max-width: 768px) {
+  .card-pointer {
+    width: calc(33.33% - 10px); /* 3 cards in a row for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .card-pointer {
+    width: calc(50% - 10px); /* 2 cards in a row for even smaller screens */
+  }
+}
+
+.badge-text {
+  font-size: 12px;
+}
+
+.card-content {
+  margin: 0.5rem;
+}
+
+.component-container {
+  margin: 3rem;
 }

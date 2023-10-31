@@ -1,33 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { catchError, takeUntil } from 'rxjs/operators';
 import { SpotifyService } from '../../services/spotify.service';
-import { Router } from '@angular/router';
-import { ClassTrack } from '../classes/track';
+import { Album } from '../shared/interfaces/album.interface';
+import { Track } from '../shared/interfaces/track.interface';
+import { emptyAlbum } from '../shared/mocks/album.mock';
+import { emptyTrack } from '../shared/mocks/track.mock';
 
 @Component({
   selector: 'app-song',
   templateUrl: './song.component.html',
 })
-export class SongComponent {
-  loading: boolean;
-  album: any = {};
-  marcadores: ClassTrack[] = [];
+export class SongComponent implements OnDestroy {
+  private unsubscribe$ = new Subject<void>();
+  loading = false;
+  marcadores: Track[] = [emptyTrack];
+  album: Album = emptyAlbum;
 
   constructor(
     private route: ActivatedRoute,
-    private spotify: SpotifyService,
-    private router: Router
+    private spotify: SpotifyService
   ) {
     this.loading = true;
-    this.route.params.subscribe(params => {
-      this.getAlbum(params['id']);
-    });
+    const albumId = this.route.snapshot.params['id'];
+    if (albumId) {
+      this.getAlbum(albumId);
+    } else {
+      this.loading = false;
+      console.error('Album ID is missing');
+    }
   }
 
   getAlbum(id: string) {
-    this.spotify.getAlbum(id).subscribe(album => {
-      this.album = album;
-      this.loading = false;
-    });
+    this.spotify
+      .getAlbum(id)
+      .pipe(
+        takeUntil(this.unsubscribe$),
+        catchError(err => {
+          console.error('Failed to fetch album', err);
+          this.loading = false;
+          return [];
+        })
+      )
+      .subscribe(album => {
+        this.album = album;
+        this.loading = false;
+      });
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

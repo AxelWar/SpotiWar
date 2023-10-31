@@ -1,136 +1,129 @@
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { ClassTrack } from '../components/classes/track';
+import { Observable } from 'rxjs/internal/Observable';
+import { throwError } from 'rxjs/internal/observable/throwError';
+import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { Album } from '../components/shared/interfaces/album.interface';
+import {
+  Albums,
+  AlbumsResponse,
+} from '../components/shared/interfaces/albums.interface';
+import { Artist } from '../components/shared/interfaces/artist.interface';
+import { Track } from '../components/shared/interfaces/track.interface';
+import { TracksResponse } from '../components/shared/interfaces/tracks.interface';
+import { User } from '../components/shared/interfaces/user.interface';
+
+const SPOTIFY_API_BASE_URL = 'https://api.spotify.com/v1';
+const SPOTIFY_AUTH_BASE_URL = 'https://accounts.spotify.com/authorize';
+const SCOPES = encodeURIComponent('user-read-private user-read-email');
 
 @Injectable({
   providedIn: 'root',
 })
 export class SpotifyService {
-  token = '';
-  searchTerm = '';
-  favoriteSongs: any[] = [];
-  favSong = '';
-  listFavorites: any[] = [];
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {
-    console.log('Spotify Service Ready');
+  private getToken(): string | null {
+    return localStorage.getItem('auth');
   }
 
   auth() {
-    this.token = localStorage.getItem('auth') as string;
-    const urlBase = 'https://accounts.spotify.com/authorize';
-    const clientId = '476b04f286264f229aed7cd9acc85f7e';
-    const scopes = encodeURIComponent('user-read-private user-read-email');
-    const redirectUri = encodeURIComponent('http://localhost:4200/home');
-    const url = `${urlBase}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes}&show_dialog=true`;
-    if (!this.token) {
+    const token = this.getToken();
+    if (!token) {
+      const url = this.constructAuthUrl();
       window.location.href = url;
     }
   }
 
-  /*   refreshToken() {
-    const clientId = '476b04f286264f229aed7cd9acc85f7e';
-    const clientSecret = '1a7db45b6582437ab4b23a648a4bc903';
-    const url = `https://bootcamp-token-master.herokuapp.com/spotify/${clientId}/${clientSecret}`;
-    this.http.get(url).subscribe((data: any) => {
-      localStorage.setItem('auth', data.access_token);
-    });
- } */
+  private constructAuthUrl(): string {
+    return `${SPOTIFY_AUTH_BASE_URL}?client_id=${environment.spotifyClientId}&response_type=token&redirect_uri=${environment.redirectUri}&scope=${SCOPES}&show_dialog=true`;
+  }
 
-  getUrl(query: string) {
-    const url = `https://api.spotify.com/v1/${query}`;
-    this.token = localStorage.getItem('auth') as string;
+  private getUrl(query: string): Observable<any> {
+    const token = this.getToken();
+    if (!token) {
+      return throwError(() => new Error('Spotify token is not set'));
+    }
+    const url = `${SPOTIFY_API_BASE_URL}/${query}`;
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.token}`,
+      Authorization: `Bearer ${token}`,
     });
-    return this.http.get(url, { headers });
+    return this.http.get(url, { headers }).pipe(catchError(this.handleError));
   }
 
-  getNewReleases() {
+  private handleError(error: HttpErrorResponse) {
+    console.error('An error occurred:', error.message);
+    return throwError(
+      () => new Error('An error occurred; please try again later.')
+    );
+  }
+
+  getNewReleases(): Observable<Album[]> {
     return this.getUrl('browse/new-releases').pipe(
+      map((data: AlbumsResponse) => data.albums.items)
+    );
+  }
+
+  getArtist(id: string): Observable<Artist> {
+    return this.getUrl(`artists/${id}`).pipe(map((data: Artist) => data));
+  }
+
+  getArtistsAlbums(id: string): Observable<Albums> {
+    return this.getUrl(`artists/${id}/albums`).pipe(
+      map((data: Albums) => data)
+    );
+  }
+
+  getAlbums(searchTerm: string): Observable<any> {
+    return this.getUrl(`search?q=${searchTerm}&type=album&market=US`).pipe(
       map((data: any) => data.albums.items)
     );
   }
 
-  getArtists(searchTerm: string) {
-    return this.getUrl(`search?q=${searchTerm}&type=artist&market=AR`).pipe(
-      map((data: any) => data.artists.items)
-    );
-  }
-  getArtist(id: string) {
-    return this.getUrl(`artists/${id}`);
+  getAlbum(id: string): Observable<any> {
+    return this.getUrl(`albums/${id}`).pipe(map((data: any) => data));
   }
 
-  getAlbumArtist(id: string) {
-    return this.getUrl(`artists/${id}/albums`);
-  }
-
-  getSongAlbum(id: string) {
-    return this.getUrl(`albums/${id}/tracks`);
-  }
-
-  getAlbums(searchTerm: string) {
-    return this.getUrl(`search?q=${searchTerm}&type=album&market=AR`).pipe(
-      map((data: any) => data.albums.items)
-    );
-  }
-  getAlbum(id: string) {
-    return this.getUrl(`albums/${id}`);
-  }
-
-  getSongs(searchTerm: string) {
-    return this.getUrl(`search?q=${searchTerm}&type=track&market=AR`).pipe(
-      map((data: any) => data.tracks.items)
+  getSongs(searchTerm: string): Observable<Track[]> {
+    return this.getUrl(`search?q=${searchTerm}&type=track&market=US`).pipe(
+      map((data: TracksResponse) => data.tracks.items)
     );
   }
 
-  getSong(id: string) {
-    return this.getUrl(`tracks/${id}`).pipe(map((data: ClassTrack) => data));
+  getSong(id: string): Observable<Track> {
+    return this.getUrl(`tracks/${id}`).pipe(map((data: Track) => data));
   }
-  setFavorite(favSong: string) {
-    this.favoriteSongs = JSON.parse(localStorage.getItem('favs') as string);
-    // tslint:disable-next-line: prefer-for-of
 
-    return !!this.favoriteSongs.find(song => song === favSong);
+  getProfile(): Observable<User> {
+    return this.getUrl('me').pipe(map((data: User) => data));
+  }
 
-    /*   for (let i = 0 ; i < this.favoriteSongs.length; i++) {
-    if ( this.favoriteSongs[i] === favSong ) {
-      return true;
+  setFavorite(songId: string): boolean {
+    const favoriteSongs =
+      JSON.parse(localStorage.getItem('favs') as string) || [];
+    return favoriteSongs.includes(songId);
+  }
+
+  setFavoriteSongs(songId: string): void {
+    const favoriteSongs =
+      JSON.parse(localStorage.getItem('favs') as string) || [];
+    if (!favoriteSongs.includes(songId)) {
+      favoriteSongs.push(songId);
+      localStorage.setItem('favs', JSON.stringify(favoriteSongs));
     }
-  } */
   }
 
-  getProfile() {
-    return this.getUrl('me').pipe(map((data: any) => data));
-  }
-
-  getAll(searchTerm: string) {
-    return this.getUrl(
-      `https://api.spotify.com/v1/search?q=${searchTerm}&type=track%2Cartist%2Calbum&market=AR`
-    ).pipe(map((data: any) => data.type.items));
-  }
-  getFavorites() {
-    this.listFavorites = JSON.parse(localStorage.getItem('favs') as string);
-    return console.log(this.listFavorites);
-  }
-  setFavoriteSongs(favSong: string) {
-    this.favoriteSongs = JSON.parse(localStorage.getItem('favs') as string);
-    this.favoriteSongs.push(favSong);
-    const filteredArray = this.favoriteSongs.filter(
-      (valor, index, array) => array.indexOf(valor) === index
+  removeFavorite(songId: string): void {
+    let favoriteSongs =
+      JSON.parse(localStorage.getItem('favs') as string) || [];
+    favoriteSongs = favoriteSongs.filter(
+      (favSongId: string) => favSongId !== songId
     );
-    this.favoriteSongs = filteredArray;
-    localStorage.setItem('favs', JSON.stringify(this.favoriteSongs));
-  }
-
-  removeFavorite(favSong: string) {
-    this.favoriteSongs = JSON.parse(localStorage.getItem('favs') as string);
-    for (let i = 0; i < this.favoriteSongs.length; i++) {
-      if (this.favoriteSongs[i] === favSong) {
-        this.favoriteSongs.splice(i, 1);
-        localStorage.setItem('favs', JSON.stringify(this.favoriteSongs));
-      }
-    }
+    localStorage.setItem('favs', JSON.stringify(favoriteSongs));
   }
 }

@@ -1,20 +1,9 @@
-<div class="card-columns m-2 animated fadeIn">
-  <div
-    (click)="seeSongsAlbum(item)"
-    *ngFor="let item of items"
-    class="card-pointer">
-    <img [src]="item.images | noImage" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">
-        {{ item.name }}
-      </h5>
-      <p class="card-text">
-        <span
-          *ngFor="let artist of item.artists"
-          class="badge badge-pill badge-dark">
-          {{ artist.name }}
-        </span>
-      </p>
-    </div>
-  </div>
+<div class="card-container">
+  <app-card
+    class="card-pointer"
+    *ngFor="let album of albumArtist.items"
+    [item]="album"
+    [type]="'album'"
+    (cardClick)="seeSongsAlbum(album)">
+  </app-card>
 </div>

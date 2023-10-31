@@ -1,23 +1,11 @@
-<app-header-artist [items]="artist"></app-header-artist>
-
-<!-- <app-list [items]="albumArtist.item"></app-list> -->
-
-<div class="card-columns m-5 animated fadeIn">
-  <div
-    (click)="seeSongsAlbum(album)"
-    *ngFor="let album of albumArtist.items"
-    class="card-pointer">
-    <img [src]="album.images | noImage" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">
-        {{ album.name }}
-
-        <p class="card-text">
-          <span class="badge badge-pill badge-dark">
-            {{ album.release_date }}
-          </span>
-        </p>
-      </h5>
-    </div>
-  </div>
+<app-header-item [item]="artist" [loading]="loading"></app-header-item>
+Albums
+<div class="card-container">
+  <app-card
+    class="card-pointer"
+    *ngFor="let item of albumArtist.items"
+    [item]="item"
+    [type]="'artist'"
+    (cardClick)="seeSongsAlbum(item)">
+  </app-card>
 </div>

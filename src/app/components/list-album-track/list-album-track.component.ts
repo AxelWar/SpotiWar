@@ -8,7 +8,7 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class ListAlbumTrackComponent {
   @Input() items: any[] = [];
-  favSong!: string;
+  songId!: string;
 
   loading = false;
 
@@ -32,15 +32,15 @@ export class ListAlbumTrackComponent {
     }
   }
 
-  checkFav(favSong: string) {
-    return this.spotify.setFavorite(favSong);
+  checkFav(songId: string) {
+    return this.spotify.setFavorite(songId);
   }
 
-  checkIfFavorite(favSong: string) {
-    if (this.spotify.setFavorite(favSong) === true) {
-      this.spotify.removeFavorite(favSong);
+  checkIfFavorite(songId: string) {
+    if (this.spotify.setFavorite(songId) === true) {
+      this.spotify.removeFavorite(songId);
     } else {
-      this.spotify.setFavoriteSongs(favSong);
+      this.spotify.setFavoriteSongs(songId);
     }
   }
 }

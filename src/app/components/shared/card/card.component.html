@@ -1,0 +1,22 @@
+<div (click)="onClick()">
+  <img [src]="item.images | noImage" class="card-img-top" />
+  <div class="card-content">
+    <span class="card-title">
+      {{ item.name }}
+    </span>
+    <p class="card-text">
+      <ng-container *ngIf="type === 'song'">
+        <span
+          *ngFor="let artist of item.artists"
+          class="badge badge-pill badge-dark badge-text">
+          {{ artist.name }}
+        </span>
+      </ng-container>
+      <ng-container *ngIf="type === 'album' || type === 'artist'">
+        <span class="badge badge-pill badge-dark badge-text">
+          {{ item.release_date }}
+        </span>
+      </ng-container>
+    </p>
+  </div>
+</div>
