@@ -1,4 +1,4 @@
-import { HeaderItem } from '../interfaces/header-item';
+import { HeaderItem } from '../interfaces/header-item.interface';
 
 // Empty Mock
 export const emptyHeaderItem: HeaderItem = {
