@@ -79,14 +79,8 @@ export class SpotifyService {
     );
   }
 
-  getAlbums(searchTerm: string): Observable<any> {
-    return this.getUrl(`search?q=${searchTerm}&type=album&market=US`).pipe(
-      map((data: any) => data.albums.items)
-    );
-  }
-
-  getAlbum(id: string): Observable<any> {
-    return this.getUrl(`albums/${id}`).pipe(map((data: any) => data));
+  getAlbum(id: string): Observable<Album> {
+    return this.getUrl(`albums/${id}`).pipe(map((data: Album) => data));
   }
 
   getSongs(searchTerm: string): Observable<Track[]> {

@@ -1,13 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpotifyService } from 'src/app/services/spotify.service';
+import { emptyTrack } from '../shared/mocks/track.mock';
+import { Track } from '../shared/interfaces/track.interface';
 
 @Component({
   selector: 'app-list-album-track',
   templateUrl: './list-album-track.component.html',
 })
 export class ListAlbumTrackComponent {
-  @Input() items: any[] = [];
+  @Input() items: Track[] = [emptyTrack];
   songId!: string;
 
   loading = false;

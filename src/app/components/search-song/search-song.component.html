@@ -1,14 +1,3 @@
 <app-loading class="m-5" *ngIf="loading"></app-loading>
 
-<div class="search">
-  <div class="col m-2">
-    <input
-      #searchTerm
-      type="text"
-      (keyup)="search(searchTerm.value)"
-      class="form-control"
-      placeholder="Search" />
-  </div>
-</div>
-
 <app-list *ngIf="tracks.length" [items]="tracks"></app-list>

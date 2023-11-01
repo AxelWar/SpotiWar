@@ -19,19 +19,13 @@
   padding: 10px;
 }
 
-.nav {
-  background-image: linear-gradient(143deg, #4101f5, #ea1e32);
-  background-size: 100% 5513px;
-  background-position: 0px -2968px;
-  background-repeat: no-repeat;
-  padding: 5px;
-}
-
 body {
   background-color: black;
   height: 100%;
   font-family: Circular, Helvetica, Arial, sans-serif;
   color: whitesmoke;
+  min-width: 400px; /* Adjust as required */
+  overflow-x: auto;
 }
 
 table {
@@ -61,11 +55,6 @@ tr:hover {
 }
 
 .card-title {
-  color: white;
-}
-
-.search-nav-button {
-  background-color: grey;
   color: white;
 }
 

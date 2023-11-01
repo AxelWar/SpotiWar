@@ -10,14 +10,11 @@ import { ROUTES } from './app.routes';
 import { SpotifyService } from './services/spotify.service';
 //Components
 import { AppComponent } from './app.component';
-import { AlbumComponent } from './components/album/album.component';
 import { ArtistComponent } from './components/artist/artist.component';
-import { CardsAlbumComponent } from './components/cards-album/cards-album.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListAlbumTrackComponent } from './components/list-album-track/list-album-track.component';
 import { ListComponent } from './components/list/list.component';
-import { SearchAlbumComponent } from './components/search-album/search-album.component';
 import { SearchSongComponent } from './components/search-song/search-song.component';
 import { SharedModule } from './components/shared/shared.module';
 import { SongComponent } from './components/song/song.component';
@@ -28,10 +25,7 @@ import { SongComponent } from './components/song/song.component';
     HomeComponent,
     ArtistComponent,
     CardsComponent,
-    CardsAlbumComponent,
-    AlbumComponent,
     SongComponent,
-    SearchAlbumComponent,
     SearchSongComponent,
     ListComponent,
     ListAlbumTrackComponent,
