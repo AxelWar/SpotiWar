@@ -1,4 +1,4 @@
-<nav class="nav navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
     <img src="/assets/img/spoti-ico.png" width="50" height="50" alt="" />
     SpotiWar
@@ -8,42 +8,24 @@
     class="navbar-toggler"
     type="button"
     data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
     aria-expanded="false"
     aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="home">Home</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="search-song">Search</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="search-artist">Artists</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="search-album">Albums</a>
-      </li>
-    </ul>
-    <form
-      class="form-inline my-2 my-lg-0"
-      (ngSubmit)="search(searchTerm.value)">
-      <input
-        #searchTerm
-        type="text"
-        (keyup)="search(searchTerm.value)"
-        class="form-control mr-sm-2"
-        placeholder="Search" />
-      <button
-        class="search-nav-button btn btn-outline-dark my-2 my-sm-0"
-        type="submit">
-        Search
-      </button>
-    </form>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="ml-auto">
+      <form class="navbar-search" (ngSubmit)="search(searchTerm.value)">
+        <input
+          #searchTerm
+          type="text"
+          (keyup)="search(searchTerm.value)"
+          class="search-nav-input"
+          placeholder="Search" />
+        <button class="search-nav-button" type="submit">Search</button>
+      </form>
+    </div>
   </div>
 </nav>

@@ -1,0 +1,62 @@
+.search-nav-input,
+.search-nav-button {
+  border: none;
+  padding: 10px;
+  margin: 2px;
+  border-radius: 5px;
+}
+
+.search-nav-input {
+  flex-grow: 2;
+  margin-right: 5px;
+  transition: all 0.3s ease;
+}
+
+.search-nav-button {
+  background-color: #1db954; // Spotify Green
+  color: white;
+  cursor: pointer;
+  flex-grow: 1;
+  width: auto;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+  align-self: flex-start; // Align to the start of its container
+}
+
+.search-nav-button:hover {
+  background-color: #1ed760;
+}
+
+.navbar-search {
+  display: flex;
+  flex-direction: row; // Ensure items are horizontal
+  align-items: center;
+  padding: 10px;
+  gap: 5px;
+}
+
+.navbar-dark .navbar-search .search-nav-input {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-dark .navbar-search .search-nav-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 576px) {
+  .navbar-search {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .search-nav-input {
+    width: calc(100% - 90px);
+    box-sizing: border-box;
+  }
+
+  .search-nav-button {
+    width: 80px;
+    box-sizing: border-box;
+  }
+}

@@ -4,9 +4,7 @@ import { Subject } from 'rxjs';
 import { catchError, takeUntil } from 'rxjs/operators';
 import { SpotifyService } from '../../services/spotify.service';
 import { Album } from '../shared/interfaces/album.interface';
-import { Track } from '../shared/interfaces/track.interface';
 import { emptyAlbum } from '../shared/mocks/album.mock';
-import { emptyTrack } from '../shared/mocks/track.mock';
 
 @Component({
   selector: 'app-song',
@@ -15,7 +13,6 @@ import { emptyTrack } from '../shared/mocks/track.mock';
 export class SongComponent implements OnDestroy {
   private unsubscribe$ = new Subject<void>();
   loading = false;
-  marcadores: Track[] = [emptyTrack];
   album: Album = emptyAlbum;
 
   constructor(
