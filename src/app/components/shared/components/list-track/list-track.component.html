@@ -1,0 +1,45 @@
+<table>
+  <thead>
+    <tr>
+      <th (click)="sortTrackNumber()" class="pointer" *ngIf="displayArtist">
+        #<i
+          class="material-icons"
+          [ngClass]="{
+            arrow_drop_up: trackNumberSortOrder === 'asc',
+            arrow_drop_down: trackNumberSortOrder === 'desc'
+          }"></i>
+      </th>
+      <th>Name</th>
+      <th *ngIf="displayArtist">Artist</th>
+      <th (click)="sortDuration()" class="pointer">
+        Duration<i
+          class="material-icons"
+          [ngClass]="{
+            arrow_drop_up: durationSortOrder === 'asc',
+            arrow_drop_down: durationSortOrder === 'desc'
+          }"></i>
+      </th>
+      <th>Preview</th>
+      <th>Fav</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of tracks">
+      <td *ngIf="displayArtist">{{ item.track_number }}</td>
+      <td>{{ item.name }}</td>
+      <td *ngIf="displayArtist" (click)="seeArtist(item)" class="puntero">
+        {{ item.artists[0].name }}
+      </td>
+      <td>{{ item.duration_ms | date: 'mm:ss' }}</td>
+      <td><audio [src]="item.preview_url" controls></audio></td>
+      <td>
+        <button (click)="checkIfFavorite(item.id)">
+          <i *ngIf="checkFav(item.id)" class="material-icons star">star</i>
+          <i *ngIf="!checkFav(item.id)" class="material-icons star_border"
+            >star_border</i
+          >
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

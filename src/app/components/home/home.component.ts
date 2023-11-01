@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpotifyService } from '../../services/spotify.service';
 import { Track } from '../shared/interfaces/track.interface';
-import { emptyUser } from '../shared/mocks/user.mock';
 import { User } from '../shared/interfaces/user.interface';
+import { emptyTrack } from '../shared/mocks/track.mock';
+import { emptyUser } from '../shared/mocks/user.mock';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
   favoriteSongs: string[] = [];
   tracks: Track[] = [];
   newSongs: Track[] = [];
+  displayArtist: boolean = true;
   loading = false;
   error = false;
   errorMessage!: string;
@@ -106,6 +108,33 @@ export class HomeComponent implements OnInit {
       this.spotify.getSong(this.listFavorites[i]).subscribe((data: Track) => {
         this.tracks.push(data);
       });
+    }
+  }
+
+  checkIfFavorite(songId: string): boolean {
+    return this.spotify.isFavorite(songId);
+  }
+
+  setFavorites(songId: string) {
+    if (this.checkIfFavorite(songId)) {
+      this.spotify.removeFavorite(songId);
+    } else {
+      this.spotify.addFavorite(songId);
+    }
+  }
+
+  sort() {
+    if (this.tracks[0].duration_ms > this.tracks[1].duration_ms) {
+      this.tracks.sort((a, b) => a.duration_ms - b.duration_ms);
+    } else {
+      this.tracks.sort((a, b) => b.duration_ms - a.duration_ms);
+    }
+  }
+  sortn() {
+    if (this.tracks[0].track_number > this.tracks[1].track_number) {
+      this.tracks.sort((a, b) => a.track_number - b.track_number);
+    } else {
+      this.tracks.sort((a, b) => b.track_number - a.track_number);
     }
   }
 }

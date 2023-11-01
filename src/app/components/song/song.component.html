@@ -1,3 +1,5 @@
 <app-header-item [item]="album" [loading]="loading"></app-header-item>
 
-<app-list-album-track [items]="album.tracks.items"></app-list-album-track>
+<app-list-track
+  [tracks]="album.tracks.items"
+  [displayArtist]="true"></app-list-track>
