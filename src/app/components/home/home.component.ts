@@ -90,6 +90,16 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  seeArtist(item: Track) {
+    let artistId;
+    if (item.type === 'artist') {
+      artistId = item.id;
+    } else {
+      artistId = item.artists[0].id;
+    }
+    this.router.navigate(['/artist', artistId]);
+  }
+
   getFavorites() {
     this.listFavorites = JSON.parse(localStorage.getItem('favs') as string);
     for (let i = 0; i < this.listFavorites.length; i++) {

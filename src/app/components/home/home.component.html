@@ -12,4 +12,13 @@
 <app-list [items]="tracks"></app-list>
 
 <label><h1>New Releases</h1></label>
-<app-cards [items]="newSongs"></app-cards>
+
+<div class="card-container">
+  <app-card
+    class="card-pointer"
+    *ngFor="let item of newSongs"
+    [item]="item"
+    [type]="'song'"
+    (cardClick)="seeArtist(item)">
+  </app-card>
+</div>

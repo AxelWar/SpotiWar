@@ -11,7 +11,6 @@ import { SpotifyService } from './services/spotify.service';
 //Components
 import { AppComponent } from './app.component';
 import { ArtistComponent } from './components/artist/artist.component';
-import { CardsComponent } from './components/cards/cards.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListAlbumTrackComponent } from './components/list-album-track/list-album-track.component';
 import { ListComponent } from './components/list/list.component';
@@ -24,7 +23,6 @@ import { SongComponent } from './components/song/song.component';
     AppComponent,
     HomeComponent,
     ArtistComponent,
-    CardsComponent,
     SongComponent,
     SearchSongComponent,
     ListComponent,
