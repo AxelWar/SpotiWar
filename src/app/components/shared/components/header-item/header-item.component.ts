@@ -8,6 +8,6 @@ import { emptyHeaderItem } from '../../mocks/header-item.mock';
   styleUrls: ['./header-item.component.scss'],
 })
 export class HeaderItemComponent {
-  @Input() item?: HeaderItem = emptyHeaderItem;
+  @Input() item: HeaderItem = emptyHeaderItem;
   @Input() loading = false;
 }

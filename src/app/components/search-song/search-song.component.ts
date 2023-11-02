@@ -8,7 +8,7 @@ import { Track } from '../shared/interfaces/track.interface';
 })
 export class SearchSongComponent {
   tracks: Track[] = [];
-  displayArtist: boolean = false;
+  displayArtist: boolean = true;
   loading = false;
   searchTerm!: string;
 
@@ -29,7 +29,7 @@ export class SearchSongComponent {
       return;
     }
     this.loading = true;
-    this.spotify.getSongs(searchTerm).subscribe((data: any) => {
+    this.spotify.getSongs(searchTerm).subscribe((data: Track[]) => {
       this.tracks = data;
       this.loading = false;
     });

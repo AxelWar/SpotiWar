@@ -8,7 +8,7 @@ export const emptyAlbum: Album = {
   external_urls: { spotify: '' },
   href: '',
   id: '',
-  images: [],
+  images: [{ height: 0, url: '', width: 0 }],
   name: '',
   release_date: '',
   release_date_precision: '',

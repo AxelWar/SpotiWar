@@ -10,14 +10,17 @@
 
 <label><h1>Favorites</h1></label>
 
-<app-list-track [tracks]="tracks" [displayArtist]="true"></app-list-track>
+<app-list-track
+  *ngIf="tracks.length"
+  [tracks]="tracks"
+  [displayArtist]="true"></app-list-track>
 
 <label><h1>New Releases</h1></label>
 
 <div class="card-container">
   <app-card
     class="card-pointer"
-    *ngFor="let item of newSongs"
+    *ngFor="let item of newReleases"
     [item]="item"
     [type]="'song'"
     (cardClick)="seeArtist(item)">

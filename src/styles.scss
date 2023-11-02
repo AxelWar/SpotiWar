@@ -1,4 +1,5 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import '@angular/material/theming';
 
 .puntero {
   cursor: pointer;
@@ -26,28 +27,6 @@ body {
   color: whitesmoke;
   min-width: 400px; /* Adjust as required */
   overflow-x: auto;
-}
-
-table {
-  width: 100%;
-}
-
-th {
-  background-color: #242424;
-  font-weight: bold;
-}
-
-th,
-td {
-  height: 50px;
-  vertical-align: center;
-  padding: 15px;
-  text-align: left;
-  border: 1px solid rgb(100, 100, 100);
-}
-
-tr:hover {
-  background-color: #242424;
 }
 
 .search {
@@ -100,4 +79,41 @@ tr:hover {
 
 .component-container {
   margin: 3rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+//Table
+.table-container {
+  @include mat-elevation(8);
+}
+
+.puntero {
+  cursor: pointer;
+}
+
+.puntero:hover {
+  color: mat-color($mat-light-green);
+}
+
+.mat-mdc-row:hover {
+  background-color: rgb(102, 197, 138);
+}
+
+.mat-header-cell,
+.mat-cell {
+  color: whitesmoke;
+  padding: 15px;
+  border-bottom: 1px solid rgb(100, 100, 100);
+}
+
+.mat-table {
+  width: 100%;
 }
