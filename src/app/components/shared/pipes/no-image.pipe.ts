@@ -6,13 +6,9 @@ import { Images } from '../interfaces/images.interface';
 })
 export class NoImagePipe implements PipeTransform {
   transform(images: Images[]): string {
-    if (!images) {
+    if (!images || images.length === 0) {
       return 'assets/img/noImage.png';
     }
-    if (images.length > 0) {
-      return images[0].url;
-    } else {
-      return 'assets/img/noImage.png';
-    }
+    return images[0].url;
   }
 }

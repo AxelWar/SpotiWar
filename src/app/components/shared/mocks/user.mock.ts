@@ -6,7 +6,13 @@ export const emptyUser: User = {
   external_urls: { spotify: '' },
   href: '',
   id: '',
-  images: [],
+  images: [
+    {
+      height: 0,
+      url: '',
+      width: 0,
+    },
+  ],
   type: '',
   uri: '',
   country: '',

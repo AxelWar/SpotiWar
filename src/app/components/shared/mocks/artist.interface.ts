@@ -7,7 +7,13 @@ export const emptyArtist: Artist = {
   genres: [],
   href: '',
   id: '',
-  images: [],
+  images: [
+    {
+      height: 0,
+      url: '',
+      width: 0,
+    },
+  ],
   name: '',
   popularity: 0,
   type: '',
