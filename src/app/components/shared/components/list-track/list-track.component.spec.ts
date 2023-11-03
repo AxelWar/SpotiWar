@@ -8,6 +8,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ListTrackComponent', () => {
   let httpClient: HttpClient;
@@ -17,7 +18,12 @@ describe('ListTrackComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [SharedModule, RouterTestingModule, HttpClientTestingModule],
+      imports: [
+        SharedModule,
+        RouterTestingModule,
+        HttpClientTestingModule,
+        BrowserAnimationsModule,
+      ],
       declarations: [ListTrackComponent],
     });
     httpClient = TestBed.get(HttpClient);
