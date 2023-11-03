@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { HeaderItem } from '../interfaces/header-item.interface';
-import { emptyHeaderItem } from '../mocks/header-item.mock';
+import { HeaderItem } from '../../interfaces/header-item.interface';
+import { emptyHeaderItem } from '../../mocks/header-item.mock';
 
 @Component({
   selector: 'app-header-item',
@@ -8,6 +8,6 @@ import { emptyHeaderItem } from '../mocks/header-item.mock';
   styleUrls: ['./header-item.component.scss'],
 })
 export class HeaderItemComponent {
-  @Input() item?: HeaderItem = emptyHeaderItem;
+  @Input() item: HeaderItem = emptyHeaderItem;
   @Input() loading = false;
 }

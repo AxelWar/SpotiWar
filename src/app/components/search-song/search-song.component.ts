@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { SpotifyService } from '../../services/spotify.service';
 import { ActivatedRoute } from '@angular/router';
+import { SpotifyService } from '../../services/spotify.service';
+import { Track } from '../shared/interfaces/track.interface';
 @Component({
   selector: 'app-search',
   templateUrl: './search-song.component.html',
 })
 export class SearchSongComponent {
-  tracks: any[] = [];
+  tracks: Track[] = [];
+  displayArtist: boolean = true;
   loading = false;
   searchTerm!: string;
 
@@ -27,7 +29,7 @@ export class SearchSongComponent {
       return;
     }
     this.loading = true;
-    this.spotify.getSongs(searchTerm).subscribe((data: any) => {
+    this.spotify.getSongs(searchTerm).subscribe((data: Track[]) => {
       this.tracks = data;
       this.loading = false;
     });

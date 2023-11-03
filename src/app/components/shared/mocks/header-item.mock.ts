@@ -2,7 +2,9 @@ import { HeaderItem } from '../interfaces/header-item.interface';
 
 // Empty Mock
 export const emptyHeaderItem: HeaderItem = {
-  images: [],
+  name: '',
+  display_name: '',
+  images: [{ height: 0, url: '', width: 0 }],
 };
 
 // Filled Mock

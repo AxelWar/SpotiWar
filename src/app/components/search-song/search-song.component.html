@@ -1,3 +1,6 @@
 <app-loading class="m-5" *ngIf="loading"></app-loading>
 
-<app-list *ngIf="tracks.length" [items]="tracks"></app-list>
+<app-list-track
+  *ngIf="tracks.length"
+  [tracks]="tracks"
+  [displayArtist]="true"></app-list-track>

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderItemComponent } from './header-item.component';
-import { SharedModule } from '../shared.module';
+import { SharedModule } from '../../shared.module';
 
 describe('HeaderItemComponent', () => {
   let component: HeaderItemComponent;

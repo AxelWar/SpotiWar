@@ -26,6 +26,7 @@ const SCOPES = encodeURIComponent('user-read-private user-read-email');
   providedIn: 'root',
 })
 export class SpotifyService {
+  private readonly localStorageKey = 'favs';
   constructor(private http: HttpClient) {}
 
   private getToken(): string | null {
@@ -44,7 +45,7 @@ export class SpotifyService {
     return `${SPOTIFY_AUTH_BASE_URL}?client_id=${environment.spotifyClientId}&response_type=token&redirect_uri=${environment.redirectUri}&scope=${SCOPES}&show_dialog=true`;
   }
 
-  private getUrl(query: string): Observable<any> {
+  private getUrl<T>(query: string): Observable<T> {
     const token = this.getToken();
     if (!token) {
       return throwError(() => new Error('Spotify token is not set'));
@@ -53,7 +54,9 @@ export class SpotifyService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.get(url, { headers }).pipe(catchError(this.handleError));
+    return this.http
+      .get<T>(url, { headers })
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -64,60 +67,79 @@ export class SpotifyService {
   }
 
   getNewReleases(): Observable<Album[]> {
-    return this.getUrl('browse/new-releases').pipe(
+    return this.getUrl<AlbumsResponse>('browse/new-releases').pipe(
       map((data: AlbumsResponse) => data.albums.items)
     );
   }
 
   getArtist(id: string): Observable<Artist> {
-    return this.getUrl(`artists/${id}`).pipe(map((data: Artist) => data));
+    return this.getUrl<Artist>(`artists/${id}`).pipe(
+      map((data: Artist) => data)
+    );
   }
 
   getArtistsAlbums(id: string): Observable<Albums> {
-    return this.getUrl(`artists/${id}/albums`).pipe(
+    return this.getUrl<Albums>(`artists/${id}/albums`).pipe(
       map((data: Albums) => data)
     );
   }
 
   getAlbum(id: string): Observable<Album> {
-    return this.getUrl(`albums/${id}`).pipe(map((data: Album) => data));
+    return this.getUrl<Album>(`albums/${id}`).pipe(map((data: Album) => data));
   }
 
   getSongs(searchTerm: string): Observable<Track[]> {
-    return this.getUrl(`search?q=${searchTerm}&type=track&market=US`).pipe(
-      map((data: TracksResponse) => data.tracks.items)
-    );
+    return this.getUrl<TracksResponse>(
+      `search?q=${searchTerm}&type=track&market=US`
+    ).pipe(map((data: TracksResponse) => data.tracks.items));
   }
 
   getSong(id: string): Observable<Track> {
-    return this.getUrl(`tracks/${id}`).pipe(map((data: Track) => data));
+    return this.getUrl<Track>(`tracks/${id}`).pipe(map((data: Track) => data));
   }
 
   getProfile(): Observable<User> {
-    return this.getUrl('me').pipe(map((data: User) => data));
+    return this.getUrl<User>('me').pipe(map((data: User) => data));
   }
 
-  setFavorite(songId: string): boolean {
-    const favoriteSongs =
-      JSON.parse(localStorage.getItem('favs') as string) || [];
+  private getFavoriteSongs(): string[] {
+    try {
+      const favs = localStorage.getItem(this.localStorageKey);
+      if (favs) {
+        return JSON.parse(favs);
+      }
+    } catch (error) {
+      console.error('Failed to parse favorite songs from localStorage', error);
+    }
+    return [];
+  }
+
+  private saveFavoriteSongs(favoriteSongs: string[]): void {
+    try {
+      localStorage.setItem(this.localStorageKey, JSON.stringify(favoriteSongs));
+    } catch (error) {
+      console.error('Failed to save favorite songs to localStorage', error);
+    }
+  }
+
+  isFavorite(songId: string): boolean {
+    const favoriteSongs = this.getFavoriteSongs();
     return favoriteSongs.includes(songId);
   }
 
-  setFavoriteSongs(songId: string): void {
-    const favoriteSongs =
-      JSON.parse(localStorage.getItem('favs') as string) || [];
+  addFavorite(songId: string): void {
+    const favoriteSongs = this.getFavoriteSongs();
     if (!favoriteSongs.includes(songId)) {
       favoriteSongs.push(songId);
-      localStorage.setItem('favs', JSON.stringify(favoriteSongs));
+      this.saveFavoriteSongs(favoriteSongs);
     }
   }
 
   removeFavorite(songId: string): void {
-    let favoriteSongs =
-      JSON.parse(localStorage.getItem('favs') as string) || [];
-    favoriteSongs = favoriteSongs.filter(
-      (favSongId: string) => favSongId !== songId
+    const favoriteSongs = this.getFavoriteSongs();
+    const updatedFavorites = favoriteSongs.filter(
+      favSongId => favSongId !== songId
     );
-    localStorage.setItem('favs', JSON.stringify(favoriteSongs));
+    this.saveFavoriteSongs(updatedFavorites);
   }
 }

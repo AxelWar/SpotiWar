@@ -1,20 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject, forkJoin } from 'rxjs';
 import { SpotifyService } from '../../services/spotify.service';
+import { Album } from '../shared/interfaces/album.interface';
 import { Track } from '../shared/interfaces/track.interface';
-import { emptyUser } from '../shared/mocks/user.mock';
 import { User } from '../shared/interfaces/user.interface';
+import { emptyUser } from '../shared/mocks/user.mock';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  private unsubscribe$ = new Subject<void>();
   profile: User = emptyUser;
-  listFavorites!: string;
+  listFavorites: string[] = [];
   favoriteSongs: string[] = [];
   tracks: Track[] = [];
-  newSongs: Track[] = [];
+  newReleases: Album[] = [];
+  displayArtist: boolean = true;
   loading = false;
   error = false;
   errorMessage!: string;
@@ -25,35 +30,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.login();
-    if (localStorage.getItem('favs') == null) {
-      this.favoriteSongs.push('6rVNnvyNeibts1uOqdSNIw');
-      localStorage.setItem('favs', JSON.stringify(this.favoriteSongs));
-    }
-    this.getFavorites();
-
-    this.spotify.getProfile().subscribe(
-      (data: User) => {
-        this.profile = data;
-        this.loading = false;
-      },
-      errorService => {
-        this.loading = false;
-        this.error = true;
-        this.errorMessage = errorService.error.error.message;
-      }
-    );
-
-    this.spotify.getNewReleases().subscribe(
-      (data: any) => {
-        this.newSongs = data;
-        this.loading = false;
-      },
-      errorService => {
-        this.loading = false;
-        this.error = true;
-        this.errorMessage = errorService.error.error.message;
-      }
-    );
+    this.initializeFavorites();
+    this.fetchProfileData();
+    this.fetchNewReleases();
   }
 
   login() {
@@ -70,6 +49,35 @@ export class HomeComponent implements OnInit {
       this.spotify.auth();
     }
   }
+
+  initializeFavorites() {
+    if (!localStorage.getItem('favs')) {
+      this.favoriteSongs.push('6rVNnvyNeibts1uOqdSNIw');
+      localStorage.setItem('favs', JSON.stringify(this.favoriteSongs));
+    }
+    this.getFavorites();
+  }
+
+  fetchProfileData() {
+    this.spotify.getProfile().subscribe(data => {
+      this.profile = data;
+      this.loading = false;
+    }, this.handleError);
+  }
+
+  fetchNewReleases() {
+    this.spotify.getNewReleases().subscribe(data => {
+      this.newReleases = data;
+      this.loading = false;
+    }, this.handleError);
+  }
+
+  handleError = (errorService: HttpErrorResponse) => {
+    this.loading = false;
+    this.error = true;
+    this.errorMessage = errorService.error.error.message;
+  };
+
   loginRefresh() {
     localStorage.removeItem('auth');
     this.login();
@@ -78,9 +86,9 @@ export class HomeComponent implements OnInit {
   getReleases() {
     this.loading = true;
     this.spotify.getNewReleases().subscribe(
-      (data: any) => {
+      (data: Album[]) => {
         this.loading = false;
-        this.newSongs = data;
+        this.newReleases = data;
       },
       errorService => {
         this.loading = false;
@@ -90,7 +98,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  seeArtist(item: Track) {
+  seeArtist(item: Album) {
     let artistId;
     if (item.type === 'artist') {
       artistId = item.id;
@@ -102,10 +110,31 @@ export class HomeComponent implements OnInit {
 
   getFavorites() {
     this.listFavorites = JSON.parse(localStorage.getItem('favs') as string);
-    for (let i = 0; i < this.listFavorites.length; i++) {
-      this.spotify.getSong(this.listFavorites[i]).subscribe((data: Track) => {
-        this.tracks.push(data);
-      });
+    const requests = this.listFavorites.map(fav => this.spotify.getSong(fav));
+    forkJoin(requests).subscribe(
+      (data: Track[]) => {
+        this.tracks = [...this.tracks, ...data];
+      },
+      error => {
+        console.error('Error fetching tracks:', error);
+      }
+    );
+  }
+
+  checkIfFavorite(songId: string): boolean {
+    return this.spotify.isFavorite(songId);
+  }
+
+  setFavorites(songId: string) {
+    if (this.checkIfFavorite(songId)) {
+      this.spotify.removeFavorite(songId);
+    } else {
+      this.spotify.addFavorite(songId);
     }
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }
