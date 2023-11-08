@@ -1,12 +1,18 @@
+import { StoreModule } from '@ngrx/store';
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared/shared.module';
+import { authReducer } from './store/reducers/auth.reducer';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SharedModule, RouterTestingModule],
+      imports: [
+        SharedModule,
+        RouterTestingModule,
+        StoreModule.forRoot(authReducer),
+      ],
       declarations: [AppComponent],
     }).compileComponents();
   }));

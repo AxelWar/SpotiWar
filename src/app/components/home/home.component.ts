@@ -7,7 +7,8 @@ import { Track } from '../shared/interfaces/track.interface';
 import { User } from '../shared/interfaces/user.interface';
 import { emptyUser } from '../shared/mocks/user.mock';
 import { HttpErrorResponse } from '@angular/common/http';
-
+import { Store } from '@ngrx/store';
+import * as AuthActions from '../../store/actions/auth.actions';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -25,29 +26,31 @@ export class HomeComponent implements OnInit, OnDestroy {
   errorMessage!: string;
   constructor(
     private router: Router,
-    private spotify: SpotifyService
+    private spotify: SpotifyService,
+    private store: Store
   ) {}
 
   ngOnInit() {
-    this.login();
+    /*   this.login(); */
     this.initializeFavorites();
     this.fetchProfileData();
     this.fetchNewReleases();
   }
 
-  login() {
+  /*   login() {
     const currentUrl = this.router.url.split('access_token=')[1];
     const token: string = currentUrl ? currentUrl.split('&')[0] : '';
     if (token) {
-      localStorage.setItem('auth', token);
-      setInterval(() => {
-        localStorage.removeItem('auth');
-        window.location.reload();
-        this.spotify.auth();
-      }, 3000000);
+      this.store.dispatch(AuthActions.loginSuccess({ token }));
+      // The rest of the logic will be handled by effects now
     } else {
-      this.spotify.auth();
+      this.store.dispatch(AuthActions.loginRedirect());
     }
+  } */
+
+  loginRefresh() {
+    this.store.dispatch(AuthActions.logout());
+    // This action can trigger the effect to remove the token and initiate the login process again
   }
 
   initializeFavorites() {
@@ -77,11 +80,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.error = true;
     this.errorMessage = errorService.error.error.message;
   };
-
-  loginRefresh() {
-    localStorage.removeItem('auth');
-    this.login();
-  }
 
   getReleases() {
     this.loading = true;
