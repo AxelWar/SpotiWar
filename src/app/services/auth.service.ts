@@ -18,6 +18,4 @@ export class AuthService {
   redirectToSpotifyAuth() {
     window.location.href = this.constructAuthUrl();
   }
-
-  // Add other Spotify-related auth methods here if needed
 }

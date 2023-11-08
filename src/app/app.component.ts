@@ -12,8 +12,6 @@ export class AppComponent {
   constructor(private store: Store) {}
 
   ngOnInit() {
-    // By dispatching initAuth, you are starting the auth flow.
-    // Make sure that this does not cause a redirect if a token exists.
     this.store.dispatch(AuthActions.initAuth());
   }
 }

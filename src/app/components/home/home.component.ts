@@ -31,26 +31,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    /*   this.login(); */
     this.initializeFavorites();
     this.fetchProfileData();
     this.fetchNewReleases();
   }
-
-  /*   login() {
-    const currentUrl = this.router.url.split('access_token=')[1];
-    const token: string = currentUrl ? currentUrl.split('&')[0] : '';
-    if (token) {
-      this.store.dispatch(AuthActions.loginSuccess({ token }));
-      // The rest of the logic will be handled by effects now
-    } else {
-      this.store.dispatch(AuthActions.loginRedirect());
-    }
-  } */
-
   loginRefresh() {
+    //move this logic to ngrx and a guard with a modal
+    //message with the warning and click button to
+    //redirect to spotify login page.
     this.store.dispatch(AuthActions.logout());
-    // This action can trigger the effect to remove the token and initiate the login process again
   }
 
   initializeFavorites() {

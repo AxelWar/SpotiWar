@@ -1,34 +1,35 @@
 // auth.effects.ts
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { delay, exhaustMap, map, tap } from 'rxjs/operators';
+import { delay, exhaustMap, map, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
 import * as AuthActions from '../actions/auth.actions';
-import { of } from 'rxjs';
+import { EMPTY, of } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.state';
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private actions$: Actions,
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store<AppState>
   ) {}
 
   init$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.initAuth),
-      map(() => {
-        const token = localStorage.getItem('auth');
-        if (token) {
-          // Dispatch login success if token exists
-          return AuthActions.loginSuccess({ token });
-        } else {
-          // Redirect to Spotify auth if no token found
-          return AuthActions.loginRedirect();
-        }
-      })
+      switchMap(() => this.store.select(state => state.spotify.token)),
+      map(token =>
+        token
+          ? AuthActions.loginSuccess({ token })
+          : AuthActions.loginRedirect()
+      ),
+      switchMap(action => (action ? of(action) : EMPTY)) // If no action found, return an empty observable
     )
   );
 
+  // Handle redirection to Spotify authentication page
   loginRedirect$ = createEffect(
     () =>
       this.actions$.pipe(
@@ -42,14 +43,9 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.loginSuccess),
       tap(({ token }) => {
-        // You could also dispatch an action to save the token in the state instead of using localStorage here.
-        // For example: this.store.dispatch(AuthActions.saveToken({ token }));
-        localStorage.setItem('auth', token);
+        // Token is being saved in the state by the reducer, no action needed here
       }),
-      map(({ token }) => {
-        // Dispatch an action to start the token expiration timer
-        return AuthActions.startTokenTimer({ token });
-      })
+      map(({ token }) => AuthActions.startTokenTimer({ token })) // Start the logout timer
     )
   );
 
@@ -72,12 +68,11 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.logout),
         tap(() => {
-          localStorage.removeItem('auth');
-          this.authService.redirectToSpotifyAuth(); // or do other logout logic as needed
+          // No need to interact with localStorage
+          // Perform necessary cleanup if needed, like redirecting to auth page
+          this.authService.redirectToSpotifyAuth(); // Redirect to login after logout
         })
       ),
     { dispatch: false }
   );
-
-  // Handle more effects as needed...
 }
