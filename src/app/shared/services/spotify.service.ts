@@ -4,19 +4,21 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { EMPTY } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError, map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-import { Album } from '../components/shared/interfaces/album.interface';
+import { Album } from 'src/app/shared/interfaces/album.interface';
 import {
   Albums,
   AlbumsResponse,
-} from '../components/shared/interfaces/albums.interface';
-import { Artist } from '../components/shared/interfaces/artist.interface';
-import { Track } from '../components/shared/interfaces/track.interface';
-import { TracksResponse } from '../components/shared/interfaces/tracks.interface';
-import { User } from '../components/shared/interfaces/user.interface';
+} from 'src/app/shared/interfaces/albums.interface';
+import { Artist } from 'src/app/shared/interfaces/artist.interface';
+import { Track } from 'src/app/shared/interfaces/track.interface';
+import { TracksResponse } from 'src/app/shared/interfaces/tracks.interface';
+import { User } from 'src/app/shared/interfaces/user.interface';
+import { environment } from 'src/environments/environment';
+import { AuthModalService } from './auth-modal.service';
 
 const SPOTIFY_API_BASE_URL = 'https://api.spotify.com/v1';
 const SPOTIFY_AUTH_BASE_URL = 'https://accounts.spotify.com/authorize';
@@ -27,28 +29,55 @@ const SCOPES = encodeURIComponent('user-read-private user-read-email');
 })
 export class SpotifyService {
   private readonly localStorageKey = 'favs';
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authModalService: AuthModalService
+  ) {}
 
   private getToken(): string | null {
     return localStorage.getItem('auth');
   }
 
-  auth() {
-    const token = this.getToken();
-    if (!token) {
-      const url = this.constructAuthUrl();
-      window.location.href = url;
-    }
+  constructAuthUrl(): string {
+    const { spotifyClientId, redirectUri } = environment;
+    const scopes = encodeURIComponent('user-read-private user-read-email');
+    const SPOTIFY_AUTH_BASE_URL = 'https://accounts.spotify.com/authorize';
+    return `${SPOTIFY_AUTH_BASE_URL}?client_id=${spotifyClientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes}&show_dialog=true`;
   }
 
-  private constructAuthUrl(): string {
-    return `${SPOTIFY_AUTH_BASE_URL}?client_id=${environment.spotifyClientId}&response_type=token&redirect_uri=${environment.redirectUri}&scope=${SCOPES}&show_dialog=true`;
+  redirectToSpotifyAuth() {
+    window.location.href = this.constructAuthUrl();
+  }
+
+  // Extract the token and expiration from the URL and save it
+  extractTokenFromUrl(): void {
+    const currentUrl = window.location.href;
+    const token = currentUrl.includes('access_token=')
+      ? currentUrl.split('access_token=')[1].split('&')[0]
+      : '';
+    this.saveToken(token, 3600);
+  }
+
+  // Save token with expiration time
+  saveToken(token: string, expiresIn: number): void {
+    const expirationTime = new Date().getTime() + expiresIn * 1000; // expiresIn is in seconds
+    localStorage.setItem('auth', token);
+    localStorage.setItem('auth_expiration', expirationTime.toString());
+  }
+
+  // Check if the token is expired
+  isTokenExpired(): boolean {
+    const expirationTime = localStorage.getItem('auth_expiration');
+    return (
+      !expirationTime || new Date().getTime() > parseInt(expirationTime, 10)
+    );
   }
 
   private getUrl<T>(query: string): Observable<T> {
     const token = this.getToken();
-    if (!token) {
-      return throwError(() => new Error('Spotify token is not set'));
+    if (!token || this.isTokenExpired()) {
+      this.authModalService.showAuthModal(); // Replace with your modal service
+      return EMPTY; // Prevent further processing
     }
     const url = `${SPOTIFY_API_BASE_URL}/${query}`;
     const headers = new HttpHeaders({

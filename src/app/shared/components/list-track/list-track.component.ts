@@ -8,7 +8,7 @@ import {
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { SpotifyService } from 'src/app/services/spotify.service';
+import { SpotifyService } from 'src/app/shared/services/spotify.service';
 import { Track } from '../../interfaces/track.interface';
 import { Album } from '../../interfaces/album.interface';
 

@@ -1,13 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
-import { SpotifyService } from '../../services/spotify.service';
-import { Album } from '../shared/interfaces/album.interface';
-import { emptyAlbums, filledAlbums } from '../shared/mocks/albums.mock';
+import { SpotifyService } from '../../shared/services/spotify.service';
 import { ArtistComponent } from './artist.component';
-import { emptyAlbum } from '../shared/mocks/album.mock';
-import { filledArtist, emptyArtist } from '../shared/mocks/artist.interface';
-import { SharedModule } from '../shared/shared.module';
+import { filledAlbums } from 'src/app/shared/mocks/albums.mock';
+import { filledArtist } from 'src/app/shared/mocks/artist.interface';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('ArtistComponent', () => {
   let component: ArtistComponent;

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SearchSongRoutingModule } from './search-song-routing.module';
 import { SearchSongComponent } from './search-song.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [SearchSongComponent],

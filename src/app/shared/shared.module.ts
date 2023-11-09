@@ -9,6 +9,10 @@ import { ListTrackComponent } from './components/list-track/list-track.component
 import { LoadingComponent } from './components/loading/loading.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NoImagePipe } from './pipes/no-image.pipe';
+import { AuthModalComponent } from './components/auth-modal/auth-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AuthModalService } from './services/auth-modal.service';
+import { SpotifyService } from './services/spotify.service';
 
 @NgModule({
   declarations: [
@@ -18,8 +22,15 @@ import { NoImagePipe } from './pipes/no-image.pipe';
     CardComponent,
     HeaderItemComponent,
     ListTrackComponent,
+    AuthModalComponent,
   ],
-  imports: [CommonModule, MatTableModule, MatSortModule, MatIconModule],
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSortModule,
+    MatIconModule,
+  ],
   exports: [
     NavbarComponent,
     LoadingComponent,
@@ -28,5 +39,6 @@ import { NoImagePipe } from './pipes/no-image.pipe';
     HeaderItemComponent,
     ListTrackComponent,
   ],
+  providers: [AuthModalService, SpotifyService],
 })
 export class SharedModule {}

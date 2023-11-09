@@ -2,9 +2,9 @@ import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { catchError, takeUntil } from 'rxjs/operators';
-import { SpotifyService } from '../../services/spotify.service';
-import { Album } from '../shared/interfaces/album.interface';
-import { emptyAlbum } from '../shared/mocks/album.mock';
+import { SpotifyService } from '../../shared/services/spotify.service';
+import { Album } from 'src/app/shared/interfaces/album.interface';
+import { emptyAlbum } from 'src/app/shared/mocks/album.mock';
 
 @Component({
   selector: 'app-song',

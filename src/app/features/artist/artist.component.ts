@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SpotifyService } from '../../services/spotify.service';
-import { Albums } from '../shared/interfaces/albums.interface';
-import { Artist } from '../shared/interfaces/artist.interface';
-import { Album } from '../shared/interfaces/album.interface';
-import { emptyArtist } from '../shared/mocks/artist.interface';
-import { emptyAlbums } from '../shared/mocks/albums.mock';
+import { SpotifyService } from '../../shared/services/spotify.service';
+import { Album } from 'src/app/shared/interfaces/album.interface';
+import { Albums } from 'src/app/shared/interfaces/albums.interface';
+import { Artist } from 'src/app/shared/interfaces/artist.interface';
+import { emptyAlbums } from 'src/app/shared/mocks/albums.mock';
+import { emptyArtist } from 'src/app/shared/mocks/artist.interface';
+
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',

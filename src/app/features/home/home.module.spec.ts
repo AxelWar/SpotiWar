@@ -2,8 +2,8 @@ import { TestBed, waitForAsync } from '@angular/core/testing';
 import { HomeModule } from './home.module';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { SharedModule } from '../shared/shared.module';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('HomeModule', () => {
   beforeEach(waitForAsync(() => {

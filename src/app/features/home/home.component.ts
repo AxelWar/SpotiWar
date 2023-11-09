@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, forkJoin } from 'rxjs';
-import { SpotifyService } from '../../services/spotify.service';
-import { Album } from '../shared/interfaces/album.interface';
-import { Track } from '../shared/interfaces/track.interface';
-import { User } from '../shared/interfaces/user.interface';
-import { emptyUser } from '../shared/mocks/user.mock';
+import { SpotifyService } from '../../shared/services/spotify.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Album } from 'src/app/shared/interfaces/album.interface';
+import { Track } from 'src/app/shared/interfaces/track.interface';
+import { User } from 'src/app/shared/interfaces/user.interface';
+import { emptyUser } from 'src/app/shared/mocks/user.mock';
 
 @Component({
   selector: 'app-home',
@@ -29,25 +29,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.login();
     this.initializeFavorites();
     this.fetchProfileData();
     this.fetchNewReleases();
-  }
-
-  login() {
-    const currentUrl = this.router.url.split('access_token=')[1];
-    const token: string = currentUrl ? currentUrl.split('&')[0] : '';
-    if (token) {
-      localStorage.setItem('auth', token);
-      setInterval(() => {
-        localStorage.removeItem('auth');
-        window.location.reload();
-        this.spotify.auth();
-      }, 3000000);
-    } else {
-      this.spotify.auth();
-    }
   }
 
   initializeFavorites() {
@@ -77,11 +61,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.error = true;
     this.errorMessage = errorService.error.error.message;
   };
-
-  loginRefresh() {
-    localStorage.removeItem('auth');
-    this.login();
-  }
 
   getReleases() {
     this.loading = true;

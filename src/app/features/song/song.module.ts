@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SongRoutingModule } from './song-routing.module';
 import { SongComponent } from './song.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [SongComponent],

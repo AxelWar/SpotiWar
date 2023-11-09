@@ -1,10 +1,4 @@
 <app-loading *ngIf="loading"></app-loading>
-<div *ngIf="error" class="alert alert-danger animated fadeIn">
-  <p>{{ errorMessage }}</p>
-  <a (click)="loginRefresh()"
-    >The Spotify token is valid for one hour. Click here to refresh it.</a
-  >
-</div>
 <label><h1>Dashboard</h1></label>
 <app-header-item [item]="profile" [loading]="loading"></app-header-item>
 
