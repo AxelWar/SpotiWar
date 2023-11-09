@@ -39,14 +39,15 @@
         <audio [src]="track.preview_url" controls></audio>
       </td>
     </ng-container>
-
     <!-- Fav Column -->
     <ng-container matColumnDef="fav">
       <th mat-header-cell *matHeaderCellDef>Fav</th>
       <td mat-cell *matCellDef="let track">
-        <button (click)="checkIfFavorite(track.id)">
-          <mat-icon *ngIf="checkFav(track.id)">star</mat-icon>
-          <mat-icon *ngIf="!checkFav(track.id)">star_border</mat-icon>
+        <button (click)="setFavorites(track.id)">
+          <mat-icon *ngIf="favoriteStatus[track.id]">star</mat-icon>
+          <mat-icon *ngIf="favoriteStatus[track.id] === false"
+            >star_border</mat-icon
+          >
         </button>
       </td>
     </ng-container>

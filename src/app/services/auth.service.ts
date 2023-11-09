@@ -1,5 +1,6 @@
 // auth.service.ts
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -17,5 +18,18 @@ export class AuthService {
 
   redirectToSpotifyAuth() {
     window.location.href = this.constructAuthUrl();
+  }
+
+  getTokenFromUrl(): Observable<string> {
+    try {
+      const currentUrl = window.location.href; // Using `href` instead of `router.url` because this might be called before Angular's router is fully initialized
+      const token = currentUrl.includes('access_token=')
+        ? currentUrl.split('access_token=')[1].split('&')[0]
+        : '';
+      return of(token);
+    } catch (e) {
+      console.log('unable to save token' + e);
+      return of(''); // Return an empty string or handle the error as needed
+    }
   }
 }

@@ -5,36 +5,41 @@ import { delay, exhaustMap, map, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
 import * as AuthActions from '../actions/auth.actions';
 import { EMPTY, of } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AppState } from '../app.state';
+import { selectAuthToken } from '../selectors/auth.selectors';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ) {}
 
   init$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.initAuth),
-      switchMap(() => this.store.select(state => state.spotify.token)),
-      map(token =>
-        token
-          ? AuthActions.loginSuccess({ token })
-          : AuthActions.loginRedirect()
-      ),
-      switchMap(action => (action ? of(action) : EMPTY)) // If no action found, return an empty observable
+      switchMap(() => this.authService.getTokenFromUrl()),
+      switchMap(token => {
+        // Dispatch loginSuccess with the token if we have one, otherwise redirect to Spotify login
+        return token
+          ? of(AuthActions.loginSuccess({ token }))
+          : of(AuthActions.loginRedirect());
+      })
     )
   );
-
   // Handle redirection to Spotify authentication page
   loginRedirect$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.loginRedirect),
-        tap(() => this.authService.redirectToSpotifyAuth())
+        tap(() => {
+          console.log('redirect');
+          this.authService.redirectToSpotifyAuth();
+        })
       ),
     { dispatch: false }
   );
@@ -42,9 +47,6 @@ export class AuthEffects {
   loginSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.loginSuccess),
-      tap(({ token }) => {
-        // Token is being saved in the state by the reducer, no action needed here
-      }),
       map(({ token }) => AuthActions.startTokenTimer({ token })) // Start the logout timer
     )
   );
@@ -68,9 +70,8 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.logout),
         tap(() => {
-          // No need to interact with localStorage
-          // Perform necessary cleanup if needed, like redirecting to auth page
-          this.authService.redirectToSpotifyAuth(); // Redirect to login after logout
+          console.log('logout');
+          this.authService.redirectToSpotifyAuth();
         })
       ),
     { dispatch: false }

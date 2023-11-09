@@ -1,14 +1,17 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject, forkJoin } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, Subject } from 'rxjs';
+import { AppState } from 'src/app/store/app.state';
 import { SpotifyService } from '../../services/spotify.service';
+import * as AuthActions from '../../store/actions/auth.actions';
 import { Album } from '../shared/interfaces/album.interface';
 import { Track } from '../shared/interfaces/track.interface';
 import { User } from '../shared/interfaces/user.interface';
 import { emptyUser } from '../shared/mocks/user.mock';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Store } from '@ngrx/store';
-import * as AuthActions from '../../store/actions/auth.actions';
+import { loadFavorites } from 'src/app/store/actions/favorite-tracks.actions';
+import { FavoriteService } from 'src/app/services/favorite.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,8 +19,6 @@ import * as AuthActions from '../../store/actions/auth.actions';
 export class HomeComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   profile: User = emptyUser;
-  listFavorites: string[] = [];
-  favoriteSongs: string[] = [];
   tracks: Track[] = [];
   newReleases: Album[] = [];
   displayArtist: boolean = true;
@@ -26,8 +27,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   errorMessage!: string;
   constructor(
     private router: Router,
-    private spotify: SpotifyService,
-    private store: Store
+    private spotifyService: SpotifyService,
+    private favoriteService: FavoriteService,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit() {
@@ -43,22 +45,36 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   initializeFavorites() {
-    if (!localStorage.getItem('favs')) {
-      this.favoriteSongs.push('6rVNnvyNeibts1uOqdSNIw');
-      localStorage.setItem('favs', JSON.stringify(this.favoriteSongs));
-    }
-    this.getFavorites();
+    // Use the service to load initial favorites
+    this.favoriteService.loadFavoritesFromLocalStorage();
+  }
+
+  // Call this method when you need to check if a song is a favorite
+  isTrackFavorite(trackId: string): Observable<boolean> {
+    return this.favoriteService.isTrackFavorite(trackId); // This returns an Observable<boolean>
+  }
+
+  setFavorites(trackId: string): void {
+    // Since isTrackFavorite returns an Observable, you need to subscribe to it
+    // to get the value inside an imperative method like setFavorites
+    this.isTrackFavorite(trackId).subscribe(isFavorite => {
+      if (isFavorite) {
+        this.favoriteService.removeFavorite(trackId);
+      } else {
+        this.favoriteService.addFavorite(trackId);
+      }
+    });
   }
 
   fetchProfileData() {
-    this.spotify.getProfile().subscribe(data => {
+    this.spotifyService.getProfile().subscribe(data => {
       this.profile = data;
       this.loading = false;
     }, this.handleError);
   }
 
   fetchNewReleases() {
-    this.spotify.getNewReleases().subscribe(data => {
+    this.spotifyService.getNewReleases().subscribe(data => {
       this.newReleases = data;
       this.loading = false;
     }, this.handleError);
@@ -72,7 +88,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getReleases() {
     this.loading = true;
-    this.spotify.getNewReleases().subscribe(
+    this.spotifyService.getNewReleases().subscribe(
       (data: Album[]) => {
         this.loading = false;
         this.newReleases = data;
@@ -93,31 +109,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       artistId = item.artists[0].id;
     }
     this.router.navigate(['/artist', artistId]);
-  }
-
-  getFavorites() {
-    this.listFavorites = JSON.parse(localStorage.getItem('favs') as string);
-    const requests = this.listFavorites.map(fav => this.spotify.getSong(fav));
-    forkJoin(requests).subscribe(
-      (data: Track[]) => {
-        this.tracks = [...this.tracks, ...data];
-      },
-      error => {
-        console.error('Error fetching tracks:', error);
-      }
-    );
-  }
-
-  checkIfFavorite(songId: string): boolean {
-    return this.spotify.isFavorite(songId);
-  }
-
-  setFavorites(songId: string) {
-    if (this.checkIfFavorite(songId)) {
-      this.spotify.removeFavorite(songId);
-    } else {
-      this.spotify.addFavorite(songId);
-    }
   }
 
   ngOnDestroy() {

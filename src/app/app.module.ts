@@ -1,3 +1,7 @@
+/* import {
+  favoriteTracksReducer,
+  favoritesFeatureKey,
+} from './store/reducers/favorite-tracks.reducer'; */
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +18,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+/* import { FavoriteTracksEffects } from './store/effects/favorite-tracks.effects'; */
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,8 +31,12 @@ import { environment } from 'src/environments/environment';
     BrowserAnimationsModule,
     StoreModule.forRoot({
       auth: authReducer,
+      /*  favorites: favoriteTracksReducer, */
     }),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([
+      AuthEffects,
+      /*   FavoriteTracksEffects */
+    ]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [SpotifyService, AuthService],

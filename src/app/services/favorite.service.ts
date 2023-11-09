@@ -1,49 +1,48 @@
+// favorite.service.ts
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as FavoriteTracksActions from '../store/actions/favorite-tracks.actions';
+import { Observable } from 'rxjs';
 import { AppState } from '../store/app.state';
-import { Observable, map } from 'rxjs';
-import { selectFavoriteTracks } from '../store/selectors/favorite-tracks.selectors';
+import * as FavoriteActions from '../store/actions/favorite-tracks.actions';
+import { selectFavorites } from '../store/selectors/favorite-tracks.selectors';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FavoriteService {
+  private localStorageKey = 'favs';
   constructor(private store: Store<AppState>) {}
 
-  // Method to dispatch the action to load favorites
-  loadFavorites() {
-    // You might need to add logic here to actually load the favorites, e.g., from an API or localStorage
-    // For now, we're just going to dispatch the action
-    this.store.dispatch(FavoriteTracksActions.loadFavorites());
+  loadFavoritesFromLocalStorage() {
+    const favorites = JSON.parse(
+      localStorage.getItem(this.localStorageKey) || '[]'
+    );
+    this.store.dispatch(FavoriteActions.loadFavoritesSuccess({ favorites }));
   }
 
-  // Method to dispatch the action to add a song to favorites
-  addFavorite(songId: string) {
-    this.store.dispatch(FavoriteTracksActions.addFavorite({ songId }));
+  // Dispatch action to add a favorite track
+  addFavorite(trackId: string) {
+    // Correct parameter name used here
+    this.store.dispatch(FavoriteActions.addFavorite({ trackId }));
   }
 
-  // Method to dispatch the action to remove a song from favorites
-  removeFavorite(songId: string) {
-    this.store.dispatch(FavoriteTracksActions.removeFavorite({ songId }));
+  // Dispatch action to remove a favorite track
+  removeFavorite(trackId: string) {
+    // Correct parameter name used here
+    this.store.dispatch(FavoriteActions.removeFavorite({ trackId }));
   }
 
-  isFavorite(songId: string): Observable<boolean> {
+  // Get an observable of the favorite tracks' IDs
+  getFavoriteTrackIds(): Observable<string[]> {
+    return this.store.select(selectFavorites);
+  }
+
+  // Check if a track is favorite by its ID
+  isTrackFavorite(trackId: string): Observable<boolean> {
+    // Select from store and map to a boolean indicating the presence of trackId in favorites
     return this.store
-      .select(selectFavoriteTracks)
-      .pipe(map(favorites => favorites.includes(songId)));
+      .select(selectFavorites)
+      .pipe(map(favorites => favorites.includes(trackId)));
   }
-
-  toggleFavorite(songId: string) {
-    // This method would dispatch the right action based on whether songId is already in favorites
-    this.isFavorite(songId).subscribe(isFav => {
-      if (isFav) {
-        this.removeFavorite(songId);
-      } else {
-        this.addFavorite(songId);
-      }
-    });
-  }
-
-  // Additional methods related to favorites could be added here, like syncing with a backend, etc.
 }

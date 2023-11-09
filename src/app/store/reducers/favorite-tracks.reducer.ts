@@ -1,37 +1,21 @@
+// favorite.reducer.ts
 import { createReducer, on } from '@ngrx/store';
-import * as FavoriteTracksActions from '../actions/favorite-tracks.actions';
+import * as FavoriteActions from '../actions/favorite-tracks.actions';
 
-export const favoritesFeatureKey = 'favorites';
+export const initialState: string[] = [];
 
-export interface State {
-  favorites: string[];
-  error: any; // Replace with an appropriate error type if needed
-}
-
-export const initialState: State = {
-  favorites: [],
-  error: '',
-};
-
-export const favoriteTracksReducer = createReducer(
+export const favoritesReducer = createReducer(
   initialState,
-  on(FavoriteTracksActions.updateFavoritesSuccess, (state, { favorites }) => ({
-    ...state,
-    favorites: favorites,
-    error: '',
-  })),
-  on(FavoriteTracksActions.updateFavoritesFailure, (state, { error }) => ({
-    ...state,
-    error: error,
-  })),
-  on(FavoriteTracksActions.addFavorite, (state, { songId }) => ({
-    ...state,
-    favorites: state.favorites.includes(songId)
-      ? state.favorites
-      : [...state.favorites, songId],
-  })),
-  on(FavoriteTracksActions.removeFavorite, (state, { songId }) => ({
-    ...state,
-    favorites: state.favorites.filter(id => id !== songId),
-  }))
+  on(FavoriteActions.loadFavoritesSuccess, (state, { favorites }) => favorites),
+  on(FavoriteActions.addFavorite, (state, { trackId }) => {
+    if (state.indexOf(trackId) < 0) {
+      // Avoid adding duplicates
+      return [...state, trackId];
+    }
+    return state;
+  }),
+  on(FavoriteActions.removeFavorite, (state, { trackId }) =>
+    state.filter(id => id !== trackId)
+  )
+  // other state changes...
 );

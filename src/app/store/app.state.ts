@@ -1,3 +1,4 @@
+//app.state.ts
 import { Album } from '../components/shared/interfaces/album.interface';
 import { Artist } from '../components/shared/interfaces/artist.interface';
 import { Track } from '../components/shared/interfaces/track.interface';
@@ -5,6 +6,7 @@ import { User } from '../components/shared/interfaces/user.interface';
 
 export interface AppState {
   spotify: SpotifyState;
+  favorite: FavoriteState;
 }
 
 export interface SpotifyState {
@@ -17,6 +19,11 @@ export interface SpotifyState {
   searchResults: Track[];
   currentTrack: Track;
   userProfile: User;
+  favoriteTracks: string[];
+  error: any;
+}
+export interface FavoriteState {
+  currentTrack: Track;
   favoriteTracks: string[];
   error: any;
 }

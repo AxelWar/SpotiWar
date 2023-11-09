@@ -1,3 +1,5 @@
+import { AuthState } from './../store/reducers/auth.reducer';
+import { selectAuthToken } from './../store/selectors/auth.selectors';
 import {
   HttpClient,
   HttpErrorResponse,
@@ -17,6 +19,8 @@ import { Artist } from '../components/shared/interfaces/artist.interface';
 import { Track } from '../components/shared/interfaces/track.interface';
 import { TracksResponse } from '../components/shared/interfaces/tracks.interface';
 import { User } from '../components/shared/interfaces/user.interface';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/app.state';
 
 const SPOTIFY_API_BASE_URL = 'https://api.spotify.com/v1';
 const SPOTIFY_AUTH_BASE_URL = 'https://accounts.spotify.com/authorize';
@@ -26,19 +30,14 @@ const SCOPES = encodeURIComponent('user-read-private user-read-email');
   providedIn: 'root',
 })
 export class SpotifyService {
-  private readonly localStorageKey = 'favs';
-  constructor(private http: HttpClient) {}
-
-  private getToken(): string | null {
-    return localStorage.getItem('auth');
-  }
-
-  auth() {
-    const token = this.getToken();
-    if (!token) {
-      const url = this.constructAuthUrl();
-      window.location.href = url;
-    }
+  token!: string | null;
+  constructor(
+    private http: HttpClient,
+    private store: Store<AppState>
+  ) {
+    this.store.select(selectAuthToken).subscribe(token => {
+      this.token = token;
+    });
   }
 
   private constructAuthUrl(): string {
@@ -46,13 +45,12 @@ export class SpotifyService {
   }
 
   private getUrl<T>(query: string): Observable<T> {
-    const token = this.getToken();
-    if (!token) {
+    if (!this.token) {
       return throwError(() => new Error('Spotify token is not set'));
     }
     const url = `${SPOTIFY_API_BASE_URL}/${query}`;
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${this.token}`,
     });
     return this.http
       .get<T>(url, { headers })
@@ -100,46 +98,5 @@ export class SpotifyService {
 
   getProfile(): Observable<User> {
     return this.getUrl<User>('me').pipe(map((data: User) => data));
-  }
-
-  private getFavoriteSongs(): string[] {
-    try {
-      const favs = localStorage.getItem(this.localStorageKey);
-      if (favs) {
-        return JSON.parse(favs);
-      }
-    } catch (error) {
-      console.error('Failed to parse favorite songs from localStorage', error);
-    }
-    return [];
-  }
-
-  private saveFavoriteSongs(favoriteSongs: string[]): void {
-    try {
-      localStorage.setItem(this.localStorageKey, JSON.stringify(favoriteSongs));
-    } catch (error) {
-      console.error('Failed to save favorite songs to localStorage', error);
-    }
-  }
-
-  isFavorite(songId: string): boolean {
-    const favoriteSongs = this.getFavoriteSongs();
-    return favoriteSongs.includes(songId);
-  }
-
-  addFavorite(songId: string): void {
-    const favoriteSongs = this.getFavoriteSongs();
-    if (!favoriteSongs.includes(songId)) {
-      favoriteSongs.push(songId);
-      this.saveFavoriteSongs(favoriteSongs);
-    }
-  }
-
-  removeFavorite(songId: string): void {
-    const favoriteSongs = this.getFavoriteSongs();
-    const updatedFavorites = favoriteSongs.filter(
-      favSongId => favSongId !== songId
-    );
-    this.saveFavoriteSongs(updatedFavorites);
   }
 }

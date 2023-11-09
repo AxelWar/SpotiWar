@@ -1,25 +1,16 @@
-// favorite-songs.actions.ts
-
+// favorite.actions.ts
 import { createAction, props } from '@ngrx/store';
 
-export const loadFavorites = createAction('[Favorite Songs] Load Favorites');
-
-export const updateFavoritesSuccess = createAction(
-  '[Favorite Songs] Update Favorites Success',
+export const loadFavorites = createAction('[Favorite] Load Favorites');
+export const loadFavoritesSuccess = createAction(
+  '[Favorite] Load Favorites Success',
   props<{ favorites: string[] }>()
 );
-
-export const updateFavoritesFailure = createAction(
-  '[Favorite Songs] Update Favorites Failure',
-  props<{ error: any }>()
-);
-
 export const addFavorite = createAction(
-  '[Favorite Songs] Add Favorite',
-  props<{ songId: string }>()
+  '[Favorite] Add Favorite',
+  props<{ trackId: string }>()
 );
-
 export const removeFavorite = createAction(
-  '[Favorite Songs] Remove Favorite',
-  props<{ songId: string }>()
+  '[Favorite] Remove Favorite',
+  props<{ trackId: string }>()
 );
