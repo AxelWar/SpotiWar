@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { Album } from '../../interfaces/album.interface';
 import { Track } from '../../interfaces/track.interface';
 import { FavoriteService } from '../../services/favorite.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list-track',
@@ -18,10 +19,24 @@ import { FavoriteService } from '../../services/favorite.service';
   styleUrls: ['./list-track.component.scss'],
 })
 export class ListTrackComponent implements AfterViewInit, OnChanges {
-  @Input() tracks: Track[] = [];
+  @Input() manageOwnRefresh: boolean = false;
+  @Input() set tracks(value: Observable<Track[]>) {
+    value.subscribe((tracks: Track[]) => {
+      this.refreshTableData(tracks);
+    });
+  }
+  /*   @Input() set tracks(value: Observable<Track[]>) {
+    value.subscribe((tracks: Track[]) => {
+      this.dataSource.data = tracks;
+      if (this.sort) {
+        this.dataSource.sort = this.sort;
+      }
+    });
+  } */
   @Input() displayArtist: boolean = false;
-  @ViewChild(MatSort) sort!: MatSort;
-  dataSource = new MatTableDataSource(this.tracks);
+  @ViewChild(MatSort)
+  sort!: MatSort;
+  dataSource = new MatTableDataSource<Track>();
   displayedColumns: string[] = ['name', 'duration', 'preview', 'fav'];
 
   constructor(
@@ -43,10 +58,25 @@ export class ListTrackComponent implements AfterViewInit, OnChanges {
         col => col !== 'artist'
       );
     }
+  }
 
-    this.dataSource = new MatTableDataSource(this.tracks);
-    if (this.sort) {
+  refreshTableData(tracks: Track[]) {
+    this.dataSource.data = tracks;
+    if (this.dataSource.sort) {
       this.dataSource.sort = this.sort;
+    }
+  }
+
+  refreshFavorites() {
+    this.favoriteService.getFavoriteTracks().subscribe((tracks: Track[]) => {
+      this.refreshTableData(tracks);
+    });
+  }
+
+  toggleFavorite(songId: string) {
+    this.favoriteService.toggleFavorite(songId);
+    if (this.manageOwnRefresh) {
+      this.refreshFavorites();
     }
   }
 
@@ -57,13 +87,5 @@ export class ListTrackComponent implements AfterViewInit, OnChanges {
 
   checkFav(songId: string) {
     return this.favoriteService.isFavorite(songId);
-  }
-
-  checkIfFavorite(songId: string) {
-    if (this.favoriteService.isFavorite(songId)) {
-      this.favoriteService.removeFavorite(songId);
-    } else {
-      this.favoriteService.addFavorite(songId);
-    }
   }
 }

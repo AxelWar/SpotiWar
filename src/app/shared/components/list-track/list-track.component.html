@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8 track-container">
-  <table mat-table [dataSource]="tracks" matSort class="mat-table">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-table">
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th
@@ -60,7 +60,7 @@
     <ng-container matColumnDef="fav">
       <th mat-header-cell *matHeaderCellDef class="mat-column-fav">Fav</th>
       <td mat-cell *matCellDef="let track">
-        <button (click)="checkIfFavorite(track.id)">
+        <button (click)="toggleFavorite(track.id)">
           <mat-icon *ngIf="checkFav(track.id)">star</mat-icon>
           <mat-icon *ngIf="!checkFav(track.id)">star_border</mat-icon>
         </button>
