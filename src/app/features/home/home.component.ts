@@ -1,7 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subject, forkJoin, takeUntil } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  catchError,
+  forkJoin,
+  takeUntil,
+} from 'rxjs';
 import { Album } from 'src/app/shared/interfaces/album.interface';
 import { Track } from 'src/app/shared/interfaces/track.interface';
 import { User } from 'src/app/shared/interfaces/user.interface';
@@ -14,7 +21,8 @@ import { SpotifyService } from '../../shared/services/spotify.service';
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  tracks$!: Observable<Track[]>;
+  private tracksSubject = new BehaviorSubject<Track[]>([]);
+  tracks$ = this.tracksSubject.asObservable();
   private unsubscribe$ = new Subject<void>();
   profile: User = emptyUser;
   tracks: Track[] = [];
@@ -75,6 +83,26 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     this.router.navigate(['/artist', artistId]);
   }
+  /*   toggleFavorite(songId: string) {
+    this.favoriteService
+      .toggleFavorite(songId)
+      .pipe(
+        takeUntil(this.unsubscribe$),
+        catchError((error, caught) => {
+          // handle error
+          return caught;
+        })
+      )
+      .subscribe(() => {
+        // Refresh the favorites after toggling
+        this.favoriteService
+          .getFavoriteTracks()
+          .pipe(takeUntil(this.unsubscribe$))
+          .subscribe((tracks: Track[]) => {
+            this.tracksSubject.next(tracks); // Refresh the BehaviorSubject with new data
+          });
+      });
+  } */
 
   ngOnDestroy() {
     this.unsubscribe$.next();

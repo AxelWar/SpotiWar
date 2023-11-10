@@ -19,24 +19,23 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-track.component.scss'],
 })
 export class ListTrackComponent implements AfterViewInit, OnChanges {
-  @Input() manageOwnRefresh: boolean = false;
+  @ViewChild(MatSort, { static: true })
+  sort!: MatSort;
+  dataSource = new MatTableDataSource<Track>();
+
   @Input() set tracks(value: Observable<Track[]>) {
+    value.subscribe((tracks: Track[]) => {
+      this.dataSource.data = tracks;
+      this.setupSorting();
+    });
+  }
+  @Input() manageOwnRefresh: boolean = false;
+  /*   @Input() set tracks(value: Observable<Track[]>) {
     value.subscribe((tracks: Track[]) => {
       this.refreshTableData(tracks);
     });
-  }
-  /*   @Input() set tracks(value: Observable<Track[]>) {
-    value.subscribe((tracks: Track[]) => {
-      this.dataSource.data = tracks;
-      if (this.sort) {
-        this.dataSource.sort = this.sort;
-      }
-    });
   } */
   @Input() displayArtist: boolean = false;
-  @ViewChild(MatSort)
-  sort!: MatSort;
-  dataSource = new MatTableDataSource<Track>();
   displayedColumns: string[] = ['name', 'duration', 'preview', 'fav'];
 
   constructor(
@@ -44,9 +43,23 @@ export class ListTrackComponent implements AfterViewInit, OnChanges {
     private favoriteService: FavoriteService
   ) {}
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+    this.setupSorting();
   }
-
+  setupSorting() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.sortingDataAccessor = (track: Track, property) => {
+      switch (property) {
+        case 'artist':
+          return track.artists[0]?.name;
+        case 'duration':
+          return track.duration_ms;
+        case 'name':
+          return track.name;
+        default:
+          return track.name;
+      }
+    };
+  }
   ngOnChanges() {
     if (this.displayArtist && !this.displayedColumns.includes('artist')) {
       this.displayedColumns.splice(2, 0, 'artist');
