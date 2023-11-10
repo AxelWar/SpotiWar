@@ -1,12 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subject, forkJoin } from 'rxjs';
-import { SpotifyService } from '../../shared/services/spotify.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subject, forkJoin } from 'rxjs';
 import { Album } from 'src/app/shared/interfaces/album.interface';
 import { Track } from 'src/app/shared/interfaces/track.interface';
 import { User } from 'src/app/shared/interfaces/user.interface';
 import { emptyUser } from 'src/app/shared/mocks/user.mock';
+import { FavoriteService } from 'src/app/shared/services/favorite.service';
+import { SpotifyService } from '../../shared/services/spotify.service';
 
 @Component({
   selector: 'app-home',
@@ -20,12 +21,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   tracks: Track[] = [];
   newReleases: Album[] = [];
   displayArtist: boolean = true;
-  loading = false;
+  loading = true;
   error = false;
   errorMessage!: string;
   constructor(
     private router: Router,
-    private spotify: SpotifyService
+    private route: ActivatedRoute,
+    private spotifyService: SpotifyService,
+    private favoriteService: FavoriteService
   ) {}
 
   ngOnInit() {
@@ -43,14 +46,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   fetchProfileData() {
-    this.spotify.getProfile().subscribe(data => {
+    this.spotifyService.getProfile().subscribe(data => {
       this.profile = data;
       this.loading = false;
     }, this.handleError);
   }
 
   fetchNewReleases() {
-    this.spotify.getNewReleases().subscribe(data => {
+    this.spotifyService.getNewReleases().subscribe(data => {
       this.newReleases = data;
       this.loading = false;
     }, this.handleError);
@@ -64,7 +67,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getReleases() {
     this.loading = true;
-    this.spotify.getNewReleases().subscribe(
+    this.spotifyService.getNewReleases().subscribe(
       (data: Album[]) => {
         this.loading = false;
         this.newReleases = data;
@@ -89,7 +92,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getFavorites() {
     this.listFavorites = JSON.parse(localStorage.getItem('favs') as string);
-    const requests = this.listFavorites.map(fav => this.spotify.getSong(fav));
+    const requests = this.listFavorites.map(fav =>
+      this.spotifyService.getSong(fav)
+    );
     forkJoin(requests).subscribe(
       (data: Track[]) => {
         this.tracks = [...this.tracks, ...data];
@@ -101,14 +106,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   checkIfFavorite(songId: string): boolean {
-    return this.spotify.isFavorite(songId);
+    return this.favoriteService.isFavorite(songId);
   }
 
   setFavorites(songId: string) {
     if (this.checkIfFavorite(songId)) {
-      this.spotify.removeFavorite(songId);
+      this.favoriteService.removeFavorite(songId);
     } else {
-      this.spotify.addFavorite(songId);
+      this.favoriteService.addFavorite(songId);
     }
   }
 

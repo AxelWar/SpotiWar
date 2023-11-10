@@ -24,7 +24,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/song/song.module').then(m => m.SongModule),
   },
-  // Redirect to `home` as the default route
   {
     path: '',
     redirectTo: '/home',

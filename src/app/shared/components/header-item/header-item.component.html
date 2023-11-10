@@ -1,5 +1,5 @@
 <app-loading *ngIf="loading"></app-loading>
-<div class="row animated fadeIn" *ngIf="!loading && item">
+<div class="row animated fadeIn header-container" *ngIf="!loading && item">
   <div>
     <img [src]="item.images | noImage" class="img-thumb" />
   </div>

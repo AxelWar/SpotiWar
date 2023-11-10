@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SpotifyService } from '../../shared/services/spotify.service';
 import { Track } from 'src/app/shared/interfaces/track.interface';
+import { SpotifyService } from '../../shared/services/spotify.service';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search-song.component.html',

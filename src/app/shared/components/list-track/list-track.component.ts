@@ -8,9 +8,9 @@ import {
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { SpotifyService } from 'src/app/shared/services/spotify.service';
-import { Track } from '../../interfaces/track.interface';
 import { Album } from '../../interfaces/album.interface';
+import { Track } from '../../interfaces/track.interface';
+import { FavoriteService } from '../../services/favorite.service';
 
 @Component({
   selector: 'app-list-track',
@@ -22,26 +22,19 @@ export class ListTrackComponent implements AfterViewInit, OnChanges {
   @Input() displayArtist: boolean = false;
   @ViewChild(MatSort) sort!: MatSort;
   dataSource = new MatTableDataSource(this.tracks);
-  displayedColumns: string[] = [
-    'track_number',
-    'name',
-    'duration',
-    'preview',
-    'fav',
-  ];
+  displayedColumns: string[] = ['name', 'duration', 'preview', 'fav'];
 
   constructor(
     private router: Router,
-    private spotify: SpotifyService
+    private favoriteService: FavoriteService
   ) {}
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
 
   ngOnChanges() {
-    // Update the displayedColumns based on displayArtist input
     if (this.displayArtist && !this.displayedColumns.includes('artist')) {
-      this.displayedColumns.splice(2, 0, 'artist'); // Add 'artist' at the correct index
+      this.displayedColumns.splice(2, 0, 'artist');
     } else if (
       !this.displayArtist &&
       this.displayedColumns.includes('artist')
@@ -63,14 +56,14 @@ export class ListTrackComponent implements AfterViewInit, OnChanges {
   }
 
   checkFav(songId: string) {
-    return this.spotify.isFavorite(songId);
+    return this.favoriteService.isFavorite(songId);
   }
 
   checkIfFavorite(songId: string) {
-    if (this.spotify.isFavorite(songId)) {
-      this.spotify.removeFavorite(songId);
+    if (this.favoriteService.isFavorite(songId)) {
+      this.favoriteService.removeFavorite(songId);
     } else {
-      this.spotify.addFavorite(songId);
+      this.favoriteService.addFavorite(songId);
     }
   }
 }

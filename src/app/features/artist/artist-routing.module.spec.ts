@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ArtistRoutingModule } from './artist-routing.module';
+import { ArtistRoutingModule, routes } from './artist-routing.module';
 import { ArtistComponent } from './artist.component';
-import { routes } from './artist-routing.module';
 
 describe('ArtistRoutingModule', () => {
   beforeEach(() => {
