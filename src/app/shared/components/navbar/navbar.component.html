@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      class="spotify-icon"
+      src="/assets/img/spoti-ico.png"
+      width="50"
+      height="50"
+      alt="" />
+    SpotiWar
+  </a>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="ml-auto">
+      <form class="navbar-search" (ngSubmit)="search(searchTerm.value)">
+        <input
+          #searchTerm
+          type="text"
+          (keyup)="search(searchTerm.value)"
+          class="search-nav-input"
+          placeholder="Search" />
+        <button class="search-nav-button" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>

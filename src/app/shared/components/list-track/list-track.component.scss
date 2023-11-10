@@ -1,0 +1,124 @@
+.track-container {
+  margin-bottom: 3rem;
+}
+
+.audio-player-container {
+  border-radius: 10px; /* Rounded corners for the container */
+  margin: 5px 0; /* Space above and below the player */
+  display: flex;
+  justify-content: center; /* Center the audio element inside the container */
+  align-items: center;
+}
+
+audio {
+  width: 100%; /* Full width of the container */
+  outline: none; /* Remove the focus outline */
+}
+
+/* Custom styles for the audio controls */
+audio::-webkit-media-controls-panel {
+  background-color: whitesmoke;
+  border-radius: 10px; /* Rounded corners for the controls */
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-volume-slider,
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  color: #2a2a2a; /* Consistent text color for the buttons and displays */
+}
+
+/* Media query adjustments for smaller screens */
+@media (max-width: 768px) {
+  .audio-player-container {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-player-container {
+    padding: 5px;
+  }
+}
+
+.mat-mdc-header-cell {
+  font-family: 'Rock Salt', cursive;
+  font-style: italic;
+  color: #2a2a2a;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.mat-mdc-header-cell,
+.mat-header-cell,
+.mat-cell {
+  padding: 15px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+/* Assigning fixed widths */
+.mat-column-track_number {
+  width: 5%; /* Assign a smaller fixed width to the track number column */
+}
+
+.mat-column-name {
+  width: 30%; /* Assign a larger fixed width to the name column */
+}
+
+.mat-column-artist {
+  width: 25%; /* Adjust the width as per your requirement */
+}
+
+.mat-column-duration {
+  width: 10%; /* Adjust the width for duration column */
+}
+
+.mat-column-preview {
+  width: 20%; /* Adjust the width for preview column to fit the audio control */
+}
+
+.mat-column-fav {
+  width: 10%; /* Assign the remaining width to the favorite column */
+}
+
+.audio-player-container {
+  width: 100%; /* Make sure the audio player container fills the cell */
+}
+
+audio {
+  width: 100%; /* Make sure the audio control fills the container */
+}
+
+/* Assigning fixed widths */
+.mat-column-track_number {
+  width: 5%; /* Assign a smaller fixed width to the track number column */
+}
+
+.mat-column-name {
+  width: 30%; /* Assign a larger fixed width to the name column */
+}
+
+.mat-column-artist {
+  width: 25%; /* Adjust the width as per your requirement */
+}
+
+.mat-column-duration {
+  width: 10%; /* Adjust the width for duration column */
+}
+
+.mat-column-preview {
+  width: 20%; /* Adjust the width for preview column to fit the audio control */
+}
+
+.mat-column-fav {
+  width: 10%; /* Assign the remaining width to the favorite column */
+}
+
+.audio-player-container {
+  width: 100%; /* Make sure the audio player container fills the cell */
+}
+
+audio {
+  width: 100%; /* Make sure the audio control fills the container */
+}

@@ -103,17 +103,33 @@ body {
   color: mat-color($mat-light-green);
 }
 
-.mat-mdc-row:hover {
-  background-color: rgb(102, 197, 138);
+.mat-mdc-row:nth-child(even) {
+  background-color: #e4a5e4;
 }
-
-.mat-header-cell,
-.mat-cell {
-  color: whitesmoke;
-  padding: 15px;
-  border-bottom: 1px solid rgb(100, 100, 100);
+.mat-mdc-row:nth-child(odd) {
+  background-color: #ff4ed3;
+}
+.mat-mdc-row:hover {
+  background-color: #a8a8a8;
+}
+.mat-mdc-row {
+  background-image: url('../src/assets/img/noise.png');
 }
 
 .mat-table {
   width: 100%;
+  background-image: url('../src/assets/img/noise.png');
+}
+
+.mat-mdc-cell {
+  font-size: 1rem;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.0125em;
+  color: #a8a8a8;
+  margin: 16px 0;
+  padding: 16px 0;
 }

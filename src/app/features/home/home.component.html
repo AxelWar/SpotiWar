@@ -1,0 +1,31 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class="home-container" *ngIf="!loading">
+  <span class="title">
+    <label><h1>Dashboard</h1></label>
+  </span>
+
+  <app-header-item [item]="profile" [loading]="loading"></app-header-item>
+
+  <span class="title">
+    <label><h1>Favorites</h1></label>
+  </span>
+
+  <app-list-track
+    *ngIf="tracks.length"
+    [tracks]="tracks"
+    [displayArtist]="true"></app-list-track>
+
+  <span class="title">
+    <label><h1>New Releases</h1></label>
+  </span>
+
+  <div class="card-container">
+    <app-card
+      class="card-pointer"
+      *ngFor="let item of newReleases"
+      [item]="item"
+      [type]="'song'"
+      (cardClick)="seeArtist(item)">
+    </app-card>
+  </div>
+</div>
