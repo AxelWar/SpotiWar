@@ -30,11 +30,6 @@ export class ListTrackComponent implements AfterViewInit, OnChanges {
     });
   }
   @Input() manageOwnRefresh: boolean = false;
-  /*   @Input() set tracks(value: Observable<Track[]>) {
-    value.subscribe((tracks: Track[]) => {
-      this.refreshTableData(tracks);
-    });
-  } */
   @Input() displayArtist: boolean = false;
   displayedColumns: string[] = ['name', 'duration', 'preview', 'fav'];
 

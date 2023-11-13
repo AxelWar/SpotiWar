@@ -1,7 +1,6 @@
 // auth-modal.service.ts
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { AuthModalComponent } from 'src/app/shared/components/auth-modal/auth-modal.component';
 import { environment } from 'src/environments/environment';
 
@@ -9,10 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(
-    private dialog: MatDialog,
-    private routes: Router
-  ) {}
+  constructor(private dialog: MatDialog) {}
 
   public showAuthModal(): void {
     this.dialog.open(AuthModalComponent, {
