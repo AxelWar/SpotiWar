@@ -1,6 +1,7 @@
 <app-loading class="m-5" *ngIf="loading"></app-loading>
 
 <app-list-track
-  *ngIf="tracks.length"
-  [tracks]="tracks"
-  [displayArtist]="true"></app-list-track>
+  *ngIf="(tracks$ | async)?.length"
+  [tracks]="tracks$"
+  [displayArtist]="true">
+</app-list-track>

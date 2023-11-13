@@ -1,5 +1,6 @@
 <app-header-item [item]="album" [loading]="loading"></app-header-item>
 
 <app-list-track
-  [tracks]="album.tracks.items"
+  *ngIf="tracks$ | async as trackList"
+  [tracks]="tracks$"
   [displayArtist]="true"></app-list-track>

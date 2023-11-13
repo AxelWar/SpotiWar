@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { Album } from '../../interfaces/album.interface';
 import { Track } from '../../interfaces/track.interface';
 import { FavoriteService } from '../../services/favorite.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list-track',
@@ -18,10 +19,18 @@ import { FavoriteService } from '../../services/favorite.service';
   styleUrls: ['./list-track.component.scss'],
 })
 export class ListTrackComponent implements AfterViewInit, OnChanges {
-  @Input() tracks: Track[] = [];
+  @ViewChild(MatSort, { static: true })
+  sort!: MatSort;
+  dataSource = new MatTableDataSource<Track>();
+
+  @Input() set tracks(value: Observable<Track[]>) {
+    value.subscribe((tracks: Track[]) => {
+      this.dataSource.data = tracks;
+      this.setupSorting();
+    });
+  }
+  @Input() manageOwnRefresh: boolean = false;
   @Input() displayArtist: boolean = false;
-  @ViewChild(MatSort) sort!: MatSort;
-  dataSource = new MatTableDataSource(this.tracks);
   displayedColumns: string[] = ['name', 'duration', 'preview', 'fav'];
 
   constructor(
@@ -29,9 +38,23 @@ export class ListTrackComponent implements AfterViewInit, OnChanges {
     private favoriteService: FavoriteService
   ) {}
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+    this.setupSorting();
   }
-
+  setupSorting() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.sortingDataAccessor = (track: Track, property) => {
+      switch (property) {
+        case 'artist':
+          return track.artists[0]?.name;
+        case 'duration':
+          return track.duration_ms;
+        case 'name':
+          return track.name;
+        default:
+          return track.name;
+      }
+    };
+  }
   ngOnChanges() {
     if (this.displayArtist && !this.displayedColumns.includes('artist')) {
       this.displayedColumns.splice(2, 0, 'artist');
@@ -43,10 +66,25 @@ export class ListTrackComponent implements AfterViewInit, OnChanges {
         col => col !== 'artist'
       );
     }
+  }
 
-    this.dataSource = new MatTableDataSource(this.tracks);
-    if (this.sort) {
+  refreshTableData(tracks: Track[]) {
+    this.dataSource.data = tracks;
+    if (this.dataSource.sort) {
       this.dataSource.sort = this.sort;
+    }
+  }
+
+  refreshFavorites() {
+    this.favoriteService.getFavoriteTracks().subscribe((tracks: Track[]) => {
+      this.refreshTableData(tracks);
+    });
+  }
+
+  toggleFavorite(songId: string) {
+    this.favoriteService.toggleFavorite(songId);
+    if (this.manageOwnRefresh) {
+      this.refreshFavorites();
     }
   }
 
@@ -57,13 +95,5 @@ export class ListTrackComponent implements AfterViewInit, OnChanges {
 
   checkFav(songId: string) {
     return this.favoriteService.isFavorite(songId);
-  }
-
-  checkIfFavorite(songId: string) {
-    if (this.favoriteService.isFavorite(songId)) {
-      this.favoriteService.removeFavorite(songId);
-    } else {
-      this.favoriteService.addFavorite(songId);
-    }
   }
 }

@@ -11,9 +11,10 @@
   </span>
 
   <app-list-track
-    *ngIf="tracks.length"
-    [tracks]="tracks"
-    [displayArtist]="true"></app-list-track>
+    *ngIf="tracks$ | async as tracks"
+    [tracks]="tracks$"
+    [displayArtist]="true"
+    [manageOwnRefresh]="true"></app-list-track>
 
   <span class="title">
     <label><h1>New Releases</h1></label>

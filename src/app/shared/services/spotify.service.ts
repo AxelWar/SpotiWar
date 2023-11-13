@@ -17,7 +17,6 @@ import { Artist } from 'src/app/shared/interfaces/artist.interface';
 import { Track } from 'src/app/shared/interfaces/track.interface';
 import { TracksResponse } from 'src/app/shared/interfaces/tracks.interface';
 import { User } from 'src/app/shared/interfaces/user.interface';
-import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 
 const SPOTIFY_API_BASE_URL = 'https://api.spotify.com/v1';
