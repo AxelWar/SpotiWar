@@ -2,53 +2,53 @@
 mat-dialog-title {
   font-size: 1.25rem;
   font-weight: bold;
-  padding-bottom: 1rem; /* Adds space below the title */
+  padding-bottom: 1rem;
 }
 
 /* Style for the dialog content */
 mat-dialog-content {
-  padding: 1rem 0; /* Adds padding above and below the paragraph */
+  padding: 1rem 0;
 }
 
 /* Paragraph style inside dialog content */
 mat-dialog-content p {
   margin: 0;
   line-height: 1.5;
-  color: #484848; /* Adjust the color to fit your design */
+  color: #484848;
 }
 
 /* Style for the dialog actions */
 mat-dialog-actions {
   display: flex;
-  justify-content: flex-end; /* Align buttons to the right */
+  justify-content: flex-end;
   padding: 1rem;
 }
 
 /* Style for the login button */
 .login-button {
-  color: #2a2a2a; /* White text */
-  background-color: #1ed760; /* Spotify green */
-  padding: 10px 20px; /* Larger button size */
-  border: none; /* No border */
-  border-radius: 4px; /* Rounded corners */
-  font-weight: bold; /* Make the text bold */
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25); /* Subtle shadow for depth */
+  color: #2a2a2a;
+  background-color: #1ed760;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 /* Style for the close button */
 .close-button {
   margin-right: 1rem;
-  color: #333; /* Dark grey text */
-  background-color: #ccc; /* Light grey background */
-  padding: 10px 20px; /* Larger button size */
-  border: none; /* No border */
-  border-radius: 4px; /* Rounded corners */
-  font-weight: bold; /* Make the text bold */
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25); /* Subtle shadow for depth */
+  color: #333;
+  background-color: #ccc;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 /* Hover effects for buttons */
 button[mat-button]:hover {
-  opacity: 0.9; /* Slight transparency on hover */
-  cursor: pointer; /* Change cursor to pointer */
+  opacity: 0.9;
+  cursor: pointer;
 }

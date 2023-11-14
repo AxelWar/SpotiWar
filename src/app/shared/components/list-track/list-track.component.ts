@@ -12,6 +12,8 @@ import { Album } from '../../interfaces/album.interface';
 import { Track } from '../../interfaces/track.interface';
 import { FavoriteService } from '../../services/favorite.service';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-list-track',
@@ -31,11 +33,13 @@ export class ListTrackComponent implements AfterViewInit, OnChanges {
   }
   @Input() manageOwnRefresh: boolean = false;
   @Input() displayArtist: boolean = false;
+  @Input() showUnfavoriteGuard: boolean = false;
   displayedColumns: string[] = ['name', 'duration', 'preview', 'fav'];
 
   constructor(
     private router: Router,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,
+    public dialog: MatDialog
   ) {}
   ngAfterViewInit() {
     this.setupSorting();
@@ -81,13 +85,6 @@ export class ListTrackComponent implements AfterViewInit, OnChanges {
     });
   }
 
-  toggleFavorite(songId: string) {
-    this.favoriteService.toggleFavorite(songId);
-    if (this.manageOwnRefresh) {
-      this.refreshFavorites();
-    }
-  }
-
   seeArtist(item: Album) {
     let artistId = item.type === 'artist' ? item.id : item.artists[0].id;
     this.router.navigate(['/artist', artistId]);
@@ -95,5 +92,33 @@ export class ListTrackComponent implements AfterViewInit, OnChanges {
 
   checkFav(songId: string) {
     return this.favoriteService.isFavorite(songId);
+  }
+
+  toggleFavorite(songId: string) {
+    const isFav = this.checkFav(songId);
+    if (isFav && this.showUnfavoriteGuard) {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        width: '550px',
+        data: {
+          message:
+            'Are you sure you want to remove this track from your favorites?',
+        },
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.proceedWithUnfavorite(songId);
+        }
+      });
+    } else {
+      this.proceedWithUnfavorite(songId);
+    }
+  }
+
+  private proceedWithUnfavorite(songId: string) {
+    this.favoriteService.toggleFavorite(songId);
+    if (this.manageOwnRefresh) {
+      this.refreshFavorites();
+    }
   }
 }

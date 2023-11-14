@@ -13,6 +13,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NoImagePipe } from './pipes/no-image.pipe';
 import { AuthService } from './services/auth.service';
 import { SpotifyService } from './services/spotify.service';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SpotifyService } from './services/spotify.service';
     HeaderItemComponent,
     ListTrackComponent,
     AuthModalComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { SpotifyService } from './services/spotify.service';
     CardComponent,
     HeaderItemComponent,
     ListTrackComponent,
+    ConfirmDialogComponent,
   ],
   providers: [AuthService, SpotifyService],
 })
