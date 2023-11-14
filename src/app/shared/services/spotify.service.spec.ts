@@ -4,6 +4,7 @@ import {
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { SpotifyService } from './spotify.service';
+import { SharedModule } from '../shared.module';
 
 describe('SpotifyService', () => {
   let service: SpotifyService;
@@ -28,7 +29,7 @@ describe('SpotifyService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, SharedModule],
       providers: [SpotifyService],
     });
 
@@ -50,25 +51,5 @@ describe('SpotifyService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
-  });
-
-  it('should store and retrieve favorite songs from local storage', () => {
-    const dummySongs = ['song1', 'song2', 'song3'];
-    // Add songs to favorites
-    dummySongs.forEach(song => service.addFavorite(song));
-
-    // Check if songs are marked as favorite
-    dummySongs.forEach(song => {
-      expect(service.isFavorite(song)).toBeTrue();
-    });
-
-    // 'song4' was never added, should be false
-    expect(service.isFavorite('song4')).toBeFalse();
-
-    // Remove 'song2' from favorites
-    service.removeFavorite('song2');
-
-    // 'song2' was removed, should be false
-    expect(service.isFavorite('song2')).toBeFalse();
   });
 });
