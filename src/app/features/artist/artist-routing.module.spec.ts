@@ -16,6 +16,6 @@ describe('ArtistRoutingModule', () => {
       component: ArtistComponent,
     };
 
-    expect(routes).toContain(jasmine.objectContaining(expectedRoute));
+    expect(routes).toContain(expect.objectContaining(expectedRoute));
   });
 });

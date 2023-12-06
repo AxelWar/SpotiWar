@@ -19,14 +19,16 @@ describe('ArtistComponent', () => {
       params: of({ id: 'someArtistId' }), // Simulate route parameter Observable
     };
 
-    const spotifyServiceStub = jasmine.createSpyObj('SpotifyService', [
-      'getArtist',
-      'getArtistsAlbums',
-    ]);
-    spotifyServiceStub.getArtist.and.returnValue(of(filledArtist));
-    spotifyServiceStub.getArtistsAlbums.and.returnValue(of(filledAlbums));
+    const spotifyServiceStub = {
+      'getArtist': jest.fn(),
+      'getArtistsAlbums': jest.fn()
+    };
+    spotifyServiceStub.getArtist.mockReturnValue(of(filledArtist));
+    spotifyServiceStub.getArtistsAlbums.mockReturnValue(of(filledAlbums));
 
-    const routerStub = jasmine.createSpyObj('Router', ['navigate']);
+    const routerStub = {
+      'navigate': jest.fn()
+    };
 
     await TestBed.configureTestingModule({
       imports: [SharedModule],

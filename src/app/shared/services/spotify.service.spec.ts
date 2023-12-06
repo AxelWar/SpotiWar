@@ -37,10 +37,10 @@ describe('SpotifyService', () => {
     httpMock = TestBed.inject(HttpTestingController);
 
     // Spy on the localStorage methods we want to mock
-    spyOn(localStorage, 'getItem').and.callFake(mockLocalStorage.getItem);
-    spyOn(localStorage, 'setItem').and.callFake(mockLocalStorage.setItem);
-    spyOn(localStorage, 'removeItem').and.callFake(mockLocalStorage.removeItem);
-    spyOn(localStorage, 'clear').and.callFake(mockLocalStorage.clear);
+    jest.spyOn(localStorage, 'getItem').mockImplementation(mockLocalStorage.getItem);
+    jest.spyOn(localStorage, 'setItem').mockImplementation(mockLocalStorage.setItem);
+    jest.spyOn(localStorage, 'removeItem').mockImplementation(mockLocalStorage.removeItem);
+    jest.spyOn(localStorage, 'clear').mockImplementation(mockLocalStorage.clear);
   });
 
   afterEach(() => {
