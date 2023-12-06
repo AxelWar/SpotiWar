@@ -20,7 +20,9 @@ describe('SongComponent', () => {
         BrowserAnimationsModule,
       ],
     });
-    jest.spyOn(SongComponent.prototype, 'getAlbum').mockImplementation(() => {});
+    jest
+      .spyOn(SongComponent.prototype, 'getAlbum')
+      .mockImplementation(() => {});
     fixture = TestBed.createComponent(SongComponent);
     component = fixture.componentInstance;
   });

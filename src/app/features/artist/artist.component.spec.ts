@@ -20,14 +20,14 @@ describe('ArtistComponent', () => {
     };
 
     const spotifyServiceStub = {
-      'getArtist': jest.fn(),
-      'getArtistsAlbums': jest.fn()
+      getArtist: jest.fn(),
+      getArtistsAlbums: jest.fn(),
     };
     spotifyServiceStub.getArtist.mockReturnValue(of(filledArtist));
     spotifyServiceStub.getArtistsAlbums.mockReturnValue(of(filledAlbums));
 
     const routerStub = {
-      'navigate': jest.fn()
+      navigate: jest.fn(),
     };
 
     await TestBed.configureTestingModule({
