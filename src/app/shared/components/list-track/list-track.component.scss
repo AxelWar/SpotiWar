@@ -122,3 +122,30 @@ audio {
 audio {
   width: 100%; /* Make sure the audio control fills the container */
 }
+
+.m-track-detail {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: outset;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+.m-playing {
+  padding: 0.5rem;
+  font-weight: bold;
+  background-color: #ff4ed3;
+  background-image: url('../../../../assets/img/noise.png');
+  margin-bottom: 1.5rem;
+}
+
+.m-track-container {
+  margin-bottom: 1.5rem;
+}
+
+span.m-track-name {
+  max-width: 100px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

@@ -14,6 +14,8 @@ import { NoImagePipe } from './pipes/no-image.pipe';
 import { AuthService } from './services/auth.service';
 import { SpotifyService } from './services/spotify.service';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { FavoriteService } from './services/favorite.service';
+import { UniversalDeviceDetectorService } from './services/universal-device-detector.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,11 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     ListTrackComponent,
     ConfirmDialogComponent,
   ],
-  providers: [AuthService, SpotifyService],
+  providers: [
+    AuthService,
+    SpotifyService,
+    FavoriteService,
+    UniversalDeviceDetectorService,
+  ],
 })
 export class SharedModule {}
