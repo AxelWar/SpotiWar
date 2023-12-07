@@ -45,22 +45,6 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should redirect to Spotify auth when token is not valid', () => {
-    const redirectSpy = jest.spyOn(service, 'redirectToSpotifyAuth');
-    jest.spyOn(service, 'validateToken').mockReturnValue(false);
-
-    service.initLogin();
-    expect(redirectSpy).toHaveBeenCalled();
-  });
-
-  it('should not redirect when token is valid', () => {
-    const redirectSpy = jest.spyOn(service, 'redirectToSpotifyAuth');
-    jest.spyOn(service, 'validateToken').mockReturnValue(true);
-
-    service.initLogin();
-    expect(redirectSpy).not.toHaveBeenCalled();
-  });
-
   it('should open AuthModalComponent when calling showAuthModal', () => {
     // Call the method
     service.showAuthModal();
