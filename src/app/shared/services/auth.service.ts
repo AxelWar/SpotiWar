@@ -5,14 +5,12 @@ import { DeviceDetectorService, DeviceInfo } from 'ngx-device-detector';
 import { AuthModalComponent } from 'src/app/shared/components/auth-modal/auth-modal.component';
 import { environment } from 'src/environments/environment';
 import { emptyDevice } from '../mocks/device.mock';
-import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   deviceInfo: DeviceInfo = emptyDevice;
-  /*   private deviceType = new Subject<string>(); */
   constructor(
     private dialog: MatDialog,
     private deviceService: DeviceDetectorService
@@ -23,20 +21,6 @@ export class AuthService {
       width: '650px',
     });
   }
-
-  /*   deviceDetector() {
-    this.deviceInfo = this.deviceService.getDeviceInfo();
-    const isMobile = this.deviceService.isMobile();
-    const isTablet = this.deviceService.isTablet();
-    const isDesktopDevice = this.deviceService.isDesktop();
-    if (isMobile) {
-      this.deviceType.next('mobile');
-    } else if (isTablet) {
-      this.deviceType.next('tablet');
-    } else if (isDesktopDevice) {
-      this.deviceType.next('desktop');
-    }
-  } */
 
   isMobile(): boolean {
     return this.deviceService.isMobile();

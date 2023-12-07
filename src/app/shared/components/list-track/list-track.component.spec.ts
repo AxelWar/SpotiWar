@@ -3,9 +3,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatTableDataSource } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { emptyTrack } from '../../mocks/track.mock';
+import { emptyTrack, filledTrack } from '../../mocks/track.mock';
 import { SharedModule } from '../../shared.module';
 import { ListTrackComponent } from './list-track.component';
+import { Track } from '../../interfaces/track.interface';
 
 describe('ListTrackComponent', () => {
   let component: ListTrackComponent;
@@ -40,5 +41,15 @@ describe('ListTrackComponent', () => {
       'preview',
       'fav',
     ]);
+  });
+
+  it('should update currentTrack when playTrack is called', () => {
+    const testTrack: Track = filledTrack;
+
+    // Call playTrack with the test track
+    component.playTrack(testTrack);
+
+    // Expect currentTrack to be the test track
+    expect(component.currentTrack).toEqual(testTrack);
   });
 });

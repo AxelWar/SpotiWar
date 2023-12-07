@@ -45,7 +45,7 @@ export class SpotifyService {
       .pipe(catchError(this.handleError));
   }
 
-  private handleError(error: HttpErrorResponse) {
+  handleError(error: HttpErrorResponse) {
     console.error('An error occurred:', error.message);
     return throwError(
       () => new Error('An error occurred; please try again later.')
