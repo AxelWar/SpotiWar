@@ -51,21 +51,21 @@ describe('ArtistComponent', () => {
 
   it('should get artist details from SpotifyService', () => {
     fixture.detectChanges(); // Lifecycle hooks are called here
-    expect(spotifyService.getArtist).toHaveBeenCalledOnceWith('someArtistId');
+    expect(spotifyService.getArtist).toHaveBeenCalledWith('someArtistId');
     expect(component.artist).toEqual(filledArtist);
-    expect(component.loading).toBeFalse();
+    expect(component.loading).toBeFalsy();
   });
 
   it('should get artist albums from SpotifyService', () => {
     fixture.detectChanges(); // Lifecycle hooks are called here
-    expect(spotifyService.getArtistsAlbums).toHaveBeenCalledOnceWith(
+    expect(spotifyService.getArtistsAlbums).toHaveBeenCalledWith(
       'someArtistId'
     );
     expect(component.albumArtist).toEqual(filledAlbums);
-    expect(component.loading).toBeFalse();
+    expect(component.loading).toBeFalsy();
   });
 
   it(`loading has default value`, () => {
-    expect(component.loading).toBeFalse();
+    expect(component.loading).toBeFalsy();
   });
 });

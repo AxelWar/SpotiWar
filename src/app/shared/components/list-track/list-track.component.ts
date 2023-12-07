@@ -50,7 +50,6 @@ export class ListTrackComponent implements AfterViewInit, OnChanges, OnDestroy {
     private deviceService: DeviceDetectorService
   ) {
     this.isMobile = this.deviceService.isMobile();
-    console.log(this.isMobile);
   }
 
   ngAfterViewInit() {

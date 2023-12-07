@@ -28,7 +28,6 @@ export class SongComponent implements OnDestroy {
       this.getAlbum(albumId);
     } else {
       this.loading = false;
-      console.error('Album ID is missing');
     }
   }
 
@@ -38,7 +37,6 @@ export class SongComponent implements OnDestroy {
       .pipe(
         takeUntil(this.unsubscribe$),
         catchError(err => {
-          console.error('Failed to fetch album', err);
           this.loading = false;
           return EMPTY;
         })
