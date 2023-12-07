@@ -19,7 +19,9 @@ describe('SearchSongComponent', () => {
         BrowserAnimationsModule,
       ],
     });
-    spyOn(SearchSongComponent.prototype, 'search');
+    jest
+      .spyOn(SearchSongComponent.prototype, 'search')
+      .mockImplementation(() => {});
     fixture = TestBed.createComponent(SearchSongComponent);
     component = fixture.componentInstance;
   });

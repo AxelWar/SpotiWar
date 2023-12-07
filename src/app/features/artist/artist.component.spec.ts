@@ -19,14 +19,16 @@ describe('ArtistComponent', () => {
       params: of({ id: 'someArtistId' }), // Simulate route parameter Observable
     };
 
-    const spotifyServiceStub = jasmine.createSpyObj('SpotifyService', [
-      'getArtist',
-      'getArtistsAlbums',
-    ]);
-    spotifyServiceStub.getArtist.and.returnValue(of(filledArtist));
-    spotifyServiceStub.getArtistsAlbums.and.returnValue(of(filledAlbums));
+    const spotifyServiceStub = {
+      getArtist: jest.fn(),
+      getArtistsAlbums: jest.fn(),
+    };
+    spotifyServiceStub.getArtist.mockReturnValue(of(filledArtist));
+    spotifyServiceStub.getArtistsAlbums.mockReturnValue(of(filledAlbums));
 
-    const routerStub = jasmine.createSpyObj('Router', ['navigate']);
+    const routerStub = {
+      navigate: jest.fn(),
+    };
 
     await TestBed.configureTestingModule({
       imports: [SharedModule],
@@ -49,21 +51,21 @@ describe('ArtistComponent', () => {
 
   it('should get artist details from SpotifyService', () => {
     fixture.detectChanges(); // Lifecycle hooks are called here
-    expect(spotifyService.getArtist).toHaveBeenCalledOnceWith('someArtistId');
+    expect(spotifyService.getArtist).toHaveBeenCalledWith('someArtistId');
     expect(component.artist).toEqual(filledArtist);
-    expect(component.loading).toBeFalse();
+    expect(component.loading).toBeFalsy();
   });
 
   it('should get artist albums from SpotifyService', () => {
     fixture.detectChanges(); // Lifecycle hooks are called here
-    expect(spotifyService.getArtistsAlbums).toHaveBeenCalledOnceWith(
+    expect(spotifyService.getArtistsAlbums).toHaveBeenCalledWith(
       'someArtistId'
     );
     expect(component.albumArtist).toEqual(filledAlbums);
-    expect(component.loading).toBeFalse();
+    expect(component.loading).toBeFalsy();
   });
 
   it(`loading has default value`, () => {
-    expect(component.loading).toBeFalse();
+    expect(component.loading).toBeFalsy();
   });
 });

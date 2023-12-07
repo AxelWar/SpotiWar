@@ -1,55 +1,78 @@
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { of, throwError } from 'rxjs';
+import { Album } from 'src/app/shared/interfaces/album.interface';
+import { AuthService } from './auth.service';
 import { SpotifyService } from './spotify.service';
-import { SharedModule } from '../shared.module';
 
 describe('SpotifyService', () => {
-  let service: SpotifyService;
-  let httpMock: HttpTestingController;
-
-  // Mock local storage
-  let store: any = {};
-  const mockLocalStorage = {
-    getItem: (key: string): string => {
-      return store[key] || null;
-    },
-    setItem: (key: string, value: string) => {
-      store[key] = value;
-    },
-    removeItem: (key: string) => {
-      delete store[key];
-    },
-    clear: () => {
-      store = {};
-    },
+  let httpClientSpy: { get: jest.Mock };
+  let authServiceSpy: {
+    getToken: jest.Mock;
+    isTokenExpired: jest.Mock;
+    showAuthModal: jest.Mock;
   };
+  let spotifyService: SpotifyService;
 
   beforeEach(() => {
+    httpClientSpy = {
+      get: jest.fn(),
+    };
+
+    authServiceSpy = {
+      getToken: jest.fn(),
+      isTokenExpired: jest.fn(),
+      showAuthModal: jest.fn(),
+    };
+
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, SharedModule],
-      providers: [SpotifyService],
+      providers: [
+        { provide: HttpClient, useValue: httpClientSpy },
+        { provide: AuthService, useValue: authServiceSpy },
+      ],
     });
 
-    service = TestBed.inject(SpotifyService);
-    httpMock = TestBed.inject(HttpTestingController);
-
-    // Spy on the localStorage methods we want to mock
-    spyOn(localStorage, 'getItem').and.callFake(mockLocalStorage.getItem);
-    spyOn(localStorage, 'setItem').and.callFake(mockLocalStorage.setItem);
-    spyOn(localStorage, 'removeItem').and.callFake(mockLocalStorage.removeItem);
-    spyOn(localStorage, 'clear').and.callFake(mockLocalStorage.clear);
-  });
-
-  afterEach(() => {
-    httpMock.verify(); // Ensure that there are no outstanding requests
-    localStorage.clear();
-    store = {}; // Reset the store
+    spotifyService = TestBed.inject(SpotifyService);
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(spotifyService).toBeTruthy();
+  });
+
+  it('should handle HTTP errors', () => {
+    const errorResponse = new HttpErrorResponse({
+      error: 'Test error',
+      status: 500,
+      statusText: 'Internal Server Error',
+    });
+
+    httpClientSpy.get.mockReturnValue(throwError(errorResponse));
+
+    spotifyService.getNewReleases().subscribe(
+      () => {},
+      error => {
+        expect(error.message).toContain('An error occurred');
+      }
+    );
+  });
+
+  it('should get new releases', () => {
+    const mockAlbumsResponse = {
+      albums: {
+        items: [{ id: '1', name: 'Album 1' }] as Album[],
+      },
+    };
+
+    httpClientSpy.get.mockReturnValue(of(mockAlbumsResponse));
+
+    spotifyService.getNewReleases().subscribe(albums => {
+      expect(albums.length).toBe(1);
+      expect(albums[0].id).toBe('1');
+      expect(albums[0].name).toBe('Album 1');
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 });

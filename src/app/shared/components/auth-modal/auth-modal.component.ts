@@ -19,8 +19,6 @@ export class AuthModalComponent implements OnInit {
     if (this.authService.validateToken()) {
       this.dialog.closeAll();
       window.location.href = '/home';
-    } else {
-      console.log('Token is not valid');
     }
   }
 
