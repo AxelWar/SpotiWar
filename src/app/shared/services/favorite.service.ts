@@ -11,7 +11,7 @@ export class FavoriteService {
   private readonly localStorageKey = 'favs';
 
   constructor(private spotifyService: SpotifyService) {}
-  private getFavoriteSongs(): string[] {
+  getFavoriteSongs(): string[] {
     try {
       const favs = localStorage.getItem(this.localStorageKey);
       if (favs) {
@@ -23,7 +23,7 @@ export class FavoriteService {
     return [];
   }
 
-  private saveFavoriteSongs(favoriteSongs: string[]): void {
+  saveFavoriteSongs(favoriteSongs: string[]): void {
     try {
       localStorage.setItem(this.localStorageKey, JSON.stringify(favoriteSongs));
     } catch (error) {
