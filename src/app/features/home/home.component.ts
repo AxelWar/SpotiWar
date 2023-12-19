@@ -43,28 +43,28 @@ export class HomeComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((tracks: Track[]) => {
         this.tracks = tracks;
-      }, this.handleError);
+      });
   }
 
   fetchProfileData() {
-    this.spotifyService.getProfile().subscribe(data => {
-      this.profile = data;
-      this.loading = false;
-    }, this.handleError);
+    this.spotifyService
+      .getProfile()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((data: User) => {
+        this.profile = data;
+        this.loading = false;
+      });
   }
 
   fetchNewReleases() {
-    this.spotifyService.getNewReleases().subscribe(data => {
-      this.newReleases = data;
-      this.loading = false;
-    }, this.handleError);
+    this.spotifyService
+      .getNewReleases()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((data: Album[]) => {
+        this.newReleases = data;
+        this.loading = false;
+      });
   }
-
-  handleError = (errorService: HttpErrorResponse) => {
-    this.loading = false;
-    this.error = true;
-    this.errorMessage = errorService.error.error.message;
-  };
 
   seeArtist(item: Album) {
     let artistId;

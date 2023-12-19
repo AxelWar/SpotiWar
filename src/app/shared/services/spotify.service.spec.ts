@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
+import { EMPTY, Observable, of, throwError } from 'rxjs';
 import { Artist } from '../interfaces/artist.interface';
 import { User } from '../interfaces/user.interface';
 import { filledTrack } from '../mocks/track.mock';
@@ -201,6 +201,18 @@ describe('SpotifyService', () => {
         expect(error.message).toContain('An error occurred');
       }
     );
+  });
+
+  it('should call showAuthModal and return EMPTY if token is invalid', () => {
+    // Set up authService to return no token or an expired token
+    jest.spyOn(authServiceSpy, 'getToken').mockReturnValue(null);
+    jest.spyOn(authServiceSpy, 'isTokenExpired').mockReturnValue(true);
+    const authModalSpy = jest.spyOn(authServiceSpy, 'showAuthModal');
+
+    const result = spotifyService.getUrl<Album[]>('query');
+
+    expect(authModalSpy).toHaveBeenCalled();
+    expect(result).toBe(EMPTY);
   });
 
   afterEach(() => {

@@ -1,23 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Track } from 'src/app/shared/interfaces/track.interface';
 import { SpotifyService } from '../../shared/services/spotify.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search-song.component.html',
 })
-export class SearchSongComponent {
-  private tracksSubject = new BehaviorSubject<Track[]>([]);
-  tracks$: Observable<Track[]> = this.tracksSubject.asObservable();
+export class SearchSongComponent implements OnInit, OnDestroy {
+  private tracksSubject$ = new BehaviorSubject<Track[]>([]);
+  tracks$: Observable<Track[]> = this.tracksSubject$.asObservable();
+  private unsubscribe$ = new Subject<void>();
   displayArtist: boolean = true;
   loading = false;
 
   constructor(
     private spotify: SpotifyService,
     public route: ActivatedRoute
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.route.params.subscribe(params => {
       if (params['searchTerm']) {
         this.search(params['searchTerm']);
@@ -30,9 +33,18 @@ export class SearchSongComponent {
       return;
     }
     this.loading = true;
-    this.spotify.getSongs(searchTerm).subscribe((data: Track[]) => {
-      this.tracksSubject.next(data);
-      this.loading = false;
-    });
+    this.spotify
+      .getSongs(searchTerm)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((data: Track[]) => {
+        this.tracksSubject$.next(data);
+        this.loading = false;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+    this.tracksSubject$.complete();
   }
 }

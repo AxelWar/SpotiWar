@@ -30,7 +30,7 @@ export class SpotifyService {
     private authService: AuthService
   ) {}
 
-  private getUrl<T>(query: string): Observable<T> {
+  getUrl<T>(query: string): Observable<T> {
     const token = this.authService.getToken();
     if (!token || this.authService.isTokenExpired()) {
       this.authService.showAuthModal();
