@@ -37,4 +37,22 @@ describe('ConfirmDialogComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should close the dialog with false on no click', () => {
+    const dialogRefSpy = jest.spyOn(component.dialogRef, 'close');
+    component.onNoClick();
+    expect(dialogRefSpy).toHaveBeenCalledWith(false);
+  });
+
+  it('should close the dialog with true on yes click', () => {
+    const dialogRefSpy = jest.spyOn(component.dialogRef, 'close');
+    component.onYesClick();
+    expect(dialogRefSpy).toHaveBeenCalledWith(true);
+  });
+
+  it('should have the correct message data', () => {
+    expect(component.data.message).toBe(
+      'Are you sure you want to remove this track from your favorites?'
+    );
+  });
 });

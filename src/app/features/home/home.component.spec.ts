@@ -34,10 +34,6 @@ describe('HomeComponent', () => {
     };
     spotifyServiceStub.getProfile.mockReturnValue(of(filledUser));
     spotifyServiceStub.getNewReleases.mockReturnValue(of([filledAlbum]));
-    const favoriteServiceStub = {
-      getFavoriteTracks: jest.fn(),
-    };
-    favoriteServiceStub.getFavoriteTracks.mockReturnValue(of([filledTrack]));
 
     TestBed.configureTestingModule({
       declarations: [HomeComponent],

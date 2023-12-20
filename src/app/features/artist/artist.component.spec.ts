@@ -6,6 +6,8 @@ import { ArtistComponent } from './artist.component';
 import { filledAlbums } from 'src/app/shared/mocks/albums.mock';
 import { filledArtist } from 'src/app/shared/mocks/artist.interface';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { filledAlbum } from 'src/app/shared/mocks/album.mock';
+import { Album } from 'src/app/shared/interfaces/album.interface';
 
 describe('ArtistComponent', () => {
   let component: ArtistComponent;
@@ -67,5 +69,16 @@ describe('ArtistComponent', () => {
 
   it(`loading has default value`, () => {
     expect(component.loading).toBeFalsy();
+  });
+
+  it('should navigate to the artist page when seeArtist is called with an artist', () => {
+    // Arrange
+    const item: Album = filledAlbum;
+
+    // Act
+    component.seeSongsAlbum(item);
+
+    // Assert
+    expect(router.navigate).toHaveBeenCalledWith(['/track', '1234567890']);
   });
 });

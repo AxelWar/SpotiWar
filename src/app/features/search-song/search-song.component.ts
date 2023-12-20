@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
   templateUrl: './search-song.component.html',
 })
 export class SearchSongComponent implements OnInit, OnDestroy {
-  private tracksSubject$ = new BehaviorSubject<Track[]>([]);
+  tracksSubject$ = new BehaviorSubject<Track[]>([]);
   tracks$: Observable<Track[]> = this.tracksSubject$.asObservable();
   private unsubscribe$ = new Subject<void>();
   displayArtist: boolean = true;
@@ -17,11 +17,15 @@ export class SearchSongComponent implements OnInit, OnDestroy {
 
   constructor(
     private spotify: SpotifyService,
-    public route: ActivatedRoute
+    public activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.initParams();
+  }
+
+  initParams() {
+    this.activatedRoute.params.subscribe(params => {
       if (params['searchTerm']) {
         this.search(params['searchTerm']);
       }
