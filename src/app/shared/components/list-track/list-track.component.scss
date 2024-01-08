@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center; /* Center the audio element inside the container */
   align-items: center;
+  min-width: 250px;
 }
 
 audio {
@@ -67,7 +68,7 @@ audio::-webkit-media-controls-time-remaining-display {
 }
 
 .mat-column-artist {
-  width: 25%; /* Adjust the width as per your requirement */
+  width: 20%; /* Adjust the width as per your requirement */
 }
 
 .mat-column-duration {
