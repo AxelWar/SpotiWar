@@ -19,7 +19,6 @@ Take in mind it is a side project and it's not completly done.
 
 
 ## Run Locally
-
 Clone the project
 
 ```bash
@@ -46,7 +45,6 @@ Start the server
 
 
 ## Running Tests
-
 To run tests, run the following command
 
 ```bash
@@ -55,21 +53,19 @@ To run tests, run the following command
 
 
 ## Optimizations
-
-1. Update Angular Version to v16 and required dependencies
-2. Refactor Code with SOLID principles
+1. Migrate Angular Version to v16 and required dependencies.
+2. Refactored Code with SOLID principles.
 3. Improve Performance with: Tree Shaking, linting anf formatting, modularize app, create Shared Module, implement lazy loading.
-4. Enhance Accessibility (color and contrast).
-5. Improve Testing to 94.54% Statements and 87.23% Functions.
+4. Enhance Accessibility: color and contrast, mobile views.
+5. Improve Testing up to 94.54% Statements and 87.23% Functions.
+   
 ## License
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 
 ## Authors
-
 - [@axelwar](https://www.github.com/axelwar)
 
 
 ## Screenshots
-
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
