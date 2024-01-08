@@ -63,8 +63,8 @@ To run tests, run the following command
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 
 ## Authors
-- [@axelwar](https://www.github.com/axelwar)
-
+- [GitHub@axelwar](https://www.github.com/axelwar)
+- [LinkedIn@axelwar](https://www.linkedin.com/axelwarneke)
 
 ## Screenshots
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
