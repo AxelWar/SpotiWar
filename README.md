@@ -9,7 +9,8 @@ Take in mind it is a side project and it's not completly done.
 ## Features
 
 - Dashboard with user profile image
-- Inn-app favorite songs (saved in LocalStorage)
+- Inn-app favorite songs (managed through LocalStorage)
+- Remove favorite song pop up
 - Search songs
 - New Realeases List
 - Artists Albums List
