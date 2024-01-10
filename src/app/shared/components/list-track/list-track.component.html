@@ -2,6 +2,8 @@
   <div class="m-playing" *ngIf="currentTrack.preview_url">
     <div>Now Playing</div>
     <div>{{ currentTrack.name }}</div>
+    <div *ngFor="let artist of currentTrack.artists">{{ artist.name }}</div>
+    <div>{{ currentTrack.duration_ms | date: 'mm:ss' }}</div>
     <div class="audio-player-container">
       <audio [src]="currentTrack.preview_url" controls autoplay></audio>
     </div>
@@ -9,12 +11,9 @@
 
   <div class="m-track-container">
     <div *ngFor="let track of trackList" class="m-track-detail">
-      <span class="m-track-name">{{ track.name }}</span>
-      <span class="m-track-artist" (click)="seeArtist(track)">
+      <span class="m-track-50">{{ track.name }}</span>
+      <span class="m-track-50" (click)="seeArtist(track)">
         {{ track.artists[0].name }}
-      </span>
-      <span class="m-track-duration">
-        {{ track.duration_ms | date: 'mm:ss' }}
       </span>
       <div class="m-actions">
         <mat-icon class="material-symbols-outlined" (click)="playTrack(track)">

@@ -126,7 +126,6 @@ audio {
 
 .m-track-detail {
   display: flex;
-  justify-content: space-between;
   border-bottom: outset;
   margin-bottom: 0.5rem;
   align-items: center;
@@ -135,17 +134,25 @@ audio {
 .m-playing {
   padding: 0.5rem;
   font-weight: bold;
-  background-color: #ff4ed3;
+  background-color: #FF8FE3;
   background-image: url('../../../../assets/img/noise.png');
   margin-bottom: 1.5rem;
+  color: #2a2a2a;
 }
 
 .m-track-container {
   margin-bottom: 1.5rem;
 }
 
-span.m-track-name {
-  max-width: 100px;
+.m-actions {
+  flex-basis: 16%; /* This sets the base size of the column */
+  flex-grow: 0; /* Prevents the column from growing */
+  flex-shrink: 0; /* Prevents the column from shrinking */
+  text-align: end;
+}
+
+span.m-track-50 {
+  flex: 1;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
