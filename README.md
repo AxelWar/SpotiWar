@@ -3,7 +3,7 @@
 This project was originally created as a challenge in Globant's Bootcamp for a Junior position.
 In that moment it was implemented using Angular 8 and developed without having previous knowledge in Angular.
 Nowadays I'm using this project to apply all the knowledge I've learn throughout the years with good practices and more.
-Take in mind it is a side project and it's not completly done.
+Take in mind it is a side project but I'll keep adding features and enhancing the code.
 
 
 ## Features
