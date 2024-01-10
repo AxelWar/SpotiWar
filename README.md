@@ -68,8 +68,15 @@ To run tests, run the following command
 - [LinkedIn@AxelWarneke](https://www.linkedin.com/in/axelwarneke)
 
 ## Screenshots
+Main Screen:
 ![Main Screen](https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYQRcMhSLk_1QMYxGF_uaDtnkB0fUf3_prIc-xg8MfD7MwYn8UbRnomRMKPu6fYq3Ugp3h8xwfytizwuyvKqE5xJPoyaZQ=w1920-h944)
+
+One Mobile View:
 ![App Mobile](https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYTfVVCoO9Rre2lRmWnG-Xr4I2p2a7BHih2VyzYflG7F16DMz0VL-Qv8rq0XOnRCftNOvNB6awPWeEfmGseAQn2spaxG=w966-h945)
+
+Artist Screen View:
 ![Artist View](https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYSUbt-E8P7J2KcOWL_WsrHts5wbFGpGpHuQgDQHG6JadgpWoY3a78iserItckFI29VoG448syZ-o2mrpOtE3D0VVPfa6g=w966-h945)
+
+Album Screen View
 ![Album View](https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYQ2OZqhEGPX8_hOcJ-7Kmsm1zxp4Tg5quEzhu3BN6bkav_oVU26NsN4BA-I8kk7O1w4lmKNiY_U_N4hgzQWs2dRYCZCOg=w966-h945)
 
