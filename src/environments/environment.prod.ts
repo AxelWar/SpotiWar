@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   spotifyClientId: '476b04f286264f229aed7cd9acc85f7e',
-  redirectUri: 'http://spotiwar.s3-website-sa-east-1.amazonaws.com/home',
+  redirectUri: 'https://scintillating-cat-2581f8.netlify.app/home',
 };
