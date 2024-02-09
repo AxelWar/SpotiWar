@@ -5,6 +5,19 @@ In that moment it was implemented using Angular 8 and developed without having p
 Nowadays I'm using this project to apply all the knowledge I've learn throughout the years with good practices and more.
 Take in mind it is a side project but I'll keep adding features and enhancing the code.
 
+In order to Extend a Request to Spotify to make public the app and be used for everyone there are some guidelines I'm not complying. 
+To try my app you need to request me to add your email in User Management in Spotify for Developers menu (limited to 25 users).
+Another option for you is to create a developer account in Spotify and change Client ID from mine to yours.
+
+These are the guideliness I'm not complying to make it public and accesible to everyone from Spotify:
+- Add Album name in currently playing for mobile view.
+- Add Spotify logo in currently playing for mobile view.
+- Change app name from Spoti... to other.
+- Add complete logo and brand name with R in desktop view.
+- Check if: Playlist/album name: 25 characters Artist name: 18 characters Track name: 23 characters.
+- Link to Spotify from everywhere. If user don't have the app redirect to store with the label of get Spotify for free.
+- Setting a song as favorite should be handled by Spotify and not doing it from partner.
+- Favorite option only be available from now playing with heart shape icon.
 
 ## Features
 
