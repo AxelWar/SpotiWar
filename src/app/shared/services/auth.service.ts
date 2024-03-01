@@ -1,3 +1,4 @@
+import { ActivatedRoute, RouterEvent } from '@angular/router';
 // auth-modal.service.ts
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -5,6 +6,7 @@ import { DeviceDetectorService, DeviceInfo } from 'ngx-device-detector';
 import { AuthModalComponent } from 'src/app/shared/components/auth-modal/auth-modal.component';
 import { environment } from 'src/environments/environment';
 import { emptyDevice } from '../mocks/device.mock';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +15,9 @@ export class AuthService {
   deviceInfo: DeviceInfo = emptyDevice;
   constructor(
     private dialog: MatDialog,
-    private deviceService: DeviceDetectorService
+    private deviceService: DeviceDetectorService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   public showAuthModal(): void {
@@ -43,8 +47,9 @@ export class AuthService {
   }
 
   extractTokenFromUrl(): void {
-    const currentUrl = window.location.href;
-    const token = currentUrl.includes('access_token=')
+    /* const currentUrl = window.location.href; */
+    const currentUrl = this.route.snapshot.fragment;
+    const token = currentUrl?.includes('access_token=')
       ? currentUrl.split('access_token=')[1].split('&')[0]
       : '';
     this.saveToken(token, 3600);
